@@ -14,6 +14,7 @@
   --color-hover: #292929;
 
   /* Padding */
+  --padding-xs: 4px;
   --padding-s: 6px;
   --padding-sm: 8px;
   --padding-m: 12px;
@@ -38,4 +39,7 @@
 
   /* Border Radius */
   --border-radius-regular: 4px;
+
+  /* TopBar */
+  --topbar-height: 56px;
 }

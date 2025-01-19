@@ -1,0 +1,52 @@
+.topbar {
+  height: var(--topbar-height);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--padding-l);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+}
+
+.topbar-title {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+}
+
+.topbar-right {
+  position: relative;
+}
+
+.drawer-button {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-xxl);
+  cursor: pointer;
+  padding: var(--padding-sm);
+  display: none;
+}
+
+.drawer-button:hover {
+  color: var(--color-text-muted);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .drawer-button {
+    display: block;
+  }
+  .topbar-right {
+    display: none;
+  }
+}
