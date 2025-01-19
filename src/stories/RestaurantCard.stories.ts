@@ -6,7 +6,7 @@ const Meta: Meta<typeof RestaurantCard> = {
   component: RestaurantCard,
   tags: ["autodocs"],
   args: {
-    name: "Restaurant Name",
+    restaurantName: "Restaurant Name",
     distance: "1.2 km",
   },
 };
