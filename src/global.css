@@ -2,16 +2,32 @@
    🌍 Global Styles
    ======================= */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
 /* 🎨 Root Variables */
 :root {
   /* Colors */
   --color-background: #404040;
   --color-surface: #1e1e1e;
   --color-muted: #333;
+  --color-surface-secondary: #e0e0e0;
+  --color-muted-secondary: #b0b0b0;
   --color-text: #e0e0e0;
   --color-text-muted: #b0b0b0;
+  --color-text-secondary: #1e1e1e;
+  --color-text-muted-secondary: #333;
   --color-border: #333;
   --color-hover: #292929;
+  --color-hover-secondary: #d0d0d0;
 
   /* Padding */
   --padding-xs: 4px;
@@ -39,6 +55,7 @@
 
   /* Border Radius */
   --border-radius-regular: 4px;
+  --border-radius-large: 8px;
 
   /* TopBar */
   --topbar-height: 56px;

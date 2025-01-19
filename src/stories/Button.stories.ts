@@ -7,6 +7,7 @@ const meta: Meta<typeof Button> = {
   tags: ["autodocs"],
   args: {
     label: "Click Me",
+    width: "auto",
   },
 };
 
@@ -15,8 +16,21 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {};
 
+export const LightTheme: Story = {
+  args: {
+    useLightTheme: true,
+  },
+};
+
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+};
+
+export const DisabledLightTheme: Story = {
+  args: {
+    disabled: true,
+    useLightTheme: true,
   },
 };

@@ -1,0 +1,48 @@
+.restaurantcard {
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  max-width: 400px;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.02);
+}
+
+.info {
+  padding: 0 var(--padding-m);
+}
+
+.title {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  padding: var(--padding-s) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.selection {
+  padding-bottom: var(--padding-sm);
+}
+
+.label {
+  font-size: var(--font-size-m);
+}
+
+.address,
+.cuisine,
+.dietaryoptions,
+.openinghours,
+.contact {
+  font-size: var(--font-size-xl);
+  padding: var(--padding-xs) 0;
+}
+
+.websitebutton {
+  display: flex;
+  justify-content: center;
+  padding: var(--padding-m) 0;
+}
