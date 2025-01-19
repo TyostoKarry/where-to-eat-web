@@ -9,6 +9,7 @@
   font-weight: var(--font-weight-medium);
   transition: color 0.3s ease;
   width: fit-content;
+  max-width: 100%;
   padding: var(--padding-xs) var(--padding-sm);
 }
 

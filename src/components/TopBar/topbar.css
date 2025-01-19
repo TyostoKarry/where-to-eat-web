@@ -1,4 +1,5 @@
 .topbar {
+  width: 100%;
   height: var(--topbar-height);
   background-color: var(--color-surface);
   color: var(--color-text);
@@ -6,6 +7,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 var(--padding-l);
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .topbar-left {

@@ -1,11 +1,13 @@
+import { TopBar } from "./components/TopBar/TopBar";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div id="root">
-      <h1>Hello React + TypeScript!</h1>
+    <div className="app-container">
+      <TopBar />
+      <main className="main-content"></main>
     </div>
   );
-}
+};
 
 export default App;
