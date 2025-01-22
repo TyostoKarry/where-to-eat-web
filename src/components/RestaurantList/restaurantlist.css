@@ -1,0 +1,8 @@
+.restaurantlist {
+  display: block;
+  margin: auto;
+}
+
+.restaurantlist .restaurantcard {
+  margin-bottom: 24px;
+}

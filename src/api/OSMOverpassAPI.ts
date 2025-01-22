@@ -2,7 +2,7 @@ const OSMOVERPASS_API_URL = "https://overpass-api.de/api/interpreter";
 
 export interface Restaurant {
   id: number;
-  restaurantName: string;
+  name: string;
   latitude: number;
   longitude: number;
   address?: string;
@@ -42,15 +42,15 @@ export const fetchOSMOverpassAPI = async (
       .filter((node: any) => node.tags && node.tags.name)
       .map((node: any) => ({
         id: node.id,
-        restaurantName: node.tags.name,
+        name: node.tags.name,
         latitude: node.lat,
         longitude: node.lon,
-        address: node.tags["addr:street"] || "No Address",
+        address: node.tags["addr:street"],
         cuisine: node.tags.cuisine ? node.tags.cuisine.split(";") : [],
         dietaryOptions: node.tags.dietary ? node.tags.dietary.split(";") : [],
-        openingHours: node.tags.opening_hours || "Unknown",
-        phoneNumber: node.tags.phone || "No Phone",
-        website: node.tags.website || null,
+        openingHours: node.tags.opening_hours,
+        phoneNumber: node.tags.phone,
+        website: node.tags.website,
       }));
   } catch (error) {
     console.error("Failed to fetch restaurant data:", error);

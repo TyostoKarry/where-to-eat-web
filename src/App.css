@@ -1,7 +1,6 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  text-align: center;
 }
 
 .app-container {
@@ -12,6 +11,6 @@
 
 .main-content {
   flex: 1;
-  padding: var(--padding-xl);
+  padding: var(--padding-xl) var(--padding-xxxl);
   background-color: var(--color-background);
 }
