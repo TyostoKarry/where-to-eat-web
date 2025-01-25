@@ -14,9 +14,16 @@ export interface Restaurant {
 }
 
 export const fetchOSMOverpassAPI = async (
-  query: string
+  lat: number,
+  lon: number
 ): Promise<Restaurant[]> => {
   try {
+    const query = `
+    [out:json];
+    node["amenity"~"restaurant|fast_food"](around:2000,${lat},${lon});
+    out body;
+    `;
+
     const response = await fetch(OSMOVERPASS_API_URL, {
       method: "POST",
       headers: {
