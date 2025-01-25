@@ -1,11 +1,12 @@
 import React from "react";
 import { Button } from "@components/Button";
+import { formatDistance } from "@utils/distance";
 import "./RestaurantCard.css";
 
 interface RestaurantCardProps {
   restaurantName: string;
   address?: string;
-  distance: string;
+  distance: number;
   cuisine?: string[];
   dietaryOptions?: string[];
   openingHours?: string;
@@ -26,7 +27,7 @@ export const RestaurantCard: React.FC<RestaurantCardProps> = ({
   return (
     <div className="restaurantcard">
       <Button
-        label={distance}
+        label={formatDistance(distance)}
         useLightTheme
         width="auto"
         fontSize="var(--font-size-xl)"

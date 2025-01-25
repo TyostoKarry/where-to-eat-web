@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Masonry from "masonry-layout";
+import { useUserLocation } from "@hooks/useUserLocation";
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
 import { RestaurantCard } from "@components/RestaurantCard";
 import "./restaurantlist.css";
@@ -36,8 +37,8 @@ export const RestaurantList: React.FC = () => {
         <RestaurantCard
           key={restaurant.id}
           restaurantName={restaurant.name}
+          distance={restaurant.distance}
           address={restaurant.address}
-          distance="200m"
           cuisine={restaurant.cuisine}
           dietaryOptions={restaurant.dietaryOptions}
           openingHours={restaurant.openingHours}
