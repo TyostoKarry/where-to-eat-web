@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Masonry from "masonry-layout";
-import { useUserLocation } from "@components/hooks/useUserLocation";
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
 import { RestaurantCard } from "@components/RestaurantCard";
 import "./restaurantlist.css";

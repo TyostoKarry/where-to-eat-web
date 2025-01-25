@@ -20,6 +20,7 @@
       "@api/*": ["src/api/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"]
     },
 
