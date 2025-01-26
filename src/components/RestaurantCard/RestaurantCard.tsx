@@ -1,4 +1,4 @@
-import { FC, Fragment, useState, useRef } from "react";
+import { FC, useState, useRef } from "react";
 import { Button } from "@components/Button";
 import { formatDistance } from "@utils/distance";
 import { RestaurantMap } from "@components/RestaurantMap";

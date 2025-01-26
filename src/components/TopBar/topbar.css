@@ -1,3 +1,9 @@
+.topbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .topbar {
   width: 100%;
   height: var(--topbar-height);
@@ -53,4 +59,15 @@
   .topbar-right {
     display: none;
   }
+}
+
+.userlocation-map-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  background: var(--color-background);
+}
+
+.userlocation-map-container.open {
+  height: 300px;
 }
