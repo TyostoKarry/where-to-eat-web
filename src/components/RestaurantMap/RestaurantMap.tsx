@@ -25,11 +25,7 @@ const MapController = forwardRef(
 export const RestaurantMap = forwardRef(
   ({ latitude, longitude }: RestaurantMapProps, ref) => {
     return (
-      <MapContainer
-        className="restaurantmap"
-        center={[latitude, longitude]}
-        zoom={13}
-      >
+      <MapContainer className="map" center={[latitude, longitude]} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">

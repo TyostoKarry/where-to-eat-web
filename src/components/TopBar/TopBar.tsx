@@ -4,7 +4,12 @@ import { Button } from "@components/Button";
 import { UserLocationMap } from "@components/UserLocationMap";
 import { GitHubButton } from "@components/GitHubButton";
 
-export const TopBar: FC = () => {
+interface TopBarProps {
+  userLocation: { lat: number; lon: number } | null;
+  setUserLocation: (location: { lat: number; lon: number }) => void;
+}
+
+export const TopBar: FC<TopBarProps> = ({ userLocation, setUserLocation }) => {
   const [showMap, setShowMap] = useState(false);
 
   return (
@@ -27,9 +32,15 @@ export const TopBar: FC = () => {
           <GitHubButton />
         </div>
       </header>
-      <div className={`userlocation-map-container ${showMap ? "open" : ""}`}>
-        <UserLocationMap />
-      </div>
+      {userLocation && (
+        <div className={`userlocation-map-container ${showMap ? "open" : ""}`}>
+          <UserLocationMap
+            userLocation={userLocation}
+            setUserLocation={setUserLocation}
+            shouldRecenter={showMap}
+          />
+        </div>
+      )}
     </div>
   );
 };
