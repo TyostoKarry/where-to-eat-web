@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import "./topbar.css";
 import { GitHubButton } from "@components/GitHubButton";
 
-export const TopBar: React.FC = () => {
+export const TopBar: FC = () => {
   return (
     <header className="topbar">
       <div className="topbar-left">

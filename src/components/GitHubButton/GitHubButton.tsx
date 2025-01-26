@@ -1,10 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import "./GitHubButton.css";
 import GitHubIcon from "@assets/icons/github.svg?react";
 
 const GITHUB_REPO_URL = "https://github.com/TyostoKarry/where-to-eat-web";
 
-export const GitHubButton: React.FC = () => {
+export const GitHubButton: FC = () => {
   return (
     <a
       href={GITHUB_REPO_URL}

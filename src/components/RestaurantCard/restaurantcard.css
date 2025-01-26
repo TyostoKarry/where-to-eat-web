@@ -1,3 +1,7 @@
+.restaurantcard-masonry {
+  background: transparent;
+}
+
 .restaurantcard {
   background: var(--color-surface);
   color: var(--color-text);
@@ -41,4 +45,50 @@
   display: flex;
   justify-content: center;
   padding: var(--padding-m) 0;
+}
+
+.map-container {
+  height: 332px;
+  overflow: hidden;
+  animation: expandHeight 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes expandHeight {
+  from {
+    height: 0;
+  }
+  to {
+    height: 332px;
+  }
+}
+
+.map {
+  height: 300px;
+  width: 100%;
+}
+
+.map-buttons {
+  display: flex;
+  justify-content: end;
+  gap: var(--padding-s);
+  padding-top: var(--padding-s);
+}
+
+.map-container-masonry-fix {
+  height: 332px;
+  overflow: hidden;
+  animation: shrinkHeight 0.3s ease-in-out forwards;
+  visibility: hidden;
+}
+
+@keyframes shrinkHeight {
+  from {
+    height: 332px;
+  }
+  to {
+    height: 0;
+    display: none;
+  }
 }

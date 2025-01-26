@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import "./button.css";
 
 export interface ButtonProps {
@@ -13,7 +13,7 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   label,
   disabled,
   useLightTheme = false,
