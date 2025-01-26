@@ -82,7 +82,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           {openingHours && (
             <div className="selection">
               <span className="label">Opening Hours:</span>
-              <p className="openinghours">
+              <div className="openinghours">
                 {openingHours.split(";").map((line, index) => {
                   const [days, time] = line.trim().split(" ");
                   return (
@@ -92,7 +92,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
                     </div>
                   );
                 })}
-              </p>
+              </div>
             </div>
           )}
 

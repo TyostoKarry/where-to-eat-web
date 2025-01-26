@@ -9,7 +9,6 @@ export const formatOpeningHours = (
     const oh = new opening_hours(openingHoursString);
     return oh.prettifyValue();
   } catch (error) {
-    console.warn("Invalid opening_hours format:", openingHoursString);
     return null;
   }
 };
