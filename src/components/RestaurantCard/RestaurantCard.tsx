@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from "react";
+import { FC, Fragment, useState, useRef } from "react";
 import { Button } from "@components/Button";
 import { formatDistance } from "@utils/distance";
 import { RestaurantMap } from "@components/RestaurantMap";
@@ -6,10 +6,11 @@ import "./RestaurantCard.css";
 
 interface RestaurantCardProps {
   restaurantName: string;
-  address?: string;
   distance: number;
   latitude: number;
   longitude: number;
+  address?: string;
+  postalCode?: string;
   cuisine?: string[];
   dietaryOptions?: string[];
   openingHours?: string;
@@ -20,10 +21,11 @@ interface RestaurantCardProps {
 
 export const RestaurantCard: FC<RestaurantCardProps> = ({
   restaurantName,
-  address,
   distance,
   latitude,
   longitude,
+  address,
+  postalCode,
   cuisine = [],
   dietaryOptions = [],
   openingHours,
@@ -56,7 +58,10 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           {address && (
             <div className="selection">
               <span className="label">Address:</span>
-              <p className="address">{address}</p>
+              <div className="address">
+                <p>{address}</p>
+                <p>{postalCode}</p>
+              </div>
             </div>
           )}
 
@@ -77,7 +82,17 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           {openingHours && (
             <div className="selection">
               <span className="label">Opening Hours:</span>
-              <p className="openinghours">{openingHours}</p>
+              <p className="openinghours">
+                {openingHours.split(";").map((line, index) => {
+                  const [days, time] = line.trim().split(" ");
+                  return (
+                    <div className="opening-hours-row" key={index}>
+                      <span className="opening-hours-day">{days}</span>
+                      <span className="opening-hours-time">{time}</span>
+                    </div>
+                  );
+                })}
+              </p>
             </div>
           )}
 

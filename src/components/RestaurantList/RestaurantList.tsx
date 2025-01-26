@@ -45,6 +45,7 @@ export const RestaurantList: FC = () => {
           latitude={restaurant.latitude}
           longitude={restaurant.longitude}
           address={restaurant.address}
+          postalCode={restaurant.postalCode}
           cuisine={restaurant.cuisine}
           dietaryOptions={restaurant.dietaryOptions}
           openingHours={restaurant.openingHours}

@@ -41,6 +41,22 @@
   padding: var(--padding-xs) 0;
 }
 
+.opening-hours-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--padding-s);
+}
+
+.opening-hours-day {
+  min-width: 75px;
+  flex-shrink: 0;
+}
+
+.opening-hours-time {
+  flex-grow: 1;
+}
+
 .websitebutton {
   display: flex;
   justify-content: center;

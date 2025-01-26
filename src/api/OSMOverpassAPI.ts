@@ -1,4 +1,6 @@
+import { formatAddress } from "@utils/address";
 import { calculateDistance } from "@utils/distance";
+import { formatOpeningHours } from "@utils/openingHours";
 
 const OSMOVERPASS_API_URL = "https://overpass-api.de/api/interpreter";
 
@@ -9,6 +11,7 @@ export interface Restaurant {
   longitude: number;
   distance: number;
   address?: string;
+  postalCode?: string;
   cuisine?: string[];
   dietaryOptions?: string[];
   openingHours?: string;
@@ -57,16 +60,18 @@ export const fetchOSMOverpassAPI = async (
           node.lat,
           node.lon
         );
+
         return {
           id: node.id,
           name: node.tags.name,
           latitude: node.lat,
           longitude: node.lon,
           distance: distance,
-          address: node.tags["addr:street"],
+          address: formatAddress(node.tags),
+          postalCode: node.tags["addr:postcode"],
           cuisine: node.tags.cuisine ? node.tags.cuisine.split(";") : [],
           dietaryOptions: node.tags.dietary ? node.tags.dietary.split(";") : [],
-          openingHours: node.tags.opening_hours,
+          openingHours: formatOpeningHours(node.tags.opening_hours),
           phoneNumber: node.tags.phone,
           website: node.tags.website,
         };
