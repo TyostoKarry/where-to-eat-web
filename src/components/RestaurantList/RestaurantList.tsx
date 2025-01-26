@@ -26,7 +26,6 @@ export const RestaurantList: FC = () => {
         itemSelector: ".restaurantcard-masonry",
         columnWidth: ".restaurantcard",
         gutter: 24,
-        horizontalOrder: true,
         fitWidth: true,
       });
 

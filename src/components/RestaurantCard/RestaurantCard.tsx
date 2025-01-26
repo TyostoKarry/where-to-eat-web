@@ -134,6 +134,11 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           </div>
         )}
       </div>
+      {/* 
+      Masonry does not dynamically adjust layout smoothly when an element inside a card expands. 
+      This invisible div acts as a placeholder with the same height as the map when it's opened. 
+      It shrinks at the same pace as the map expands, tricking Masonry into adjusting the layout instantly.
+      */}
       {showMap && <div className={`map-container-masonry-fix`} />}
     </div>
   );
