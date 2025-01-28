@@ -79,7 +79,13 @@
   height: 340px;
 }
 
-.close-button-icon {
+.map-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--padding-sm);
+}
+
+.button-icon {
   width: 24px;
   height: 24px;
 }

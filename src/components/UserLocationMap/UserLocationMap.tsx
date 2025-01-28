@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, forwardRef, useEffect, useImperativeHandle } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -27,21 +27,25 @@ interface MapControllerProps {
   shouldRecenter: boolean;
 }
 
-const MapController: React.FC<MapControllerProps> = ({
-  latitude,
-  longitude,
-  shouldRecenter,
-}) => {
-  const map = useMap();
+const MapController = forwardRef(
+  ({ latitude, longitude, shouldRecenter }: MapControllerProps, ref) => {
+    const map = useMap();
 
-  useEffect(() => {
-    if (shouldRecenter) {
-      map.setView([latitude, longitude], 16, { animate: true });
-    }
-  }, [shouldRecenter, map]);
+    useEffect(() => {
+      if (shouldRecenter) {
+        map.setView([latitude, longitude], 16, { animate: true });
+      }
+    }, [shouldRecenter, map, latitude, longitude]);
 
-  return null;
-};
+    useImperativeHandle(ref, () => ({
+      centerMap: () => {
+        map.setView([latitude, longitude], 16, { animate: true });
+      },
+    }));
+
+    return null;
+  }
+);
 
 interface UserLocationMapProps {
   userLocation: { lat: number; lon: number };
@@ -49,33 +53,35 @@ interface UserLocationMapProps {
   shouldRecenter: boolean;
 }
 
-export const UserLocationMap: FC<UserLocationMapProps> = ({
-  userLocation,
-  setUserLocation,
-  shouldRecenter,
-}) => {
-  return (
-    <div>
-      <MapContainer
-        center={[userLocation.lat, userLocation.lon]}
-        zoom={16}
-        className="userlocationmap"
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">
+export const UserLocationMap = forwardRef(
+  (
+    { userLocation, setUserLocation, shouldRecenter }: UserLocationMapProps,
+    ref
+  ) => {
+    return (
+      <div>
+        <MapContainer
+          center={[userLocation.lat, userLocation.lon]}
+          zoom={16}
+          className="userlocationmap"
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">
                 OpenStreetMap</a> contributors'
-        />
-        {userLocation && (
-          <Marker position={[userLocation.lat, userLocation.lon]} />
-        )}
-        <LocationSelector setUserLocation={setUserLocation} />
-        <MapController
-          latitude={userLocation.lat}
-          longitude={userLocation.lon}
-          shouldRecenter={shouldRecenter}
-        />
-      </MapContainer>
-    </div>
-  );
-};
+          />
+          {userLocation && (
+            <Marker position={[userLocation.lat, userLocation.lon]} />
+          )}
+          <LocationSelector setUserLocation={setUserLocation} />
+          <MapController
+            latitude={userLocation.lat}
+            longitude={userLocation.lon}
+            shouldRecenter={shouldRecenter}
+            ref={ref}
+          />
+        </MapContainer>
+      </div>
+    );
+  }
+);
