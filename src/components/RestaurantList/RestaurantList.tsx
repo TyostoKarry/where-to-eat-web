@@ -1,39 +1,37 @@
 import { FC, useState, useEffect } from "react";
 import Masonry from "masonry-layout";
-import { useUserLocation } from "@hooks/useUserLocation";
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
 import { RestaurantCard } from "@components/RestaurantCard";
 import "./restaurantlist.css";
 
-export const RestaurantList: FC = () => {
+interface RestaurantListProps {
+  userLocation: { lat: number; lon: number };
+}
+
+export const RestaurantList: FC<RestaurantListProps> = ({ userLocation }) => {
   const [restaurantData, setRestaurantData] = useState<Restaurant[]>([]);
   const [masonry, setMasonry] = useState<Masonry | null>(null);
-  const { latitude, longitude, error } = useUserLocation();
 
   useEffect(() => {
-    if (latitude != null && longitude != null) {
-      fetchOSMOverpassAPI(latitude, longitude).then((data) =>
-        setRestaurantData(data)
-      );
-    }
-  }, [latitude, longitude]);
+    fetchOSMOverpassAPI(userLocation.lat, userLocation.lon).then((data) =>
+      setRestaurantData(data)
+    );
+  }, [userLocation]);
 
   useEffect(() => {
     if (restaurantData.length === 0) return;
 
-    if (!masonry) {
-      const newMasonry = new Masonry(".restaurantlist", {
-        itemSelector: ".restaurantcard-masonry",
-        columnWidth: ".restaurantcard",
-        gutter: 24,
-        fitWidth: true,
-      });
+    masonry?.destroy();
 
-      setMasonry(newMasonry);
-    } else {
-      masonry.layout();
-    }
-  }, [restaurantData]);
+    const newMasonry = new Masonry(".restaurantlist", {
+      itemSelector: ".restaurantcard-masonry",
+      columnWidth: ".restaurantcard",
+      gutter: 24,
+      fitWidth: true,
+    });
+
+    setMasonry(newMasonry);
+  }, [restaurantData, userLocation]);
 
   return (
     <div className="restaurantlist">

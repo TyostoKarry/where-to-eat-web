@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import "./button.css";
 
 export interface ButtonProps {
-  label: string;
+  label: string | ReactNode;
   disabled?: boolean;
   useLightTheme?: boolean;
   width?: string;
@@ -32,7 +32,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={onClick}
       style={{ width, height, fontSize, fontWeight, padding }}
     >
-      {label}
+      {typeof label === "string" ? <span>{label}</span> : label}
     </button>
   );
 };

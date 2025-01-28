@@ -1,3 +1,12 @@
+.topbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid var(--color-border);
+}
+
 .topbar {
   width: 100%;
   height: var(--topbar-height);
@@ -53,4 +62,30 @@
   .topbar-right {
     display: none;
   }
+}
+
+.userlocation-map-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  background: var(--color-surface);
+  padding: 0 var(--padding-l);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.userlocation-map-container.open {
+  height: 340px;
+}
+
+.map-button-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--padding-sm);
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
 }
