@@ -35,7 +35,7 @@ const MapController = forwardRef(
       if (shouldRecenter) {
         map.setView([latitude, longitude], 16, { animate: true });
       }
-    }, [shouldRecenter, map, latitude, longitude]);
+    }, [shouldRecenter, map]);
 
     useImperativeHandle(ref, () => ({
       centerMap: () => {
