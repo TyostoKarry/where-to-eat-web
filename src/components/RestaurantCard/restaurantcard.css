@@ -3,6 +3,8 @@
 }
 
 .restaurantcard {
+  display: flex;
+  flex-direction: column;
   background: var(--color-surface);
   color: var(--color-text);
   padding: var(--padding-sm);

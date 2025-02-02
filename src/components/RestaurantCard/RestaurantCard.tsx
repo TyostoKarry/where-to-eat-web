@@ -47,7 +47,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
         <Button
           label={formatDistance(distance)}
           useLightTheme
-          width="auto"
+          width="100px"
           fontSize="var(--font-size-xl)"
           onClick={() => toggleMap()}
         />
