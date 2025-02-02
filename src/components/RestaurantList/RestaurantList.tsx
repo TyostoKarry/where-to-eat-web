@@ -1,22 +1,15 @@
 import { FC, useState, useEffect } from "react";
 import Masonry from "masonry-layout";
-import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
+import { Restaurant } from "@api/OSMOverpassAPI";
 import { RestaurantCard } from "@components/RestaurantCard";
 import "./restaurantlist.css";
 
 interface RestaurantListProps {
-  userLocation: { lat: number; lon: number };
+  restaurantData: Restaurant[];
 }
 
-export const RestaurantList: FC<RestaurantListProps> = ({ userLocation }) => {
-  const [restaurantData, setRestaurantData] = useState<Restaurant[]>([]);
+export const RestaurantList: FC<RestaurantListProps> = ({ restaurantData }) => {
   const [masonry, setMasonry] = useState<Masonry | null>(null);
-
-  useEffect(() => {
-    fetchOSMOverpassAPI(userLocation.lat, userLocation.lon).then((data) =>
-      setRestaurantData(data)
-    );
-  }, [userLocation]);
 
   useEffect(() => {
     if (restaurantData.length === 0) return;
@@ -31,7 +24,7 @@ export const RestaurantList: FC<RestaurantListProps> = ({ userLocation }) => {
     });
 
     setMasonry(newMasonry);
-  }, [restaurantData, userLocation]);
+  }, [restaurantData]);
 
   return (
     <div className="restaurantlist">

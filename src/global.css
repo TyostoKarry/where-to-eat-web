@@ -60,4 +60,5 @@ p {
 
   /* TopBar */
   --topbar-height: 56px;
+  --topbar-border-bottom: 2px solid var(--color-border);
 }
