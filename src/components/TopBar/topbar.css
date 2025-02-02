@@ -1,13 +1,7 @@
-.topbar-container {
+.topbar {
   position: sticky;
   top: 0;
   z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 2px solid var(--color-border);
-}
-
-.topbar {
   width: 100%;
   height: var(--topbar-height);
   background-color: var(--color-surface);
@@ -19,6 +13,7 @@
   box-sizing: border-box;
   max-width: 100vw;
   overflow: hidden;
+  border-bottom: 2px solid var(--color-border);
 }
 
 .topbar-left {
@@ -30,10 +25,6 @@
 .topbar-title {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-bold);
-}
-
-.topbar-right {
-  position: relative;
 }
 
 .drawer-button {
@@ -50,11 +41,6 @@
   color: var(--color-text-muted);
 }
 
-.topbar-right {
-  display: flex;
-  align-items: center;
-}
-
 @media (max-width: 768px) {
   .drawer-button {
     display: block;
@@ -62,30 +48,4 @@
   .topbar-right {
     display: none;
   }
-}
-
-.userlocation-map-container {
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease-in-out;
-  background: var(--color-surface);
-  padding: 0 var(--padding-l);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.userlocation-map-container.open {
-  height: 340px;
-}
-
-.map-button-container {
-  display: flex;
-  flex-direction: row;
-  gap: var(--padding-sm);
-}
-
-.button-icon {
-  width: 24px;
-  height: 24px;
 }
