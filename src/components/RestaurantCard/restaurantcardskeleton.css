@@ -1,18 +1,62 @@
+.restaurantcard-skeleton-masonry {
+  background: transparent;
+}
+
 .restaurantcard-skeleton {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-skeleton);
   padding: var(--padding-sm);
   border-radius: var(--border-radius-large);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   width: 360px;
+  position: relative;
+  overflow: hidden;
+}
+
+.restaurantcard-skeleton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  border-radius: var(--border-radius-large);
+  pointer-events: none;
+}
+
+.restaurantcard-skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    left: -200%;
+  }
+  100% {
+    left: 150%;
+  }
 }
 
 .restaurantcard-skeleton_distance-button {
   height: 36px;
   width: 100px;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
 
@@ -29,7 +73,7 @@
 .restaurantcard-skeleton__name {
   height: 30px;
   width: 200px;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
   margin: var(--padding-m) 0;
 }
@@ -38,22 +82,22 @@
   display: flex;
   flex-direction: column;
   gap: var(--padding-sm);
-  justify-self: center;
-  align-self: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   padding-bottom: var(--padding-m);
 }
 
 .restaurantcard-skeleton__title {
   height: 15px;
   width: 70px;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
 
 .restaurantcard-skeleton__info {
   height: 25px;
   width: 180px;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
 
@@ -61,7 +105,7 @@
   height: 45px;
   width: 165px;
   align-self: center;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
   margin: var(--padding-m) 0;
 }

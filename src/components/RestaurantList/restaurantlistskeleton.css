@@ -1,0 +1,8 @@
+.restaurantlist-skeleton {
+  display: block;
+  margin: auto;
+}
+
+.restaurantlist-skeleton .restaurantcard-skeleton {
+  margin-bottom: 24px;
+}

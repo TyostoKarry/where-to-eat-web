@@ -5,6 +5,7 @@ import { UserLocationMapModal } from "@components/UserLocationMapModal";
 import { RestaurantList } from "@components/RestaurantList/RestaurantList";
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
 import "./App.css";
+import { RestaurantListSkeleton } from "@components/RestaurantList";
 
 const App = () => {
   const {
@@ -66,9 +67,9 @@ const App = () => {
 
     if (loading) {
       return (
-        <div className="loading-and-error-state">
-          <h1>Loading...</h1>
-        </div>
+        <main className="main-content">
+          <RestaurantListSkeleton />
+        </main>
       );
     }
 

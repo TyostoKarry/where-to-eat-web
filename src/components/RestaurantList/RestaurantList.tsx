@@ -24,6 +24,10 @@ export const RestaurantList: FC<RestaurantListProps> = ({ restaurantData }) => {
     });
 
     setMasonry(newMasonry);
+
+    return () => {
+      newMasonry.destroy();
+    };
   }, [restaurantData]);
 
   return (

@@ -18,8 +18,10 @@ p {
   /* Colors */
   --color-background: #404040;
   --color-surface: #1e1e1e;
+  --color-surface-skeleton: #1e1e1eb6;
   --color-muted: #333;
   --color-surface-secondary: #e0e0e0;
+  --color-surface-secondary-skeleton: #e0e0e059;
   --color-muted-secondary: #b0b0b0;
   --color-text: #e0e0e0;
   --color-text-muted: #b0b0b0;
