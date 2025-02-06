@@ -11,7 +11,7 @@
 
 .main-content {
   flex: 1;
-  padding: var(--padding-xl) var(--padding-xxxl);
+  padding: var(--padding-xl) var(--padding-xxxl) 0 var(--padding-xxxl);
   background-color: var(--color-background);
 }
 

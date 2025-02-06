@@ -29,7 +29,7 @@ export const RestaurantListSkeleton: FC = () => {
 
   return (
     <div className="restaurantlist-skeleton">
-      {Array.from({ length: 10 }).map((_, index) => (
+      {Array.from({ length: 20 }).map((_, index) => (
         <RestaurantCardSkeleton
           key={index}
           infoCount={Math.floor(Math.random() * 5) + 1}
