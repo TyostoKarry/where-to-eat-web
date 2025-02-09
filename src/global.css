@@ -16,9 +16,9 @@ p {
 /* 🎨 Root Variables */
 :root {
   /* Colors */
-  --color-background: #404040;
-  --color-surface: #1e1e1e;
-  --color-surface-skeleton: #1e1e1eb6;
+  --color-background: #1e1e1e;
+  --color-surface: #2e2e2e;
+  --color-surface-skeleton: #2e2e2eb6;
   --color-muted: #333;
   --color-surface-secondary: #e0e0e0;
   --color-surface-secondary-skeleton: #e0e0e059;
@@ -62,5 +62,5 @@ p {
 
   /* TopBar */
   --topbar-height: 56px;
-  --topbar-border-bottom: 2px solid var(--color-border);
+  --topbar-border-bottom: 2px solid var(--color-surface);
 }
