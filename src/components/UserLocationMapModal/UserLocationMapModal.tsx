@@ -80,7 +80,12 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               label="Save"
               useLightTheme
               onClick={() => {
-                setUserLocation(pendingUserLocation);
+                if (
+                  pendingUserLocation.lat != userLocation.lat ||
+                  pendingUserLocation.lon != userLocation.lon
+                ) {
+                  setUserLocation(pendingUserLocation);
+                }
                 onClose();
               }}
               height="32px"
