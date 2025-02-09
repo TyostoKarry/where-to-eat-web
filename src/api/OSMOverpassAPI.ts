@@ -4,6 +4,32 @@ import { formatOpeningHours } from "@utils/openingHours";
 
 const OSMOVERPASS_API_URL = "https://overpass-api.de/api/interpreter";
 
+interface OSMTags {
+  name: string;
+  "addr:street"?: string;
+  "addr:housenumber"?: string;
+  "addr:postcode"?: string;
+  "addr:city"?: string;
+  cuisine?: string;
+  dietary?: string;
+  opening_hours?: string;
+  phone?: string;
+  website?: string;
+  [key: string]: string | undefined;
+}
+
+interface OSMNode {
+  type: "node";
+  id: number;
+  lat: number;
+  lon: number;
+  tags: OSMTags;
+}
+
+interface OSMResponse {
+  elements: OSMNode[];
+}
+
 export interface Restaurant {
   id: number;
   name: string;
@@ -21,7 +47,7 @@ export interface Restaurant {
 
 export const fetchOSMOverpassAPI = async (
   userLat: number,
-  userLon: number
+  userLon: number,
 ): Promise<Restaurant[]> => {
   try {
     const query = `
@@ -40,11 +66,11 @@ export const fetchOSMOverpassAPI = async (
 
     if (!response.ok) {
       throw new Error(
-        `HTTP Error: ${response.status} - ${response.statusText}`
+        `HTTP Error: ${response.status} - ${response.statusText}`,
       );
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as OSMResponse;
 
     if (!data.elements) {
       console.warn("No restaurant data found.");
@@ -52,14 +78,16 @@ export const fetchOSMOverpassAPI = async (
     }
 
     return data.elements
-      .filter((node: any) => node.tags && node.tags.name)
-      .map((node: any) => {
+      .filter((node: OSMNode) => node.tags && node.tags.name)
+      .map((node: OSMNode) => {
         const distance = calculateDistance(
           userLat,
           userLon,
           node.lat,
-          node.lon
+          node.lon,
         );
+
+        const formattedHours = formatOpeningHours(node.tags.opening_hours);
 
         return {
           id: node.id,
@@ -71,17 +99,12 @@ export const fetchOSMOverpassAPI = async (
           postalCode: node.tags["addr:postcode"],
           cuisine: node.tags.cuisine ? node.tags.cuisine.split(";") : [],
           dietaryOptions: node.tags.dietary ? node.tags.dietary.split(";") : [],
-          openingHours: formatOpeningHours(node.tags.opening_hours),
+          openingHours: formattedHours || undefined,
           phoneNumber: node.tags.phone,
           website: node.tags.website,
         };
       })
-      .sort(
-        (
-          aRestaurant: { distance: number },
-          bRestaurant: { distance: number }
-        ) => aRestaurant.distance - bRestaurant.distance
-      );
+      .sort((a, b) => a.distance - b.distance);
   } catch (error) {
     console.error("Failed to fetch restaurant data:", error);
     return [];

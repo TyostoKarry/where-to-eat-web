@@ -19,7 +19,7 @@ const MapController = forwardRef(
     }));
 
     return null;
-  }
+  },
 );
 
 export const RestaurantMap = forwardRef(
@@ -35,5 +35,5 @@ export const RestaurantMap = forwardRef(
         <MapController ref={ref} latitude={latitude} longitude={longitude} />
       </MapContainer>
     );
-  }
+  },
 );

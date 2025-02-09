@@ -1,7 +1,7 @@
-import { FC, useRef, useState, useEffect } from "react";
+import CenterLocation from "@assets/icons/center-location.svg?react";
 import { Button } from "@components/Button";
 import { UserLocationMap } from "@components/UserLocationMap/UserLocationMap";
-import CenterLocation from "@assets/icons/center-location.svg?react";
+import { FC, useRef, useState, useEffect } from "react";
 import "./userlocationmapmodal.css";
 
 interface UserLocationMapModalProps {

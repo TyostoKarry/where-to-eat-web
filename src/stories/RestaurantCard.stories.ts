@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { RestaurantCard } from "@components/RestaurantCard";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const Meta: Meta<typeof RestaurantCard> = {
   title: "Components/RestaurantCard",

@@ -1,7 +1,7 @@
-import { FC } from "react";
 import "./topbar.css";
 import { Button } from "@components/Button";
 import { GitHubButton } from "@components/GitHubButton";
+import { FC } from "react";
 
 interface TopBarProps {
   userLocation: { lat: number; lon: number } | null;

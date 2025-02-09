@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { useUserLocation } from "@hooks/useUserLocation";
+import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
+import { RestaurantListSkeleton } from "@components/RestaurantList";
+import { RestaurantList } from "@components/RestaurantList/RestaurantList";
 import { TopBar } from "@components/TopBar";
 import { UserLocationMapModal } from "@components/UserLocationMapModal";
-import { RestaurantList } from "@components/RestaurantList/RestaurantList";
-import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
+import { useUserLocation } from "@hooks/useUserLocation";
+import { useState, useEffect } from "react";
 import "./App.css";
-import { RestaurantListSkeleton } from "@components/RestaurantList";
 
 const App = () => {
   const {

@@ -1,5 +1,5 @@
 export const formatAddress = (
-  restaurant: Record<string, string | undefined>
+  restaurant: Record<string, string | undefined>,
 ): string | undefined => {
   if (restaurant["addr:street"]) {
     let address = `${restaurant["addr:street"]}`;

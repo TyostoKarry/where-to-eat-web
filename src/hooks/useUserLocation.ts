@@ -35,7 +35,7 @@ export const useUserLocation = (): UserLocation => {
           ...prev,
           error: error.message,
         }));
-      }
+      },
     );
   }, []);
 

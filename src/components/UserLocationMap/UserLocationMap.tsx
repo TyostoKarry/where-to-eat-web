@@ -1,3 +1,4 @@
+import { useUserLocation } from "@hooks/useUserLocation";
 import { FC, forwardRef, useEffect, useImperativeHandle } from "react";
 import {
   MapContainer,
@@ -6,7 +7,6 @@ import {
   Marker,
   useMap,
 } from "react-leaflet";
-import { useUserLocation } from "@hooks/useUserLocation";
 import "leaflet/dist/leaflet.css";
 import "./UserLocationMap.css";
 
@@ -31,7 +31,7 @@ interface MapControllerProps {
 const MapController = forwardRef(
   (
     { userLocation, setUserLocation, shouldRecenter }: MapControllerProps,
-    ref
+    ref,
   ) => {
     const map = useMap();
     const userDeviceLocation = useUserLocation();
@@ -42,6 +42,7 @@ const MapController = forwardRef(
           animate: true,
         });
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldRecenter, map]);
 
     useImperativeHandle(ref, () => ({
@@ -61,14 +62,14 @@ const MapController = forwardRef(
             16,
             {
               animate: true,
-            }
+            },
           );
         }
       },
     }));
 
     return null;
-  }
+  },
 );
 
 interface UserLocationMapProps {
@@ -80,7 +81,7 @@ interface UserLocationMapProps {
 export const UserLocationMap = forwardRef(
   (
     { userLocation, setUserLocation, shouldRecenter }: UserLocationMapProps,
-    ref
+    ref,
   ) => {
     return (
       <div>
@@ -107,5 +108,5 @@ export const UserLocationMap = forwardRef(
         </MapContainer>
       </div>
     );
-  }
+  },
 );

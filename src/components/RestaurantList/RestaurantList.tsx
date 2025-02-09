@@ -1,7 +1,7 @@
-import { FC, useState, useEffect } from "react";
-import Masonry from "masonry-layout";
 import { Restaurant } from "@api/OSMOverpassAPI";
 import { RestaurantCard } from "@components/RestaurantCard";
+import Masonry from "masonry-layout";
+import { FC, useState, useEffect } from "react";
 import "./restaurantlist.css";
 
 interface RestaurantListProps {
@@ -28,6 +28,7 @@ export const RestaurantList: FC<RestaurantListProps> = ({ restaurantData }) => {
     return () => {
       newMasonry.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantData]);
 
   return (

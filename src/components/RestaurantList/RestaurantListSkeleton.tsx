@@ -1,6 +1,6 @@
-import { FC, useState, useEffect } from "react";
-import Masonry from "masonry-layout";
 import { RestaurantCardSkeleton } from "@components/RestaurantCard";
+import Masonry from "masonry-layout";
+import { FC, useState, useEffect } from "react";
 import "./RestaurantListskeleton.css";
 
 export const RestaurantListSkeleton: FC = () => {
@@ -25,6 +25,7 @@ export const RestaurantListSkeleton: FC = () => {
     return () => {
       newMasonry.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

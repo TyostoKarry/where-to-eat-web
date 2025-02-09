@@ -1,7 +1,7 @@
-import { FC, useState, useRef } from "react";
 import { Button } from "@components/Button";
-import { formatDistance } from "@utils/distance";
 import { RestaurantMap } from "@components/RestaurantMap";
+import { formatDistance } from "@utils/distance";
+import { FC, useState, useRef } from "react";
 import "./RestaurantCard.css";
 
 interface RestaurantCardProps {
@@ -110,7 +110,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
               onClick={() =>
                 window.open(
                   website ||
-                    `https://www.google.com/search?q=${encodeURIComponent(restaurantName)}`
+                    `https://www.google.com/search?q=${encodeURIComponent(restaurantName)}`,
                 )
               }
               width="auto"
