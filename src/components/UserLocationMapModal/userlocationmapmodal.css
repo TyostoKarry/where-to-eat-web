@@ -28,6 +28,11 @@
   justify-content: space-between;
 }
 
+.user-location-map-modal-lcoation-buttons {
+  display: flex;
+  gap: var(--padding-m);
+}
+
 .center-icon {
   width: 24px;
   height: 24px;

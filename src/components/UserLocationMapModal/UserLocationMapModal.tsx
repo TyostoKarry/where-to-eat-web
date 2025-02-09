@@ -15,7 +15,10 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   setUserLocation,
   onClose,
 }) => {
-  const userLocationMapRef = useRef<{ centerMap: () => void }>(null);
+  const userLocationMapRef = useRef<{
+    centerMap: () => void;
+    centerMapOnDeviceLocation: () => void;
+  }>(null);
   const [pendingUserLocation, setPendingUserLocation] = useState(userLocation);
 
   useEffect(() => {
@@ -44,17 +47,35 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
           shouldRecenter={true}
         />
         <div className="user-location-map-modal-button-container">
-          <Button
-            label={<CenterLocation className="center-icon" />}
-            useLightTheme
-            fontSize="var(--font-size-l)"
-            padding="0 var(--padding-l)"
-            width="auto"
-            height="32px"
-            onClick={() => userLocationMapRef.current?.centerMap()}
-          />
+          <div className="user-location-map-modal-lcoation-buttons">
+            <Button
+              label={<CenterLocation className="center-icon" />}
+              useLightTheme
+              fontSize="var(--font-size-l)"
+              padding="0 var(--padding-l)"
+              width="auto"
+              height="32px"
+              onClick={() => userLocationMapRef.current?.centerMap()}
+            />
+            <Button
+              label="Use device location"
+              useLightTheme
+              fontSize="var(--font-size-l)"
+              padding="0 var(--padding-l)"
+              width="auto"
+              height="32px"
+              onClick={() => {
+                userLocationMapRef.current?.centerMapOnDeviceLocation();
+              }}
+            />
+          </div>
           <div className="user-location-map-modal-cancel-save-buttons">
-            <Button label="Cancel" useLightTheme onClick={onClose} />
+            <Button
+              label="Cancel"
+              useLightTheme
+              onClick={onClose}
+              height="32px"
+            />
             <Button
               label="Save"
               useLightTheme
@@ -62,6 +83,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
                 setUserLocation(pendingUserLocation);
                 onClose();
               }}
+              height="32px"
             />
           </div>
         </div>

@@ -6,6 +6,7 @@ import {
   Marker,
   useMap,
 } from "react-leaflet";
+import { useUserLocation } from "@hooks/useUserLocation";
 import "leaflet/dist/leaflet.css";
 import "./UserLocationMap.css";
 
@@ -22,24 +23,47 @@ const LocationSelector: FC<{
 };
 
 interface MapControllerProps {
-  latitude: number;
-  longitude: number;
+  userLocation: { lat: number; lon: number };
+  setUserLocation: (location: { lat: number; lon: number }) => void;
   shouldRecenter: boolean;
 }
 
 const MapController = forwardRef(
-  ({ latitude, longitude, shouldRecenter }: MapControllerProps, ref) => {
+  (
+    { userLocation, setUserLocation, shouldRecenter }: MapControllerProps,
+    ref
+  ) => {
     const map = useMap();
+    const userDeviceLocation = useUserLocation();
 
     useEffect(() => {
       if (shouldRecenter) {
-        map.setView([latitude, longitude], 16, { animate: true });
+        map.setView([userLocation.lat, userLocation.lon], 16, {
+          animate: true,
+        });
       }
     }, [shouldRecenter, map]);
 
     useImperativeHandle(ref, () => ({
       centerMap: () => {
-        map.setView([latitude, longitude], 16, { animate: true });
+        map.setView([userLocation.lat, userLocation.lon], 16, {
+          animate: true,
+        });
+      },
+      centerMapOnDeviceLocation: () => {
+        if (userDeviceLocation.latitude && userDeviceLocation.longitude) {
+          setUserLocation({
+            lat: userDeviceLocation.latitude,
+            lon: userDeviceLocation.longitude,
+          });
+          map.setView(
+            [userDeviceLocation.latitude, userDeviceLocation.longitude],
+            16,
+            {
+              animate: true,
+            }
+          );
+        }
       },
     }));
 
@@ -75,8 +99,8 @@ export const UserLocationMap = forwardRef(
           )}
           <LocationSelector setUserLocation={setUserLocation} />
           <MapController
-            latitude={userLocation.lat}
-            longitude={userLocation.lon}
+            userLocation={userLocation}
+            setUserLocation={setUserLocation}
             shouldRecenter={shouldRecenter}
             ref={ref}
           />
