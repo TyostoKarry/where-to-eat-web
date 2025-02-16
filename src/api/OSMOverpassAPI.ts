@@ -1,4 +1,5 @@
 import { formatAddress } from "@utils/address";
+import { extractDietaryOptions } from "@utils/dietaryOptions";
 import { calculateDistance } from "@utils/distance";
 import { formatOpeningHours } from "@utils/openingHours";
 
@@ -97,8 +98,12 @@ export const fetchOSMOverpassAPI = async (
           distance: distance,
           address: formatAddress(node.tags),
           postalCode: node.tags["addr:postcode"],
-          cuisine: node.tags.cuisine ? node.tags.cuisine.split(";") : [],
-          dietaryOptions: node.tags.dietary ? node.tags.dietary.split(";") : [],
+          cuisine: node.tags.cuisine
+            ? node.tags.cuisine
+                .split(";")
+                .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
+            : [],
+          dietaryOptions: extractDietaryOptions(node.tags),
           openingHours: formattedHours || undefined,
           phoneNumber: node.tags.phone,
           website: node.tags.website,

@@ -12,7 +12,6 @@
 .main-content {
   flex: 1;
   padding: var(--padding-xl) var(--padding-xxxl) 0 var(--padding-xxxl);
-  background-color: var(--color-background);
 }
 
 .loading-and-error-state {
@@ -20,6 +19,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-background);
   height: calc(100vh - var(--topbar-height));
 }

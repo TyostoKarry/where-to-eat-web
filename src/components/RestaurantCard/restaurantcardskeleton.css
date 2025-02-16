@@ -66,16 +66,32 @@
 
 .restaurantcard-skeleton__name-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  gap: var(--padding-sm);
+  padding-top: var(--padding-sm);
+  padding-bottom: var(--padding-l);
 }
 
 .restaurantcard-skeleton__name {
   height: 30px;
-  width: 200px;
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
-  margin: var(--padding-m) 0;
+}
+
+.restaurantcard-skeleton__name-separator {
+  width: 80%;
+  height: 2px;
+  background-color: var(--color-surface-secondary-skeleton);
+}
+
+.restaurantcard-skeleton__info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-m);
+  padding-bottom: var(--padding-l);
 }
 
 .restaurantcard-skeleton__info-container {
@@ -84,19 +100,15 @@
   gap: var(--padding-sm);
   align-items: flex-start;
   justify-content: flex-start;
-  padding-bottom: var(--padding-m);
 }
 
 .restaurantcard-skeleton__title {
   height: 15px;
-  width: 70px;
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
 
 .restaurantcard-skeleton__info {
-  height: 25px;
-  width: 180px;
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
@@ -107,5 +119,5 @@
   align-self: center;
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
-  margin: var(--padding-m) 0;
+  margin-bottom: var(--padding-m);
 }

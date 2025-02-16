@@ -14,20 +14,31 @@
   width: 360px;
 }
 
-.info {
+.restaurantcard-content {
   padding: 0 var(--padding-m);
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--padding-l);
 }
 
 .title {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-bold);
   padding: var(--padding-s) 0;
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
+  width: 80%;
+  border-bottom: 2px solid var(--color-text);
 }
 
-.selection {
-  padding-bottom: var(--padding-sm);
+.restaurantcard-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+  padding-bottom: var(--padding-l);
 }
 
 .label {
@@ -40,7 +51,6 @@
 .openinghours,
 .contact {
   font-size: var(--font-size-xl);
-  padding: var(--padding-xs) 0;
 }
 
 .opening-hours-row {
@@ -62,7 +72,7 @@
 .websitebutton {
   display: flex;
   justify-content: center;
-  padding: var(--padding-m) 0;
+  padding-bottom: var(--padding-m);
 }
 
 .map-container {

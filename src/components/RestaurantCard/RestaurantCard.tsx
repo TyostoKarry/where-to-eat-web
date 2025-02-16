@@ -52,56 +52,60 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           onClick={() => toggleMap()}
         />
 
-        <div className="info">
-          <h2 className="title">{restaurantName}</h2>
+        <div className="restaurantcard-content">
+          <div className="title-container">
+            <h2 className="title">{restaurantName}</h2>
+          </div>
 
-          {address && (
-            <div className="selection">
-              <span className="label">Address:</span>
-              <div className="address">
-                <p>{address}</p>
-                <p>{postalCode}</p>
+          <div className="restaurantcard-info-container">
+            {address && (
+              <div className="selection">
+                <span className="label">Address:</span>
+                <div className="address">
+                  <p>{address}</p>
+                  <p>{postalCode}</p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {cuisine.length > 0 && (
-            <div className="selection">
-              <span className="label">Cuisine Options:</span>
-              <p className="cuisine">{cuisine.join(", ")}</p>
-            </div>
-          )}
-
-          {dietaryOptions.length > 0 && (
-            <div className="selection">
-              <span className="label">Dietary Options:</span>
-              <p className="dietaryoptions">{dietaryOptions.join(", ")}</p>
-            </div>
-          )}
-
-          {openingHours && (
-            <div className="selection">
-              <span className="label">Opening Hours:</span>
-              <div className="openinghours">
-                {openingHours.split(";").map((line, index) => {
-                  const [days, time] = line.trim().split(" ");
-                  return (
-                    <div className="opening-hours-row" key={index}>
-                      <span className="opening-hours-day">{days}</span>
-                      <span className="opening-hours-time">{time}</span>
-                    </div>
-                  );
-                })}
+            {cuisine.length > 0 && (
+              <div className="selection">
+                <span className="label">Cuisine Options:</span>
+                <p className="cuisine">{cuisine.join(", ")}</p>
               </div>
-            </div>
-          )}
+            )}
 
-          {phoneNumber && (
-            <div className="selection">
-              <span className="label">Phone Number:</span>
-              <p className="contact">{phoneNumber}</p>
-            </div>
-          )}
+            {dietaryOptions.length > 0 && (
+              <div className="selection">
+                <span className="label">Dietary Options:</span>
+                <p className="dietaryoptions">{dietaryOptions.join(", ")}</p>
+              </div>
+            )}
+
+            {openingHours && (
+              <div className="selection">
+                <span className="label">Opening Hours:</span>
+                <div className="openinghours">
+                  {openingHours.split(";").map((line, index) => {
+                    const [days, time] = line.trim().split(" ");
+                    return (
+                      <div className="opening-hours-row" key={index}>
+                        <span className="opening-hours-day">{days}</span>
+                        <span className="opening-hours-time">{time}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {phoneNumber && (
+              <div className="selection">
+                <span className="label">Phone Number:</span>
+                <p className="contact">{phoneNumber}</p>
+              </div>
+            )}
+          </div>
 
           <div className="websitebutton">
             <Button

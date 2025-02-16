@@ -16,7 +16,9 @@ p {
 /* 🎨 Root Variables */
 :root {
   /* Colors */
-  --color-background: #1e1e1e;
+  --color-background-gradient-1: #131313;
+  --color-background-gradient-2: #181818;
+  --color-topbar: #1e1e1e;
   --color-surface: #2e2e2e;
   --color-surface-skeleton: #2e2e2eb6;
   --color-muted: #333;
@@ -32,6 +34,7 @@ p {
   --color-hover-secondary: #d0d0d0;
 
   /* Padding */
+  --padding-xxs: 2px;
   --padding-xs: 4px;
   --padding-s: 6px;
   --padding-sm: 8px;

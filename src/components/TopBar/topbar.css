@@ -4,7 +4,7 @@
   z-index: 1001;
   width: 100%;
   height: var(--topbar-height);
-  background-color: var(--color-background);
+  background-color: var(--color-topbar);
   color: var(--color-text);
   display: flex;
   justify-content: space-between;
