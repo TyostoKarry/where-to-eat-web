@@ -10,14 +10,9 @@
 }
 
 .main-content {
-  flex: 1;
-  padding: var(--padding-xl) var(--padding-xxxl) 0 var(--padding-xxxl);
-}
-
-.loading-and-error-state {
+  height: calc(100vh - var(--topbar-height) - var(--padding-xl));
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - var(--topbar-height));
+  padding: var(--padding-xl) var(--padding-xxxl) 0 var(--padding-xxxl);
 }

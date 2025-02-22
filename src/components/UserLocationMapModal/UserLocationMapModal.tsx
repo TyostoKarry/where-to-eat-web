@@ -85,9 +85,8 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               onClick={() => {
                 if (
                   pendingUserLocation &&
-                  userLocation &&
-                  (pendingUserLocation.lat != userLocation.lat ||
-                    pendingUserLocation.lon != userLocation.lon)
+                  (pendingUserLocation.lat != userLocation?.lat ||
+                    pendingUserLocation.lon != userLocation?.lon)
                 ) {
                   setUserLocation(pendingUserLocation);
                 }

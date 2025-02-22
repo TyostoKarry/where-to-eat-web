@@ -1,9 +1,16 @@
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
+import {
+  OpenStreetMapError,
+  RestaurantListEmpty,
+  UnexpectedError,
+  UserLocationError,
+} from "@components/ErrorStates";
 import { RestaurantListSkeleton } from "@components/RestaurantList";
 import { RestaurantList } from "@components/RestaurantList/RestaurantList";
 import { TopBar } from "@components/TopBar";
 import { UserLocationMapModal } from "@components/UserLocationMapModal";
 import { useUserLocation } from "@hooks/useUserLocation";
+import { requestUserLocation } from "@utils/getUserLocation";
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -11,6 +18,7 @@ const App = () => {
   const {
     latitude: initialLat,
     longitude: initialLon,
+    locationServiceDenied: userLocationServiceDenied,
     error: userLocationError,
   } = useUserLocation();
   const [userLocation, setUserLocation] = useState<{
@@ -21,7 +29,21 @@ const App = () => {
     useState(false);
   const [restaurantData, setRestaurantData] = useState<Restaurant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [restaurantError, setRestaurantError] = useState<string | null>(null);
+  const [openStreetMapError, setOpenStreetMapError] = useState<string | null>(
+    null,
+  );
+
+  const handleRequestUserLocation = () => {
+    requestUserLocation()
+      .then((location) => {
+        if (location) {
+          setUserLocation(location);
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting user location:", error);
+      });
+  };
 
   useEffect(() => {
     if (initialLat != null && initialLon != null) {
@@ -30,69 +52,64 @@ const App = () => {
   }, [initialLat, initialLon]);
 
   useEffect(() => {
-    if (userLocation) {
-      setRestaurantError(null);
-      setLoading(true);
-      fetchOSMOverpassAPI(userLocation.lat, userLocation.lon)
-        .then((data) => {
-          setRestaurantData(data);
-        })
-        .catch((err) => {
-          console.error("Failed to fetch restaurant data:", err);
-          setRestaurantError("Failed to fetch OpenStreetMap restaurant data");
-        })
-        .finally(() => setLoading(false));
-    }
+    if (!userLocation || !userLocation.lat || !userLocation.lon) return;
+
+    setOpenStreetMapError(null);
+    setLoading(true);
+    fetchOSMOverpassAPI(userLocation.lat, userLocation.lon)
+      .then((data) => {
+        setRestaurantData(data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch restaurant data:", err);
+        setOpenStreetMapError("Failed to fetch OpenStreetMap restaurant data");
+      })
+      .finally(() => setLoading(false));
   }, [userLocation]);
 
   const openUserLocationMapModal = () => setIsUserLocationMapModalOpen(true);
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
 
   const getMainContentByState = () => {
-    if (userLocationError) {
+    if (!userLocation && userLocationError) {
+      console.error(userLocationError);
       return (
-        <div className="loading-and-error-state">
-          <h1>{userLocationError}</h1>
-        </div>
+        <UserLocationError
+          handleRequestUserLocation={handleRequestUserLocation}
+          userLocationServiceDenied={userLocationServiceDenied}
+          openUserLocationMapModal={openUserLocationMapModal}
+        />
       );
     }
 
-    if (restaurantError) {
-      return (
-        <div className="loading-and-error-state">
-          <h1>{restaurantError}</h1>
-        </div>
-      );
+    if (openStreetMapError) {
+      console.error(openStreetMapError);
+      return <OpenStreetMapError />;
     }
 
     if (loading) {
-      return (
-        <main className="main-content">
-          <RestaurantListSkeleton />
-        </main>
-      );
+      return <RestaurantListSkeleton />;
     }
 
     if (restaurantData.length === 0) {
       return (
-        <div className="loading-and-error-state">
-          <h1>No restaurants were found in this area.</h1>
-          <h1>Please try searching a different location.</h1>
-        </div>
+        <RestaurantListEmpty
+          openUserLocationMapModal={openUserLocationMapModal}
+        />
       );
     }
 
-    return (
-      <main className="main-content">
-        <RestaurantList restaurantData={restaurantData} />
-      </main>
-    );
+    if (restaurantData.length > 0) {
+      return <RestaurantList restaurantData={restaurantData} />;
+    }
+
+    return <UnexpectedError />;
   };
 
   return (
     <div className="app-container">
       <TopBar openUserLocationMapModal={openUserLocationMapModal} />
-      {getMainContentByState()}
+      <main className="main-content">{getMainContentByState()}</main>
       {isUserLocationMapModalOpen && (
         <UserLocationMapModal
           userLocation={userLocation}

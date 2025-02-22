@@ -1,0 +1,8 @@
+.errorstates__button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: min(220px, 80%);
+  gap: var(--padding-l);
+}
