@@ -91,12 +91,9 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <TopBar
-        userLocation={userLocation}
-        openUserLocationMapModal={openUserLocationMapModal}
-      />
+      <TopBar openUserLocationMapModal={openUserLocationMapModal} />
       {getMainContentByState()}
-      {isUserLocationMapModalOpen && userLocation && (
+      {isUserLocationMapModalOpen && (
         <UserLocationMapModal
           userLocation={userLocation}
           setUserLocation={setUserLocation}

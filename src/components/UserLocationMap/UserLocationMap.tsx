@@ -23,7 +23,7 @@ const LocationSelector: FC<{
 };
 
 interface MapControllerProps {
-  userLocation: { lat: number; lon: number };
+  userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   shouldRecenter: boolean;
 }
@@ -38,18 +38,26 @@ const MapController = forwardRef(
 
     useEffect(() => {
       if (shouldRecenter) {
-        map.setView([userLocation.lat, userLocation.lon], 16, {
-          animate: true,
-        });
+        map.setView(
+          userLocation ? [userLocation.lat, userLocation.lon] : [0, 0],
+          userLocation ? 16 : 1,
+          {
+            animate: true,
+          },
+        );
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldRecenter, map]);
 
     useImperativeHandle(ref, () => ({
       centerMap: () => {
-        map.setView([userLocation.lat, userLocation.lon], 16, {
-          animate: true,
-        });
+        map.setView(
+          userLocation ? [userLocation.lat, userLocation.lon] : [0, 0],
+          userLocation ? 16 : 1,
+          {
+            animate: true,
+          },
+        );
       },
       centerMapOnDeviceLocation: () => {
         if (userDeviceLocation.latitude && userDeviceLocation.longitude) {
@@ -73,7 +81,7 @@ const MapController = forwardRef(
 );
 
 interface UserLocationMapProps {
-  userLocation: { lat: number; lon: number };
+  userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   shouldRecenter: boolean;
 }
@@ -86,8 +94,8 @@ export const UserLocationMap = forwardRef(
     return (
       <div>
         <MapContainer
-          center={[userLocation.lat, userLocation.lon]}
-          zoom={16}
+          center={userLocation ? [userLocation.lat, userLocation.lon] : [0, 0]}
+          zoom={userLocation ? 16 : 1}
           className="userlocationmap"
         >
           <TileLayer

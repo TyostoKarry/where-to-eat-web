@@ -5,7 +5,7 @@ import { FC, useRef, useState, useEffect } from "react";
 import "./userlocationmapmodal.css";
 
 interface UserLocationMapModalProps {
-  userLocation: { lat: number; lon: number };
+  userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   onClose: () => void;
 }
@@ -19,7 +19,10 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
     centerMap: () => void;
     centerMapOnDeviceLocation: () => void;
   }>(null);
-  const [pendingUserLocation, setPendingUserLocation] = useState(userLocation);
+  const [pendingUserLocation, setPendingUserLocation] = useState<{
+    lat: number;
+    lon: number;
+  } | null>(userLocation);
 
   useEffect(() => {
     setPendingUserLocation(userLocation);
@@ -81,8 +84,10 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               useLightTheme
               onClick={() => {
                 if (
-                  pendingUserLocation.lat != userLocation.lat ||
-                  pendingUserLocation.lon != userLocation.lon
+                  pendingUserLocation &&
+                  userLocation &&
+                  (pendingUserLocation.lat != userLocation.lat ||
+                    pendingUserLocation.lon != userLocation.lon)
                 ) {
                   setUserLocation(pendingUserLocation);
                 }

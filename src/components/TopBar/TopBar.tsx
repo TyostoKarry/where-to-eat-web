@@ -4,14 +4,10 @@ import { GitHubButton } from "@components/GitHubButton";
 import { FC } from "react";
 
 interface TopBarProps {
-  userLocation: { lat: number; lon: number } | null;
   openUserLocationMapModal: () => void;
 }
 
-export const TopBar: FC<TopBarProps> = ({
-  userLocation,
-  openUserLocationMapModal,
-}) => {
+export const TopBar: FC<TopBarProps> = ({ openUserLocationMapModal }) => {
   return (
     <header className="topbar">
       <div className="topbar-left">
@@ -24,7 +20,6 @@ export const TopBar: FC<TopBarProps> = ({
         width="auto"
         fontSize="var(--font-size-l)"
         onClick={openUserLocationMapModal}
-        disabled={!userLocation}
       />
       <GitHubButton />
     </header>
