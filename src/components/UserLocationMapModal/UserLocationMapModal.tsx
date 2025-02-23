@@ -7,12 +7,14 @@ import "./userlocationmapmodal.css";
 interface UserLocationMapModalProps {
   userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
+  setToast: (toast: { message: string; visible: boolean }) => void;
   onClose: () => void;
 }
 
 export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   userLocation,
   setUserLocation,
+  setToast,
   onClose,
 }) => {
   const userLocationMapRef = useRef<{
@@ -68,7 +70,12 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               width="auto"
               height="32px"
               onClick={() => {
-                userLocationMapRef.current?.centerMapOnDeviceLocation();
+                if (!userLocation)
+                  setToast({
+                    message: "Device location not found",
+                    visible: true,
+                  });
+                else userLocationMapRef.current?.centerMapOnDeviceLocation();
               }}
             />
           </div>

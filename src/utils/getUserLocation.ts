@@ -4,7 +4,6 @@ export const requestUserLocation = (): Promise<{
 } | null> => {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.");
       reject("Geolocation is not supported.");
     }
 
@@ -17,7 +16,6 @@ export const requestUserLocation = (): Promise<{
       },
       (error) => {
         console.error("Failed to fetch user location:", error);
-        alert("Unable to retrieve your location. Please try again.");
         reject(error);
       },
     );

@@ -23,6 +23,8 @@ p {
   --color-surface-skeleton: #2e2e2eb6;
   --color-muted: #333;
   --color-error: #ff00004d;
+  --color-error-toast-background: #f8d7da;
+  --color-error-toast-content: #8d202b;
   --color-surface-secondary: #e0e0e0;
   --color-surface-secondary-skeleton: #e0e0e059;
   --color-muted-secondary: #b0b0b0;

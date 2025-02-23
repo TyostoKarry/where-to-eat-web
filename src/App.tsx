@@ -7,6 +7,7 @@ import {
 } from "@components/ErrorStates";
 import { RestaurantListSkeleton } from "@components/RestaurantList";
 import { RestaurantList } from "@components/RestaurantList/RestaurantList";
+import { Toast } from "@components/Toast";
 import { TopBar } from "@components/TopBar";
 import { UserLocationMapModal } from "@components/UserLocationMapModal";
 import { useUserLocation } from "@hooks/useUserLocation";
@@ -32,6 +33,10 @@ const App = () => {
   const [openStreetMapError, setOpenStreetMapError] = useState<string | null>(
     null,
   );
+  const [toast, setToast] = useState<{ message: string; visible: boolean }>({
+    message: "",
+    visible: false,
+  });
 
   const handleRequestUserLocation = () => {
     requestUserLocation()
@@ -41,6 +46,7 @@ const App = () => {
         }
       })
       .catch((error) => {
+        setToast({ message: "Device location not found", visible: true });
         console.error("Error getting user location:", error);
       });
   };
@@ -114,7 +120,14 @@ const App = () => {
         <UserLocationMapModal
           userLocation={userLocation}
           setUserLocation={setUserLocation}
+          setToast={setToast}
           onClose={closeUserLocationMapModal}
+        />
+      )}
+      {toast.visible && (
+        <Toast
+          message={toast.message}
+          onClose={() => setToast({ message: "", visible: false })}
         />
       )}
     </div>
