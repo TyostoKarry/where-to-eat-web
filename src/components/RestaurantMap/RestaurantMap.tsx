@@ -1,3 +1,4 @@
+import DefaultIcon from "@utils/leafletIcon";
 import { forwardRef, useImperativeHandle } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "./restaurantmap.css";
@@ -31,7 +32,7 @@ export const RestaurantMap = forwardRef(
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">
                 OpenStreetMap</a> contributors'
         />
-        <Marker position={[latitude, longitude]} />
+        <Marker position={[latitude, longitude]} icon={DefaultIcon} />
         <MapController ref={ref} latitude={latitude} longitude={longitude} />
       </MapContainer>
     );

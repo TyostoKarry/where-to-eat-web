@@ -1,4 +1,5 @@
 import { useUserLocation } from "@hooks/useUserLocation";
+import DefaultIcon from "@utils/leafletIcon";
 import { FC, forwardRef, useEffect, useImperativeHandle } from "react";
 import {
   MapContainer,
@@ -121,7 +122,10 @@ export const UserLocationMap = forwardRef(
                 OpenStreetMap</a> contributors'
           />
           {userLocation && (
-            <Marker position={[userLocation.lat, userLocation.lon]} />
+            <Marker
+              position={[userLocation.lat, userLocation.lon]}
+              icon={DefaultIcon}
+            />
           )}
           <LocationSelector setUserLocation={setUserLocation} />
           <MapController

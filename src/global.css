@@ -73,28 +73,28 @@ p {
 
 @font-face {
   font-family: "OpenSans";
-  src: url("/Fonts/OpenSans-Regular.woff2") format("woff2");
+  src: url("/fonts/OpenSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans";
-  src: url("/Fonts/OpenSans-Medium.woff2") format("woff2");
+  src: url("/fonts/OpenSans-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans";
-  src: url("/Fonts/OpenSans-Bold.woff2") format("woff2");
+  src: url("/fonts/OpenSans-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: "OpenSans";
-  src: url("/Fonts/OpenSans-Light.woff2") format("woff2");
+  src: url("/fonts/OpenSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
