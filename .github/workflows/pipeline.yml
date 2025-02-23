@@ -89,6 +89,6 @@ jobs:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
-          env: github-pages
-          desc: "Deployed to [GitHub Pages](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)"
+          env: ${{ steps.deployment.outputs.env }}
+          env_url: "Deployed to [GitHub Pages](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
