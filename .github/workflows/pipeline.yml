@@ -58,6 +58,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     permissions:
+      deployments: write
       pages: write
       contents: write
       id-token: write
@@ -83,6 +84,7 @@ jobs:
 
       - name: Mark Deployment in GitHub (Start)
         uses: bobheadxi/deployments@v1
+        id: deployment
         with:
           step: start
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -92,10 +94,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Mark Deployment Status
-        if: always()
         uses: bobheadxi/deployments@v1
+        if: always()
         with:
           step: finish
           token: ${{ secrets.GITHUB_TOKEN }}
-          env: github-pages
           status: ${{ job.status }}
+          env: github-pages
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
