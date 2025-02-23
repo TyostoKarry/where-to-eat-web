@@ -2,7 +2,7 @@ import { Button } from "@components/Button";
 import { RestaurantMap } from "@components/RestaurantMap";
 import { formatDistance } from "@utils/distance";
 import { FC, useState, useRef } from "react";
-import "./RestaurantCard.css";
+import "./restaurantcard.css";
 
 interface RestaurantCardProps {
   restaurantName: string;

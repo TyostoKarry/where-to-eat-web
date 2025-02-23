@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./RestaurantCardSkeleton.css";
+import "./restaurantcardskeleton.css";
 
 interface RestaurantCardSkeletonProps {
   infoCount?: number;

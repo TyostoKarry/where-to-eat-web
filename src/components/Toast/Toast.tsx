@@ -1,6 +1,6 @@
 import ErrorCross from "@assets/icons/error-cross.svg?react";
 import { FC, useState, useEffect } from "react";
-import "./Toast.css";
+import "./toast.css";
 
 interface ToastProps {
   message: string;

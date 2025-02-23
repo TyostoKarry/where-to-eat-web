@@ -8,7 +8,7 @@ import {
   useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "./UserLocationMap.css";
+import "./userlocationmap.css";
 
 const LocationSelector: FC<{
   setUserLocation: (location: { lat: number; lon: number }) => void;

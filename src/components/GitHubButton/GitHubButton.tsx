@@ -1,6 +1,6 @@
 import GitHubIcon from "@assets/icons/github.svg?react";
 import { FC } from "react";
-import "./GitHubButton.css";
+import "./githubbutton.css";
 
 const GITHUB_REPO_URL = "https://github.com/TyostoKarry/where-to-eat-web";
 

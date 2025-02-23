@@ -1,7 +1,7 @@
 import { RestaurantCardSkeleton } from "@components/RestaurantCard";
 import Masonry from "masonry-layout";
 import { FC, useState, useEffect } from "react";
-import "./RestaurantListskeleton.css";
+import "./restaurantListskeleton.css";
 
 export const RestaurantListSkeleton: FC = () => {
   const [masonry, setMasonry] = useState<Masonry | null>(null);
