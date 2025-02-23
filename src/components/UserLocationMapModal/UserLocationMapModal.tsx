@@ -50,6 +50,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
           userLocation={pendingUserLocation}
           setUserLocation={setPendingUserLocation}
           shouldRecenter={true}
+          setToast={setToast}
         />
         <div className="user-location-map-modal-button-container">
           <div className="user-location-map-modal-lcoation-buttons">
@@ -70,12 +71,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               width="auto"
               height="32px"
               onClick={() => {
-                if (!userLocation)
-                  setToast({
-                    message: "Device location not found",
-                    visible: true,
-                  });
-                else userLocationMapRef.current?.centerMapOnDeviceLocation();
+                userLocationMapRef.current?.centerMapOnDeviceLocation();
               }}
             />
           </div>

@@ -54,7 +54,7 @@ export const fetchOSMOverpassAPI = async (
   try {
     const query = `
     [out:json];
-    node["amenity"~"restaurant|fast_food"](around:2000,${userLat},${userLon});
+    node["amenity"~"restaurant|fast_food"](around:10000,${userLat},${userLon});
     out body;
     `;
 

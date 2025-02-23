@@ -26,11 +26,17 @@ interface MapControllerProps {
   userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   shouldRecenter: boolean;
+  setToast: (toast: { message: string; visible: boolean }) => void;
 }
 
 const MapController = forwardRef(
   (
-    { userLocation, setUserLocation, shouldRecenter }: MapControllerProps,
+    {
+      userLocation,
+      setUserLocation,
+      shouldRecenter,
+      setToast,
+    }: MapControllerProps,
     ref,
   ) => {
     const map = useMap();
@@ -72,6 +78,11 @@ const MapController = forwardRef(
               animate: true,
             },
           );
+        } else {
+          setToast({
+            message: "Device location not found",
+            visible: true,
+          });
         }
       },
     }));
@@ -84,11 +95,17 @@ interface UserLocationMapProps {
   userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   shouldRecenter: boolean;
+  setToast: (toast: { message: string; visible: boolean }) => void;
 }
 
 export const UserLocationMap = forwardRef(
   (
-    { userLocation, setUserLocation, shouldRecenter }: UserLocationMapProps,
+    {
+      userLocation,
+      setUserLocation,
+      shouldRecenter,
+      setToast,
+    }: UserLocationMapProps,
     ref,
   ) => {
     return (
@@ -112,6 +129,7 @@ export const UserLocationMap = forwardRef(
             setUserLocation={setUserLocation}
             shouldRecenter={shouldRecenter}
             ref={ref}
+            setToast={setToast}
           />
         </MapContainer>
       </div>
