@@ -5,9 +5,6 @@ const meta: Meta<typeof TopBar> = {
   title: "Components/TopBar",
   component: TopBar,
   tags: ["autodocs"],
-  args: {
-    userLocation: { lat: 12.345, lon: 12.345 },
-  },
   parameters: {
     viewport: {
       defaultViewport: "responsive",
