@@ -81,5 +81,21 @@ jobs:
           name: github-pages
           path: ./dist
 
+      - name: Mark Deployment in GitHub (Start)
+        uses: bobheadxi/deployments@v1
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: github-pages
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Mark Deployment Status
+        if: always()
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: github-pages
+          status: ${{ job.status }}
