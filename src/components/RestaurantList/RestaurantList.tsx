@@ -33,7 +33,7 @@ export const RestaurantList: FC<RestaurantListProps> = ({ restaurantData }) => {
 
   return (
     <div className="restaurantlist">
-      {restaurantData.map((restaurant) => (
+      {restaurantData.slice(0, 200).map((restaurant) => (
         <RestaurantCard
           key={restaurant.id}
           restaurantName={restaurant.name}
