@@ -21,8 +21,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
-      "@images/*": ["public/images/*"]
+      "@utils/*": ["src/utils/*"]
     },
 
     /* Linting */
