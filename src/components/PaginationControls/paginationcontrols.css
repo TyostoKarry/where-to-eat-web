@@ -1,0 +1,85 @@
+.pagination-controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pagination-controls__page-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-secondary);
+  padding: var(--padding-sm) var(--padding-l);
+  border-radius: var(--padding-sm);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pagination-controls {
+  display: flex;
+  flex-direction: row;
+  gap: var(--padding-sm);
+}
+
+.pagination-controls__page-number-container {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: var(--padding-sm);
+  border: 1px solid var(--color-surface-secondary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls__icon {
+  width: var(--pagination-controls-icon-size);
+  height: var(--pagination-controls-icon-size);
+}
+
+.pagination-input {
+  width: 40px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  background: transparent;
+  padding: 0;
+  border: none;
+  outline: none;
+  appearance: textfield;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.pagination-controls__page-number-container span {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-text-secondary);
+}
+
+.pagination-controls__total-pages {
+  width: 40px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-text-secondary);
+}
+
+.pagination-input::-webkit-inner-spin-button,
+.pagination-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pagination-controls__up-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-secondary);
+  border-radius: var(--padding-sm);
+  padding: var(--padding-xs) 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

@@ -43,14 +43,14 @@
 
 .button:disabled {
   color: var(--color-text-muted);
-  cursor: default;
+  cursor: not-allowed;
   box-shadow: none;
   opacity: 0.8;
 }
 
 .button-light:disabled {
   color: var(--color-text-muted-secondary);
-  cursor: default;
+  cursor: not-allowed;
   box-shadow: none;
   opacity: 0.8;
 }
