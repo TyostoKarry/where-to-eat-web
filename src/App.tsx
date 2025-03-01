@@ -1,16 +1,11 @@
 import { fetchOSMOverpassAPI, Restaurant } from "@api/OSMOverpassAPI";
-import {
-  OpenStreetMapError,
-  RestaurantListEmpty,
-  UnexpectedError,
-  UserLocationError,
-} from "@components/ErrorStates";
 import { RestaurantListSkeleton } from "@components/RestaurantList";
-import { RestaurantList } from "@components/RestaurantList/RestaurantList";
 import { Toast } from "@components/Toast";
 import { TopBar } from "@components/TopBar";
 import { UserLocationMapModal } from "@components/UserLocationMapModal";
 import { useUserLocation } from "@hooks/useUserLocation";
+import { ErrorPage } from "@pages/ErrorPage";
+import { RestaurantPage } from "@pages/RestaurantPage";
 import { requestUserLocation } from "@utils/getUserLocation";
 import { useState, useEffect } from "react";
 import "./App.css";
@@ -30,9 +25,7 @@ const App = () => {
     useState(false);
   const [restaurantData, setRestaurantData] = useState<Restaurant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [openStreetMapError, setOpenStreetMapError] = useState<string | null>(
-    null,
-  );
+  const [openStreetMapError, setOpenStreetMapError] = useState(false);
   const [toast, setToast] = useState<{ message: string; visible: boolean }>({
     message: "",
     visible: false,
@@ -58,9 +51,12 @@ const App = () => {
   }, [initialLat, initialLon]);
 
   useEffect(() => {
-    if (!userLocation || !userLocation.lat || !userLocation.lon) return;
+    if (!userLocation || !userLocation.lat || !userLocation.lon) {
+      setLoading(false);
+      return;
+    }
 
-    setOpenStreetMapError(null);
+    setOpenStreetMapError(false);
     setLoading(true);
     fetchOSMOverpassAPI(userLocation.lat, userLocation.lon)
       .then((data) => {
@@ -68,7 +64,7 @@ const App = () => {
       })
       .catch((err) => {
         console.error("Failed to fetch restaurant data:", err);
-        setOpenStreetMapError("Failed to fetch OpenStreetMap restaurant data");
+        setOpenStreetMapError(true);
       })
       .finally(() => setLoading(false));
   }, [userLocation]);
@@ -77,39 +73,27 @@ const App = () => {
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
 
   const getMainContentByState = () => {
-    if (!userLocation && userLocationError) {
-      console.error(userLocationError);
-      return (
-        <UserLocationError
-          handleRequestUserLocation={handleRequestUserLocation}
-          userLocationServiceDenied={userLocationServiceDenied}
-          openUserLocationMapModal={openUserLocationMapModal}
-        />
-      );
-    }
-
-    if (openStreetMapError) {
-      console.error(openStreetMapError);
-      return <OpenStreetMapError />;
+    if (restaurantData.length > 0) {
+      return <RestaurantPage restaurantData={restaurantData} />;
     }
 
     if (loading) {
       return <RestaurantListSkeleton />;
     }
 
-    if (restaurantData.length === 0) {
-      return (
-        <RestaurantListEmpty
+    return (
+      <div className="error-page-container">
+        <ErrorPage
+          userLocation={userLocation}
+          userLocationError={userLocationError}
+          userLocationServiceDenied={userLocationServiceDenied}
           openUserLocationMapModal={openUserLocationMapModal}
+          openStreetMapError={openStreetMapError}
+          restaurantData={restaurantData}
+          handleRequestUserLocation={handleRequestUserLocation}
         />
-      );
-    }
-
-    if (restaurantData.length > 0) {
-      return <RestaurantList restaurantData={restaurantData} />;
-    }
-
-    return <UnexpectedError />;
+      </div>
+    );
   };
 
   return (

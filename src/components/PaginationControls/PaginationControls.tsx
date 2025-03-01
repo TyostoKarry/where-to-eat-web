@@ -10,17 +10,17 @@ interface PaginationControlsProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
   restaurantCount: number;
-  itemsPerPage?: number;
+  itemsPerPage: number;
+  totalPages: number;
 }
 
 export const PaginationControls: FC<PaginationControlsProps> = ({
   currentPage,
   setCurrentPage,
   restaurantCount,
-  itemsPerPage = 50,
+  itemsPerPage,
+  totalPages,
 }) => {
-  const totalPages = Math.ceil(restaurantCount / itemsPerPage);
-
   const [inputValue, setInputValue] = useState(currentPage.toString());
 
   useEffect(() => {
@@ -58,6 +58,7 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
         />
         <div className="pagination-controls__page-number-container">
           <input
+            id="pagination-input"
             type="number"
             value={inputValue}
             onChange={handleChange}

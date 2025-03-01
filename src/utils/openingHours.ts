@@ -8,8 +8,8 @@ export const formatOpeningHours = (
   try {
     const oh = new opening_hours(openingHoursString);
     return oh.prettifyValue();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    console.warn("Failed to format opening hours:", error);
     return null;
   }
 };

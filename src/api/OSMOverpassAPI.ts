@@ -108,7 +108,6 @@ export const fetchOSMOverpassAPI = async (
       })
       .sort((a, b) => a.distance - b.distance);
   } catch (error) {
-    console.error("Failed to fetch restaurant data:", error);
-    return [];
+    throw new Error(`Failed to fetch restaurant data: ${error}`);
   }
 };

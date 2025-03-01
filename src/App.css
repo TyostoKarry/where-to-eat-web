@@ -18,3 +18,12 @@
   padding: var(--padding-xl) var(--padding-xxxl) 0 var(--padding-xxxl);
   overflow-y: auto;
 }
+
+.error-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  height: 100%;
+}
