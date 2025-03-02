@@ -1,11 +1,13 @@
 import { ErrorCard } from "@components/ErrorCard";
-import { FC } from "react";
+import { LanguageContext } from "@contexts/LanguageContext";
+import { FC, useContext } from "react";
 
 export const UnexpectedError: FC = () => {
+  const lang = useContext(LanguageContext);
   return (
     <ErrorCard
-      errorTitle="Something Went Wrong"
-      errorMessage="An unexpected error occurred. Please refresh the page or try again later"
+      errorTitle={lang.unexpectedError.title}
+      errorMessage={lang.unexpectedError.message}
     />
   );
 };

@@ -1,7 +1,8 @@
 import CenterLocation from "@assets/icons/center-location.svg?react";
 import { Button } from "@components/Button";
 import { UserLocationMap } from "@components/UserLocationMap/UserLocationMap";
-import { FC, useRef, useState, useEffect } from "react";
+import { LanguageContext } from "@contexts/LanguageContext";
+import { FC, useRef, useState, useEffect, useContext } from "react";
 import "./userlocationmapmodal.css";
 
 interface UserLocationMapModalProps {
@@ -17,6 +18,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   setToast,
   onClose,
 }) => {
+  const lang = useContext(LanguageContext);
   const userLocationMapRef = useRef<{
     centerMap: () => void;
     centerMapOnDeviceLocation: () => void;
@@ -64,7 +66,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               onClick={() => userLocationMapRef.current?.centerMap()}
             />
             <Button
-              label="Use device location"
+              label={lang.button.useDeviceLocation}
               useLightTheme
               fontSize="var(--font-size-l)"
               padding="0 var(--padding-l)"
@@ -77,13 +79,13 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
           </div>
           <div className="user-location-map-modal-cancel-save-buttons">
             <Button
-              label="Cancel"
+              label={lang.button.cancel}
               useLightTheme
               onClick={onClose}
               height="32px"
             />
             <Button
-              label="Save"
+              label={lang.button.save}
               useLightTheme
               onClick={() => {
                 if (

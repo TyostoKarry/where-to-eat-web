@@ -1,10 +1,12 @@
 import GitHubIcon from "@assets/icons/github.svg?react";
-import { FC } from "react";
+import { LanguageContext } from "@contexts/LanguageContext";
+import { FC, useContext } from "react";
 import "./githubbutton.css";
 
 const GITHUB_REPO_URL = "https://github.com/TyostoKarry/where-to-eat-web";
 
 export const GitHubButton: FC = () => {
+  const lang = useContext(LanguageContext);
   return (
     <a
       href={GITHUB_REPO_URL}
@@ -13,7 +15,7 @@ export const GitHubButton: FC = () => {
       className="github-button"
     >
       <GitHubIcon className="github-icon" />
-      <span className="github-text">GitHub</span>
+      <span className="github-text">{lang.githubButton.github}</span>
     </a>
   );
 };

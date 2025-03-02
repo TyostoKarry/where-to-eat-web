@@ -1,7 +1,8 @@
 import { Button } from "@components/Button";
 import { RestaurantMap } from "@components/RestaurantMap";
+import { LanguageContext } from "@contexts/LanguageContext";
 import { formatDistance } from "@utils/distance";
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef, useContext } from "react";
 import "./restaurantcard.css";
 
 interface RestaurantCardProps {
@@ -33,6 +34,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
   website,
   updateLayout = () => {},
 }) => {
+  const lang = useContext(LanguageContext);
   const [showMap, setShowMap] = useState(false);
   const mapRef = useRef<{ centerMap: () => void }>(null);
 
@@ -60,7 +62,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
           <div className="restaurantcard-info-container">
             {address && (
               <div className="selection">
-                <span className="label">Address:</span>
+                <span className="label">{lang.restaurantCard.address}</span>
                 <div className="address">
                   <p>{address}</p>
                   <p>{postalCode}</p>
@@ -70,21 +72,27 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
 
             {cuisine.length > 0 && (
               <div className="selection">
-                <span className="label">Cuisine Options:</span>
+                <span className="label">
+                  {lang.restaurantCard.cuisineOptions}
+                </span>
                 <p className="cuisine">{cuisine.join(", ")}</p>
               </div>
             )}
 
             {dietaryOptions.length > 0 && (
               <div className="selection">
-                <span className="label">Dietary Options:</span>
+                <span className="label">
+                  {lang.restaurantCard.dietaryOptions}
+                </span>
                 <p className="dietaryoptions">{dietaryOptions.join(", ")}</p>
               </div>
             )}
 
             {openingHours && (
               <div className="selection">
-                <span className="label">Opening Hours:</span>
+                <span className="label">
+                  {lang.restaurantCard.openingHours}
+                </span>
                 <div className="openinghours">
                   {openingHours.split(";").map((line, index) => {
                     const [days, time] = line.trim().split(" ");
@@ -101,7 +109,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
 
             {phoneNumber && (
               <div className="selection">
-                <span className="label">Phone Number:</span>
+                <span className="label">{lang.restaurantCard.phoneNumber}</span>
                 <p className="contact">{phoneNumber}</p>
               </div>
             )}
@@ -109,7 +117,11 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
 
           <div className="websitebutton">
             <Button
-              label={website ? "Visit Website" : "Search on Google"}
+              label={
+                website
+                  ? lang.restaurantCard.visitWebsite
+                  : lang.restaurantCard.searchOnGoogle
+              }
               useLightTheme
               onClick={() =>
                 window.open(
@@ -134,7 +146,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
             </div>
             <div className="map-buttons">
               <Button
-                label="Center"
+                label={lang.button.center}
                 useLightTheme
                 onClick={() => mapRef.current?.centerMap()}
                 width="auto"
@@ -142,7 +154,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
                 padding="var(--padding-s) var(--padding-s)"
               />
               <Button
-                label="Close"
+                label={lang.button.close}
                 useLightTheme
                 onClick={() => toggleMap()}
                 width="auto"

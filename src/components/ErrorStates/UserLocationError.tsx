@@ -1,6 +1,7 @@
 import { Button } from "@components/Button";
 import { ErrorCard } from "@components/ErrorCard";
-import { FC } from "react";
+import { LanguageContext } from "@contexts/LanguageContext";
+import { FC, useContext } from "react";
 import "./errorstates.css";
 
 interface UserLocationErrorProps {
@@ -12,22 +13,23 @@ export const UserLocationError: FC<UserLocationErrorProps> = ({
   userLocationServiceDenied,
   openUserLocationMapModal,
 }) => {
+  const lang = useContext(LanguageContext);
   return (
     <ErrorCard
       errorTitle={
         userLocationServiceDenied
-          ? "Location Access Disabled"
-          : "Location Not Found"
+          ? lang.userLocationError.serviceDeniedTitle
+          : lang.userLocationError.locationErrorTitle
       }
       errorMessage={
         userLocationServiceDenied
-          ? "Location access is blocked in browser settings. Please enable it to find nearby restaurants or manually select a location"
-          : "Couldn't determine device location. Please enable location access in your browser settings or manually select a location"
+          ? lang.userLocationError.serviceDeniedMessage
+          : lang.userLocationError.locationErrorMessage
       }
     >
       <div className="errorstates__button-container">
         <Button
-          label="Select Location"
+          label={lang.button.selectLocation}
           useLightTheme
           width="100%"
           padding="var(--padding-m)"

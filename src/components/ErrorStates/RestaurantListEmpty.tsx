@@ -1,6 +1,7 @@
 import { Button } from "@components/Button";
 import { ErrorCard } from "@components/ErrorCard";
-import { FC } from "react";
+import { LanguageContext } from "@contexts/LanguageContext";
+import { FC, useContext } from "react";
 import "./errorstates.css";
 
 interface UserLocationErrorProps {
@@ -10,14 +11,15 @@ interface UserLocationErrorProps {
 export const RestaurantListEmpty: FC<UserLocationErrorProps> = ({
   openUserLocationMapModal,
 }) => {
+  const lang = useContext(LanguageContext);
   return (
     <ErrorCard
-      errorTitle="No Restaurants Found"
-      errorMessage="Couldn’t find any restaurants in your selected area. Try adjusting your location"
+      errorTitle={lang.restaurantListEmpty.title}
+      errorMessage={lang.restaurantListEmpty.message}
     >
       <div className="errorstates__button-container">
         <Button
-          label="Select Location"
+          label={lang.button.selectLocation}
           useLightTheme
           width="100%"
           padding="var(--padding-m)"

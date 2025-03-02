@@ -1,0 +1,50 @@
+{
+  "button": {
+    "cancel": "Cancel",
+    "center": "Center",
+    "changeLocation": "Change Location",
+    "close": "Close",
+    "save": "Save",
+    "selectLocation": "Select Location",
+    "useDeviceLocation": "Use device location"
+  },
+  "githubButton": {
+    "github": "GitHub"
+  },
+  "lastRestaurantPageInfo": {
+    "text": "You have seen all restaurants within 10 km radius. Select a new location to see more."
+  },
+  "openStreetMapError": {
+    "message": "Couldn't retrieve restaurant information from OpenStreetMap. This may be due to network issues or OpenStreetMap being temporarily unavailable. Please check your connection and try again later",
+    "title": "Error Accessing OpenStreetMap API"
+  },
+  "restaurantCard": {
+    "address": "Address:",
+    "cuisineOptions": "Cuisine Options:",
+    "dietaryOptions": "Dietary Options:",
+    "openingHours": "Opening Hours:",
+    "phoneNumber": "Phone Number:",
+    "searchOnGoogle": "Search on Google",
+    "visitWebsite": "Visit Website"
+  },
+  "restaurantListEmpty": {
+    "message": "Couldn’t find any restaurants in your selected area. Try adjusting your location",
+    "title": "No Restaurants Found"
+  },
+  "unexpectedError": {
+    "message": "An unexpected error occurred. Please refresh the page or try again later",
+    "title": "Something Went Wrong"
+  },
+  "userLocationError": {
+    "locationErrorMessage": "Couldn't determine device location. Please enable location access in your browser settings or manually select a location",
+    "locationErrorTitle": "Location Not Found",
+    "serviceDeniedMessage": "Location access is blocked in browser settings. Please enable it to find nearby restaurants or manually select a location",
+    "serviceDeniedTitle": "Location Access Disabled"
+  },
+  "toast": {
+    "deviceLocationNotFound": "Device location not found"
+  },
+  "topBar": {
+    "title": "Where To Eat"
+  }
+}

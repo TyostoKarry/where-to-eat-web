@@ -75,7 +75,6 @@ export const fetchOSMOverpassAPI = async (
     const data = (await response.json()) as OSMResponse;
 
     if (!data.elements) {
-      console.warn("No restaurant data found.");
       return [];
     }
 

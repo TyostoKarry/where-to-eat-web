@@ -1,6 +1,13 @@
+import { LanguageContext } from "@contexts/LanguageContext";
 import { useUserLocation } from "@hooks/useUserLocation";
 import DefaultIcon from "@utils/leafletIcon";
-import { FC, forwardRef, useEffect, useImperativeHandle } from "react";
+import {
+  FC,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useContext,
+} from "react";
 import {
   MapContainer,
   TileLayer,
@@ -40,6 +47,7 @@ const MapController = forwardRef(
     }: MapControllerProps,
     ref,
   ) => {
+    const lang = useContext(LanguageContext);
     const map = useMap();
     const userDeviceLocation = useUserLocation();
 
@@ -81,7 +89,7 @@ const MapController = forwardRef(
           );
         } else {
           setToast({
-            message: "Device location not found",
+            message: lang.toast.deviceLocationNotFound,
             visible: true,
           });
         }

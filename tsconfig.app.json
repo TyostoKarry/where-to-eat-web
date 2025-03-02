@@ -20,7 +20,9 @@
       "@api/*": ["src/api/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@contexts/*": ["src/contexts/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@locales/*": ["src/locales/*"],
       "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils/*"]
     },
