@@ -8,6 +8,7 @@ const meta: Meta<typeof Button> = {
   args: {
     label: "Click Me",
     width: "auto",
+    onClick: () => alert("Button clicked"),
   },
 };
 

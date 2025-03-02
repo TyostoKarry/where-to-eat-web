@@ -6,8 +6,15 @@
   max-width: 100%;
 }
 
+.restaurantpage__lastrestaurantpageinfo-wrapper {
+  padding-bottom: var(--padding-xxl);
+  border-top: 1px solid var(--color-text);
+  padding-top: var(--padding-xxl);
+  transition: width 0.3s ease-out;
+}
+
 .restaurantpage__pagination-wrapper {
-  margin-bottom: var(--padding-xxl);
+  padding-bottom: var(--padding-xxl);
   border-top: 1px solid var(--color-text);
   padding-top: var(--padding-xxl);
   transition: width 0.3s ease-out;

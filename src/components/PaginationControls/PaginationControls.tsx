@@ -27,16 +27,16 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
     setInputValue(currentPage.toString());
   }, [currentPage]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleChange = (value: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(value.target.value);
   };
 
   const handleBlurOrEnter = () => {
-    const newPage = parseInt(inputValue, 10);
-    if (!isNaN(newPage) && newPage >= 1 && newPage <= totalPages)
-      setCurrentPage(newPage);
-    if (isNaN(newPage) || newPage < 1) setInputValue("1");
-    if (newPage > totalPages) setInputValue(totalPages.toString());
+    let newPage = parseInt(inputValue, 10) || 1;
+    newPage = Math.max(1, Math.min(newPage, totalPages));
+
+    if (newPage !== currentPage) setCurrentPage(newPage);
+    setInputValue(newPage.toString());
   };
 
   const startItem = (currentPage - 1) * itemsPerPage + 1;
@@ -44,7 +44,9 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
 
   return (
     <div className="pagination-controls-container">
-      <h3 className="pagination-controls__page-number">
+      <h3
+        className={`pagination-controls__item-count pagination-controls__large-screen`}
+      >
         {startItem} - {endItem} / {restaurantCount}
       </h3>
 
@@ -80,13 +82,29 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
         />
       </div>
 
-      <div className="pagination-controls__up-button">
+      <div
+        className={`pagination-controls__up-button pagination-controls__large-screen`}
+      >
         <Button
           label={<UpArrowIcon className="pagination-controls__icon" />}
           useLightTheme
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           width="auto"
         />
+      </div>
+
+      <div className="pagination-controls__small-screen">
+        <h3 className="pagination-controls__item-count">
+          {startItem} - {endItem} / {restaurantCount}
+        </h3>
+        <div className="pagination-controls__up-button">
+          <Button
+            label={<UpArrowIcon className="pagination-controls__icon" />}
+            useLightTheme
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            width="auto"
+          />
+        </div>
       </div>
     </div>
   );

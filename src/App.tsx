@@ -70,7 +70,12 @@ const App = () => {
       !userLocationError &&
       !userLocationServiceDenied
     ) {
-      return <RestaurantPage restaurantData={restaurantData} />;
+      return (
+        <RestaurantPage
+          restaurantData={restaurantData}
+          openUserLocationMapModal={openUserLocationMapModal}
+        />
+      );
     }
 
     return (

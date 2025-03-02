@@ -5,6 +5,9 @@ const meta: Meta<typeof TopBar> = {
   title: "Components/TopBar",
   component: TopBar,
   tags: ["autodocs"],
+  args: {
+    openUserLocationMapModal: () => alert("UserLocationMapModal Opened"),
+  },
   parameters: {
     viewport: {
       defaultViewport: "responsive",

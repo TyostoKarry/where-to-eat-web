@@ -71,7 +71,8 @@ p {
   --topbar-border-bottom: 2px solid var(--color-surface);
 
   /* Pagination Controls */
-  --pagination-controls-icon-size: 32px;
+  --pagination-controls-icon-size: 20px;
+  --pagination-controls-border-radius: 20px;
 }
 
 @font-face {
