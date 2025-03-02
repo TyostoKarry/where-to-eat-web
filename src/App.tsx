@@ -6,7 +6,6 @@ import { UserLocationMapModal } from "@components/UserLocationMapModal";
 import { useUserLocation } from "@hooks/useUserLocation";
 import { ErrorPage } from "@pages/ErrorPage";
 import { RestaurantPage } from "@pages/RestaurantPage";
-import { requestUserLocation } from "@utils/getUserLocation";
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -30,19 +29,6 @@ const App = () => {
     message: "",
     visible: false,
   });
-
-  const handleRequestUserLocation = () => {
-    requestUserLocation()
-      .then((location) => {
-        if (location) {
-          setUserLocation(location);
-        }
-      })
-      .catch((error) => {
-        setToast({ message: "Device location not found", visible: true });
-        console.error("Error getting user location:", error);
-      });
-  };
 
   useEffect(() => {
     if (initialLat != null && initialLon != null) {
@@ -73,12 +59,18 @@ const App = () => {
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
 
   const getMainContentByState = () => {
-    if (restaurantData.length > 0) {
-      return <RestaurantPage restaurantData={restaurantData} />;
-    }
-
     if (loading) {
       return <RestaurantListSkeleton />;
+    }
+
+    if (
+      restaurantData.length > 0 &&
+      userLocation &&
+      !openStreetMapError &&
+      !userLocationError &&
+      !userLocationServiceDenied
+    ) {
+      return <RestaurantPage restaurantData={restaurantData} />;
     }
 
     return (
@@ -90,7 +82,6 @@ const App = () => {
           openUserLocationMapModal={openUserLocationMapModal}
           openStreetMapError={openStreetMapError}
           restaurantData={restaurantData}
-          handleRequestUserLocation={handleRequestUserLocation}
         />
       </div>
     );

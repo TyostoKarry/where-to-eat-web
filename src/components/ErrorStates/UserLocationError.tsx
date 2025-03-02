@@ -4,19 +4,21 @@ import { FC } from "react";
 import "./errorstates.css";
 
 interface UserLocationErrorProps {
-  handleRequestUserLocation: () => void;
   userLocationServiceDenied: boolean | null;
   openUserLocationMapModal: () => void;
 }
 
 export const UserLocationError: FC<UserLocationErrorProps> = ({
-  handleRequestUserLocation,
   userLocationServiceDenied,
   openUserLocationMapModal,
 }) => {
   return (
     <ErrorCard
-      errorTitle="Location Access Disabled"
+      errorTitle={
+        userLocationServiceDenied
+          ? "Location Access Disabled"
+          : "Location Not Found"
+      }
       errorMessage={
         userLocationServiceDenied
           ? "Location access is blocked in browser settings. Please enable it to find nearby restaurants or manually select a location"
@@ -24,15 +26,6 @@ export const UserLocationError: FC<UserLocationErrorProps> = ({
       }
     >
       <div className="errorstates__button-container">
-        {!userLocationServiceDenied && (
-          <Button
-            label="Enable Geolocation"
-            useLightTheme
-            width="100%"
-            padding="var(--padding-m)"
-            onClick={handleRequestUserLocation}
-          />
-        )}
         <Button
           label="Select Location"
           useLightTheme

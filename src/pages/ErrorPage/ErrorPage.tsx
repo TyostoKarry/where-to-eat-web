@@ -14,7 +14,6 @@ interface ErrorPageProps {
   openUserLocationMapModal: () => void;
   openStreetMapError: boolean;
   restaurantData: Restaurant[];
-  handleRequestUserLocation: () => void;
 }
 
 export const ErrorPage: FC<ErrorPageProps> = ({
@@ -24,13 +23,10 @@ export const ErrorPage: FC<ErrorPageProps> = ({
   openUserLocationMapModal,
   openStreetMapError,
   restaurantData,
-  handleRequestUserLocation,
 }) => {
-  if (!userLocation && userLocationError) {
-    console.error(userLocationError);
+  if (!userLocation || userLocationError) {
     return (
       <UserLocationError
-        handleRequestUserLocation={handleRequestUserLocation}
         userLocationServiceDenied={userLocationServiceDenied}
         openUserLocationMapModal={openUserLocationMapModal}
       />
@@ -38,7 +34,6 @@ export const ErrorPage: FC<ErrorPageProps> = ({
   }
 
   if (openStreetMapError) {
-    console.error(openStreetMapError);
     return <OpenStreetMapError />;
   }
 
