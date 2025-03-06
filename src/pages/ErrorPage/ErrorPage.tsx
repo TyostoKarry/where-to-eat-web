@@ -5,6 +5,7 @@ import {
   UnexpectedError,
   UserLocationError,
 } from "@components/ErrorStates";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC } from "react";
 
 interface ErrorPageProps {
@@ -22,7 +23,8 @@ export const ErrorPage: FC<ErrorPageProps> = ({
   openStreetMapError,
   restaurantData,
 }) => {
-  if (!userLocation || userLocationError) {
+  const { isManualLocationSet } = useRestaurant();
+  if (!userLocation || (!isManualLocationSet && userLocationError)) {
     return (
       <UserLocationError
         userLocationServiceDenied={userLocationServiceDenied}
