@@ -7,13 +7,9 @@ import "./restaurantpage.css";
 
 interface RestaurantPageProps {
   restaurantData: Restaurant[];
-  openUserLocationMapModal: () => void;
 }
 
-export const RestaurantPage: FC<RestaurantPageProps> = ({
-  restaurantData,
-  openUserLocationMapModal,
-}) => {
+export const RestaurantPage: FC<RestaurantPageProps> = ({ restaurantData }) => {
   const ITEMS_PER_PAGE = 50;
   const totalItems = restaurantData.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -48,11 +44,11 @@ export const RestaurantPage: FC<RestaurantPageProps> = ({
             maxWidth: "100%",
           }}
         >
-          <LastRestaurantPageInfo onSelectLocation={openUserLocationMapModal} />
+          <LastRestaurantPageInfo />
         </div>
       )}
 
-      {restaurantData.length > ITEMS_PER_PAGE && (
+      {totalItems > ITEMS_PER_PAGE && (
         <div
           className="restaurantpage__pagination-wrapper"
           style={{

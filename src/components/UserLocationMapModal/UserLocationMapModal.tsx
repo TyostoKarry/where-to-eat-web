@@ -2,6 +2,7 @@ import CenterLocation from "@assets/icons/center-location.svg?react";
 import { Button } from "@components/Button";
 import { UserLocationMap } from "@components/UserLocationMap/UserLocationMap";
 import { LanguageContext } from "@contexts/LanguageContext";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useRef, useState, useEffect, useContext } from "react";
 import "./userlocationmapmodal.css";
 
@@ -9,15 +10,14 @@ interface UserLocationMapModalProps {
   userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
   setToast: (toast: { message: string; visible: boolean }) => void;
-  onClose: () => void;
 }
 
 export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   userLocation,
   setUserLocation,
   setToast,
-  onClose,
 }) => {
+  const { closeUserLocationMapModal } = useRestaurant();
   const lang = useContext(LanguageContext);
   const userLocationMapRef = useRef<{
     centerMap: () => void;
@@ -34,7 +34,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      closeUserLocationMapModal();
     }
   };
 
@@ -81,7 +81,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
             <Button
               label={lang.button.cancel}
               useLightTheme
-              onClick={onClose}
+              onClick={closeUserLocationMapModal}
               height="32px"
             />
             <Button
@@ -95,7 +95,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
                 ) {
                   setUserLocation(pendingUserLocation);
                 }
-                onClose();
+                closeUserLocationMapModal();
               }}
               height="32px"
             />

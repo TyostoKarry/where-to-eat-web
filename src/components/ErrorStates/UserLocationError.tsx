@@ -1,18 +1,18 @@
 import { Button } from "@components/Button";
 import { ErrorCard } from "@components/ErrorCard";
 import { LanguageContext } from "@contexts/LanguageContext";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useContext } from "react";
 import "./errorstates.css";
 
 interface UserLocationErrorProps {
   userLocationServiceDenied: boolean | null;
-  openUserLocationMapModal: () => void;
 }
 
 export const UserLocationError: FC<UserLocationErrorProps> = ({
   userLocationServiceDenied,
-  openUserLocationMapModal,
 }) => {
+  const { openUserLocationMapModal } = useRestaurant();
   const lang = useContext(LanguageContext);
   return (
     <ErrorCard

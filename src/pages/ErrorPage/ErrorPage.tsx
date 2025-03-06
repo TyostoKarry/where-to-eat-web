@@ -11,7 +11,6 @@ interface ErrorPageProps {
   userLocation: { lat: number; lon: number } | null;
   userLocationError: string | null;
   userLocationServiceDenied: boolean | null;
-  openUserLocationMapModal: () => void;
   openStreetMapError: boolean;
   restaurantData: Restaurant[];
 }
@@ -20,7 +19,6 @@ export const ErrorPage: FC<ErrorPageProps> = ({
   userLocation,
   userLocationError,
   userLocationServiceDenied,
-  openUserLocationMapModal,
   openStreetMapError,
   restaurantData,
 }) => {
@@ -28,7 +26,6 @@ export const ErrorPage: FC<ErrorPageProps> = ({
     return (
       <UserLocationError
         userLocationServiceDenied={userLocationServiceDenied}
-        openUserLocationMapModal={openUserLocationMapModal}
       />
     );
   }
@@ -38,11 +35,7 @@ export const ErrorPage: FC<ErrorPageProps> = ({
   }
 
   if (restaurantData.length === 0) {
-    return (
-      <RestaurantListEmpty
-        openUserLocationMapModal={openUserLocationMapModal}
-      />
-    );
+    return <RestaurantListEmpty />;
   }
 
   return <UnexpectedError />;

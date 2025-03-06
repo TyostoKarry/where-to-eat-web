@@ -1,16 +1,12 @@
 import { Button } from "@components/Button";
 import { ErrorCard } from "@components/ErrorCard";
 import { LanguageContext } from "@contexts/LanguageContext";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useContext } from "react";
 import "./errorstates.css";
 
-interface UserLocationErrorProps {
-  openUserLocationMapModal: () => void;
-}
-
-export const RestaurantListEmpty: FC<UserLocationErrorProps> = ({
-  openUserLocationMapModal,
-}) => {
+export const RestaurantListEmpty: FC = () => {
+  const { openUserLocationMapModal } = useRestaurant();
   const lang = useContext(LanguageContext);
   return (
     <ErrorCard

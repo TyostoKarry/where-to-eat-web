@@ -1,15 +1,11 @@
 import { Button } from "@components/Button";
 import { LanguageContext } from "@contexts/LanguageContext";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useContext } from "react";
 import "./lastrestaurantpageinfo.css";
 
-interface LastRestaurantPageInfoProps {
-  onSelectLocation: () => void;
-}
-
-export const LastRestaurantPageInfo: FC<LastRestaurantPageInfoProps> = ({
-  onSelectLocation,
-}) => {
+export const LastRestaurantPageInfo: FC = () => {
+  const { openUserLocationMapModal } = useRestaurant();
   const lang = useContext(LanguageContext);
   return (
     <div className="lastrestaurantpageinfo">
@@ -18,7 +14,7 @@ export const LastRestaurantPageInfo: FC<LastRestaurantPageInfoProps> = ({
       </h2>
       <Button
         label={lang.button.changeLocation}
-        onClick={onSelectLocation}
+        onClick={openUserLocationMapModal}
         useLightTheme
         width="auto"
       />

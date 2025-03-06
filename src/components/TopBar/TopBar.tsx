@@ -2,13 +2,11 @@ import "./topbar.css";
 import { Button } from "@components/Button";
 import { GitHubButton } from "@components/GitHubButton";
 import { LanguageContext } from "@contexts/LanguageContext";
+import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useContext } from "react";
 
-interface TopBarProps {
-  openUserLocationMapModal: () => void;
-}
-
-export const TopBar: FC<TopBarProps> = ({ openUserLocationMapModal }) => {
+export const TopBar: FC = () => {
+  const { openUserLocationMapModal } = useRestaurant();
   const lang = useContext(LanguageContext);
   return (
     <header className="topbar">
