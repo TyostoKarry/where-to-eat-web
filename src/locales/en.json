@@ -42,6 +42,7 @@
     "serviceDeniedTitle": "Location Access Disabled"
   },
   "toast": {
+    "deviceLocationServiceDenied": "Location access is blocked in browser settings. Please enable it or search restaurants manually",
     "deviceLocationNotFound": "Device location not found"
   },
   "topBar": {

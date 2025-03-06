@@ -18,7 +18,7 @@ export const Toast: FC<ToastProps> = ({ message, onClose }) => {
         setVisible(false);
         if (onClose) onClose();
       }, 300);
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onClose]);

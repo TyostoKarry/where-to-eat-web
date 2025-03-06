@@ -89,7 +89,9 @@ const MapController = forwardRef(
           );
         } else {
           setToast({
-            message: lang.toast.deviceLocationNotFound,
+            message: userDeviceLocation.locationServiceDenied
+              ? lang.toast.deviceLocationServiceDenied
+              : lang.toast.deviceLocationNotFound,
             visible: true,
           });
         }
