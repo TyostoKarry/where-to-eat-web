@@ -2,6 +2,12 @@
 
 A **React-based** web application that helps users find nearby restaurants using **OpenStreetMap (OSM)** data and **Leaflet** for interactive maps.
 
+<div align="center">
+  <a href="https://tyostokarry.github.io/where-to-eat-web/">
+    <img src="https://img.shields.io/badge/APP LIVE-Visit Site-4e9af1?style=for-the-badge" alt="App Live" />
+  </a>
+</div>
+
 ![Main application](https://imgur.com/HUgSEVL.jpeg)
 
 ## Technologies
