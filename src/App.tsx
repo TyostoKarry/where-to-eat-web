@@ -22,6 +22,7 @@ const App = () => {
     openStreetMapError,
     userLocation,
     setUserLocation,
+    isManualLocationSet,
     isUserLocationMapModalOpen,
   } = useRestaurant();
 
@@ -45,8 +46,8 @@ const App = () => {
       restaurantData.length > 0 &&
       userLocation &&
       !openStreetMapError &&
-      !userLocationError &&
-      !userLocationServiceDenied
+      (isManualLocationSet ||
+        (!userLocationError && !userLocationServiceDenied))
     ) {
       return <RestaurantPage restaurantData={restaurantData} />;
     }
@@ -69,11 +70,7 @@ const App = () => {
       <TopBar />
       <main className="main-content">{getMainContentByState()}</main>
       {isUserLocationMapModalOpen && (
-        <UserLocationMapModal
-          userLocation={userLocation}
-          setUserLocation={setUserLocation}
-          setToast={setToast}
-        />
+        <UserLocationMapModal userLocation={userLocation} setToast={setToast} />
       )}
       {toast.visible && (
         <Toast

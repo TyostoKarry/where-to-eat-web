@@ -8,16 +8,15 @@ import "./userlocationmapmodal.css";
 
 interface UserLocationMapModalProps {
   userLocation: { lat: number; lon: number } | null;
-  setUserLocation: (location: { lat: number; lon: number }) => void;
   setToast: (toast: { message: string; visible: boolean }) => void;
 }
 
 export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   userLocation,
-  setUserLocation,
   setToast,
 }) => {
-  const { closeUserLocationMapModal } = useRestaurant();
+  const { handleSetUserLocationManually, closeUserLocationMapModal } =
+    useRestaurant();
   const lang = useContext(LanguageContext);
   const userLocationMapRef = useRef<{
     centerMap: () => void;
@@ -93,7 +92,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
                   (pendingUserLocation.lat != userLocation?.lat ||
                     pendingUserLocation.lon != userLocation?.lon)
                 ) {
-                  setUserLocation(pendingUserLocation);
+                  handleSetUserLocationManually(pendingUserLocation);
                 }
                 closeUserLocationMapModal();
               }}

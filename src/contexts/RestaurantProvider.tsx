@@ -18,6 +18,8 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     lat: number;
     lon: number;
   } | null>(null);
+  const [isManualLocationSet, setIsManualLocationSet] =
+    useState<boolean>(false);
 
   // Modals
   const [isUserLocationMapModalOpen, setIsUserLocationMapModalOpen] =
@@ -43,6 +45,15 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
       .finally(() => setLoading(false));
   }, [userLocation]);
 
+  // Location handlers
+  const handleSetUserLocationManually = (location: {
+    lat: number;
+    lon: number;
+  }) => {
+    setUserLocation(location);
+    setIsManualLocationSet(true);
+  };
+
   // Modal handlers
   const openUserLocationMapModal = () => setIsUserLocationMapModalOpen(true);
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
@@ -53,6 +64,8 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     openStreetMapError,
     userLocation,
     setUserLocation,
+    isManualLocationSet,
+    handleSetUserLocationManually,
     openUserLocationMapModal,
     closeUserLocationMapModal,
     isUserLocationMapModalOpen,

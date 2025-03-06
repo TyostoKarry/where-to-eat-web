@@ -10,6 +10,11 @@ interface RestaurantContextType {
   // User location
   userLocation: { lat: number; lon: number } | null;
   setUserLocation: (location: { lat: number; lon: number }) => void;
+  isManualLocationSet: boolean;
+  handleSetUserLocationManually: (location: {
+    lat: number;
+    lon: number;
+  }) => void;
 
   // Modals
   openUserLocationMapModal: () => void;
