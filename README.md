@@ -8,6 +8,8 @@ A **React-based** web application that helps users find nearby restaurants using
   </a>
 </div>
 
+</br>
+
 ![Main application](https://imgur.com/HUgSEVL.jpeg)
 
 ## Technologies
