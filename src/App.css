@@ -25,5 +25,5 @@
   align-items: center;
   justify-content: center;
   justify-items: center;
-  height: 100dvh;
+  height: calc(100dvh - var(--topbar-height) - var(--padding-xl));
 }

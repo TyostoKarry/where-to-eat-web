@@ -16,10 +16,20 @@ interface RestaurantContextType {
     lon: number;
   }) => void;
 
+  // Filters
+  selectedCuisines: string[];
+  selectedDietaryOptions: string[];
+  toggleCuisineFilter: (cuisine: string) => void;
+  toggleDietaryFilter: (option: string) => void;
+  resetFilters: () => void;
+
   // Modals
   openUserLocationMapModal: () => void;
   closeUserLocationMapModal: () => void;
   isUserLocationMapModalOpen: boolean;
+  openFilterModal: () => void;
+  closeFilterModal: () => void;
+  isFilterModalOpen: boolean;
 }
 
 export const RestaurantContext = createContext<

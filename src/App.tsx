@@ -1,3 +1,4 @@
+import { FilterModal } from "@components/FilterModal";
 import { RestaurantListSkeleton } from "@components/RestaurantList";
 import { Toast } from "@components/Toast";
 import { TopBar } from "@components/TopBar";
@@ -24,6 +25,7 @@ const App = () => {
     setUserLocation,
     isManualLocationSet,
     isUserLocationMapModalOpen,
+    isFilterModalOpen,
   } = useRestaurant();
 
   const [toast, setToast] = useState<{ message: string; visible: boolean }>({
@@ -72,6 +74,7 @@ const App = () => {
       {isUserLocationMapModalOpen && (
         <UserLocationMapModal userLocation={userLocation} setToast={setToast} />
       )}
+      {isFilterModalOpen && <FilterModal restaurantData={restaurantData} />}
       {toast.visible && (
         <Toast
           message={toast.message}

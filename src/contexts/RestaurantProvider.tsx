@@ -21,9 +21,16 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
   const [isManualLocationSet, setIsManualLocationSet] =
     useState<boolean>(false);
 
+  // Filter state
+  const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
+  const [selectedDietaryOptions, setSelectedDietaryOptions] = useState<
+    string[]
+  >([]);
+
   // Modals
   const [isUserLocationMapModalOpen, setIsUserLocationMapModalOpen] =
     useState<boolean>(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState<boolean>(false);
 
   // Fetch restaurant data when user location changes
   useEffect(() => {
@@ -54,9 +61,37 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     setIsManualLocationSet(true);
   };
 
+  // Filter handlers
+  const toggleCuisineFilter = (cuisine: string) => {
+    setSelectedCuisines((previousCuisines) =>
+      previousCuisines.includes(cuisine)
+        ? previousCuisines.filter(
+            (existingCuisine) => existingCuisine !== cuisine,
+          )
+        : [...previousCuisines, cuisine],
+    );
+  };
+
+  const toggleDietaryFilter = (option: string) => {
+    setSelectedDietaryOptions((previousDietaryOptions) =>
+      previousDietaryOptions.includes(option)
+        ? previousDietaryOptions.filter(
+            (existingOption) => existingOption !== option,
+          )
+        : [...previousDietaryOptions, option],
+    );
+  };
+
+  const resetFilters = () => {
+    setSelectedCuisines([]);
+    setSelectedDietaryOptions([]);
+  };
+
   // Modal handlers
   const openUserLocationMapModal = () => setIsUserLocationMapModalOpen(true);
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
+  const openFilterModal = () => setIsFilterModalOpen(true);
+  const closeFilterModal = () => setIsFilterModalOpen(false);
 
   const value = {
     restaurantData,
@@ -66,9 +101,17 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     setUserLocation,
     isManualLocationSet,
     handleSetUserLocationManually,
+    selectedCuisines,
+    selectedDietaryOptions,
+    toggleCuisineFilter,
+    toggleDietaryFilter,
+    resetFilters,
     openUserLocationMapModal,
     closeUserLocationMapModal,
     isUserLocationMapModalOpen,
+    openFilterModal,
+    closeFilterModal,
+    isFilterModalOpen,
   };
 
   return (

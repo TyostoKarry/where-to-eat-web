@@ -4,20 +4,75 @@
   justify-content: space-between;
   background: var(--color-surface);
   border-radius: var(--border-radius-large);
-  padding: var(--padding-l);
+  padding: var(--padding-xl);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  gap: var(--padding-l);
+}
+
+.lastrestaurantpageinfo__content {
+  flex-grow: 1;
+}
+
+.lastrestaurantpageinfo__title {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--padding-m);
 }
 
 .lastrestaurantpageinfo__text {
   font-size: var(--font-size-m);
-  color: var(--color-text);
-  flex-grow: 1;
+  color: var(--color-text-muted);
+  margin-bottom: var(--padding-l);
 }
 
-@media (max-width: 1384px) {
+.lastrestaurantpageinfo__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--padding-m);
+  margin-top: var(--padding-m);
+}
+
+.lastrestaurantpageinfo__stat-item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-m);
+  background-color: var(--color-muted);
+  border-radius: var(--border-radius-regular);
+}
+
+.lastrestaurantpageinfo__stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--padding-xs);
+}
+
+.lastrestaurantpageinfo__stat-value {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.lastrestaurantpageinfo__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-m);
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
   .lastrestaurantpageinfo {
     flex-direction: column;
     gap: var(--padding-l);
-    text-align: center;
+  }
+
+  .lastrestaurantpageinfo__actions {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lastrestaurantpageinfo__stats {
+    grid-template-columns: 1fr;
   }
 }

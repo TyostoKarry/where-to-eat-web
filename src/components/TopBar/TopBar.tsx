@@ -1,5 +1,6 @@
 import "./topbar.css";
 import { Button } from "@components/Button";
+import { FilterButton } from "@components/FilterButton";
 import { GitHubButton } from "@components/GitHubButton";
 import { LanguageContext } from "@contexts/LanguageContext";
 import { useRestaurant } from "@contexts/RestaurantContext";
@@ -15,13 +16,16 @@ export const TopBar: FC = () => {
         <span className="topbar-title">{lang.topBar.title}</span>
       </div>
       <div className="topbar-center">
-        <Button
-          label={lang.button.selectLocation}
-          useLightTheme
-          width="auto"
-          fontSize="var(--font-size-l)"
-          onClick={openUserLocationMapModal}
-        />
+        <div className="topbar-buttons">
+          <Button
+            label={lang.button.selectLocation}
+            useLightTheme
+            width="auto"
+            fontSize="var(--font-size-l)"
+            onClick={openUserLocationMapModal}
+          />
+          <FilterButton />
+        </div>
       </div>
       <div className="topbar-right">
         <GitHubButton />

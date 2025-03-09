@@ -6,6 +6,17 @@
   max-width: 100%;
 }
 
+.restaurantpage__empty-filtered-restaurants-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  height: calc(
+    100dvh - var(--topbar-height) - var(--padding-xl) - var(--padding-xl)
+  );
+  width: 100%;
+}
+
 .restaurantpage__lastrestaurantpageinfo-wrapper {
   padding-bottom: var(--padding-xxl);
   border-top: 1px solid var(--color-text);

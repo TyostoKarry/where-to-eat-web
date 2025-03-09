@@ -1,0 +1,39 @@
+.filter-button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-button-content {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+}
+
+.filter-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.filter-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  min-width: 18px;
+  height: 18px;
+  border-radius: var(--border-radius-large);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-xxs);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .filter-button-text {
+    display: none;
+  }
+}

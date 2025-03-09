@@ -18,6 +18,7 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   const { handleSetUserLocationManually, closeUserLocationMapModal } =
     useRestaurant();
   const lang = useContext(LanguageContext);
+  const modalContentRef = useRef<HTMLDivElement>(null);
   const userLocationMapRef = useRef<{
     centerMap: () => void;
     centerMapOnDeviceLocation: () => void;
@@ -31,21 +32,25 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
     setPendingUserLocation(userLocation);
   }, [userLocation]);
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      closeUserLocationMapModal();
-    }
-  };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalContentRef.current &&
+        !modalContentRef.current.contains(event.target as Node)
+      ) {
+        closeUserLocationMapModal();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [closeUserLocationMapModal]);
 
   return (
-    <div
-      className="user-location-map-modal-overlay"
-      onClick={handleOverlayClick}
-    >
-      <div
-        className="user-location-map-modal-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="user-location-map-modal-overlay">
+      <div className="user-location-map-modal-content" ref={modalContentRef}>
         <UserLocationMap
           ref={userLocationMapRef}
           userLocation={pendingUserLocation}

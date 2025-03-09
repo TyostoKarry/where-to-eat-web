@@ -29,6 +29,11 @@
   flex: 1;
 }
 
+.topbar-buttons {
+  display: flex;
+  gap: var(--padding-m);
+}
+
 .topbar-right {
   display: flex;
   justify-content: flex-end;
