@@ -10,7 +10,7 @@
 }
 
 .main-content {
-  min-height: calc(100vh - var(--topbar-height) - var(--padding-xl));
+  min-height: calc(100dvh - var(--topbar-height) - var(--padding-xl));
   height: auto;
   display: flex;
   flex-direction: column;

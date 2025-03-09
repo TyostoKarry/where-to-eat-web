@@ -1,7 +1,7 @@
 .restaurantlist-skeleton {
   display: block;
   margin: auto;
-  max-height: calc(100vh - var(--topbar-height) - var(--padding-xl));
+  max-height: calc(100dvh - var(--topbar-height) - var(--padding-xl));
   overflow: hidden;
 }
 

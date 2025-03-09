@@ -14,14 +14,18 @@ export const TopBar: FC = () => {
         <button className="drawer-button">☰</button>
         <span className="topbar-title">{lang.topBar.title}</span>
       </div>
-      <Button
-        label="Select Location"
-        useLightTheme
-        width="auto"
-        fontSize="var(--font-size-l)"
-        onClick={openUserLocationMapModal}
-      />
-      <GitHubButton />
+      <div className="topbar-center">
+        <Button
+          label={lang.button.selectLocation}
+          useLightTheme
+          width="auto"
+          fontSize="var(--font-size-l)"
+          onClick={openUserLocationMapModal}
+        />
+      </div>
+      <div className="topbar-right">
+        <GitHubButton />
+      </div>
     </header>
   );
 };

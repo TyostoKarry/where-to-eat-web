@@ -44,11 +44,11 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
 
   return (
     <div className="pagination-controls-container">
-      <h3
-        className={`pagination-controls__item-count pagination-controls__large-screen`}
-      >
-        {startItem} - {endItem} / {restaurantCount}
-      </h3>
+      <div className="pagination-controls__item-count-large-screen">
+        <h3 className="pagination-controls__item-count">
+          {startItem} - {endItem} / {restaurantCount}
+        </h3>
+      </div>
 
       <div className="pagination-controls">
         <Button
@@ -83,7 +83,7 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
       </div>
 
       <div
-        className={`pagination-controls__up-button pagination-controls__large-screen`}
+        className={`pagination-controls__up-button pagination-controls__up-button-large-screen`}
       >
         <Button
           label={<UpArrowIcon className="pagination-controls__icon" />}
