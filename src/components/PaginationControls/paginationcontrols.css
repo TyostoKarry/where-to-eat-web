@@ -29,16 +29,18 @@
 }
 
 .pagination-controls button {
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .pagination-controls button:not(:disabled):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-hover-secondary);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
 }
 
 .pagination-controls button:disabled {
   opacity: 0.6;
+  box-shadow: none;
 }
 
 .pagination-controls__icon {
@@ -101,12 +103,12 @@
   display: flex;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .pagination-controls__up-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
 }
 
 .pagination-controls__small-screen {
