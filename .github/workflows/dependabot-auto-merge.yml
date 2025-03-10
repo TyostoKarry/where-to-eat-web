@@ -1,3 +1,5 @@
+# Workflow to automatically merge Dependabot security-related pull requests
+
 name: Dependabot auto-merge
 on: pull_request
 
