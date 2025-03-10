@@ -12,6 +12,7 @@ jobs:
   verification:
     name: Run ESLint
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout repository
@@ -31,6 +32,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: verification
+    timeout-minutes: 5
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
@@ -56,6 +59,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    timeout-minutes: 5
 
     permissions:
       deployments: write
