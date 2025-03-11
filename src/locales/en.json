@@ -59,6 +59,9 @@
     "serviceDeniedMessage": "Location access is blocked in browser settings. Please enable it to find nearby restaurants or manually select a location",
     "serviceDeniedTitle": "Location Access Disabled"
   },
+  "userLocationMapModal": {
+    "setUserLocation": "Set User Location"
+  },
   "toast": {
     "deviceLocationServiceDenied": "Location access is blocked in browser settings. Please enable it or search restaurants manually",
     "deviceLocationNotFound": "Device location not found"

@@ -35,6 +35,7 @@ p {
   --color-border: #333;
   --color-hover: #292929;
   --color-hover-secondary: #d0d0d0;
+  --color-modal-content-background: #181818;
 
   /* Padding */
   --padding-xxs: 2px;

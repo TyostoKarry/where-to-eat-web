@@ -1,4 +1,5 @@
 import CenterLocation from "@assets/icons/center-location.svg?react";
+import ErrorCross from "@assets/icons/error-cross.svg?react";
 import { Button } from "@components/Button";
 import { UserLocationMap } from "@components/UserLocationMap/UserLocationMap";
 import { LanguageContext } from "@contexts/LanguageContext";
@@ -51,15 +52,27 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
   return (
     <div className="user-location-map-modal-overlay">
       <div className="user-location-map-modal-content" ref={modalContentRef}>
-        <UserLocationMap
-          ref={userLocationMapRef}
-          userLocation={pendingUserLocation}
-          setUserLocation={setPendingUserLocation}
-          shouldRecenter={true}
-          setToast={setToast}
-        />
+        <div className="user-location-map-modal-header">
+          <h3>{lang.userLocationMapModal.setUserLocation}</h3>
+          <Button
+            label={<ErrorCross />}
+            onClick={closeUserLocationMapModal}
+            width="30px"
+            height="30px"
+            padding="var(--padding-s)"
+          />
+        </div>
+        <div className="user-location-map-modal-map-container">
+          <UserLocationMap
+            ref={userLocationMapRef}
+            userLocation={pendingUserLocation}
+            setUserLocation={setPendingUserLocation}
+            shouldRecenter={true}
+            setToast={setToast}
+          />
+        </div>
         <div className="user-location-map-modal-button-container">
-          <div className="user-location-map-modal-lcoation-buttons">
+          <div className="user-location-map-modal-location-buttons">
             <Button
               label={<CenterLocation className="center-icon" />}
               useLightTheme
