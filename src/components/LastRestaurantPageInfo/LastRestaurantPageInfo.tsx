@@ -1,7 +1,7 @@
 import { Button } from "@components/Button";
 import { LanguageContext } from "@contexts/LanguageContext";
 import { useRestaurant } from "@contexts/RestaurantContext";
-import { FC, useContext } from "react";
+import { FC, useContext, useMemo } from "react";
 import "./lastrestaurantpageinfo.css";
 
 export const LastRestaurantPageInfo: FC = () => {
@@ -10,12 +10,40 @@ export const LastRestaurantPageInfo: FC = () => {
     openUserLocationMapModal,
     userLocation,
     restaurantData,
+    selectedCuisines,
+    selectedDietaryOptions,
   } = useRestaurant();
   const lang = useContext(LanguageContext);
 
   const formattedLocation = userLocation
     ? `${userLocation.lat.toFixed(4)}, ${userLocation.lon.toFixed(4)}`
     : "Unknown location";
+
+  const filteredCount = useMemo(() => {
+    if (selectedCuisines.length === 0 && selectedDietaryOptions.length === 0) {
+      return null;
+    }
+
+    return restaurantData.filter((restaurant) => {
+      const cuisineMatch =
+        selectedCuisines.length === 0 ||
+        (restaurant.cuisine &&
+          restaurant.cuisine.some((cuisine) =>
+            selectedCuisines.includes(cuisine),
+          ));
+
+      const dietaryMatch =
+        selectedDietaryOptions.length === 0 ||
+        (restaurant.dietaryOptions &&
+          restaurant.dietaryOptions.some((option) =>
+            selectedDietaryOptions.includes(option),
+          ));
+
+      return cuisineMatch && dietaryMatch;
+    }).length;
+  }, [restaurantData, selectedCuisines, selectedDietaryOptions]);
+
+  const hasActiveFilters = filteredCount !== null;
 
   return (
     <div className="lastrestaurantpageinfo">
@@ -29,10 +57,20 @@ export const LastRestaurantPageInfo: FC = () => {
         <div className="lastrestaurantpageinfo__stats">
           <div className="lastrestaurantpageinfo__stat-item">
             <span className="lastrestaurantpageinfo__stat-label">
-              {lang.lastRestaurantPageInfo.totalRestaurants}
+              {hasActiveFilters
+                ? lang.lastRestaurantPageInfo.filteredRestaurants
+                : lang.lastRestaurantPageInfo.totalRestaurants}
             </span>
             <span className="lastrestaurantpageinfo__stat-value">
-              {restaurantData.length}
+              {hasActiveFilters
+                ? `${filteredCount} ${lang.lastRestaurantPageInfo.of} ${restaurantData.length}`
+                : restaurantData.length}
+              {hasActiveFilters && (
+                <span className="lastrestaurantpageinfo__stat-label">
+                  {" "}
+                  {lang.lastRestaurantPageInfo.total}
+                </span>
+              )}
             </span>
           </div>
           <div className="lastrestaurantpageinfo__stat-item">
@@ -55,7 +93,9 @@ export const LastRestaurantPageInfo: FC = () => {
       </div>
       <div className="lastrestaurantpageinfo__actions">
         <Button
-          label={lang.button.updateFilters}
+          label={
+            hasActiveFilters ? lang.button.updateFilters : lang.button.filter
+          }
           onClick={openFilterModal}
           useLightTheme
           width="auto"

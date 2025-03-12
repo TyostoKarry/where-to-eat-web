@@ -1,4 +1,3 @@
-import { Restaurant } from "@api/OSMOverpassAPI";
 import ErrorCross from "@assets/icons/error-cross.svg?react";
 import { Button } from "@components/Button";
 import { LanguageContext } from "@contexts/LanguageContext";
@@ -6,40 +5,21 @@ import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useEffect, useState, useRef, useContext } from "react";
 import "./filtermodal.css";
 
-interface FilterModalProps {
-  restaurantData: Restaurant[];
-}
-
-export const FilterModal: FC<FilterModalProps> = ({ restaurantData }) => {
+export const FilterModal: FC = () => {
   const {
     selectedCuisines,
     selectedDietaryOptions,
     toggleCuisineFilter,
     toggleDietaryFilter,
     resetFilters,
+    availableCuisines,
+    availableDietaryOptions,
     closeFilterModal,
   } = useRestaurant();
   const lang = useContext(LanguageContext);
 
-  const [availableCuisines, setAvailableCuisines] = useState<string[]>([]);
-  const [availableDietaryOptions, setAvailableDietaryOptions] = useState<
-    string[]
-  >([]);
   const [activeFiltersCount, setActiveFiltersCount] = useState<number>(0);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cuisineSet = new Set<string>();
-    const dietarySet = new Set<string>();
-
-    restaurantData.forEach((restaurant) => {
-      restaurant.cuisine?.forEach((cuisine) => cuisineSet.add(cuisine));
-      restaurant.dietaryOptions?.forEach((option) => dietarySet.add(option));
-    });
-
-    setAvailableCuisines(Array.from(cuisineSet).sort());
-    setAvailableDietaryOptions(Array.from(dietarySet).sort());
-  }, [restaurantData]);
 
   useEffect(() => {
     setActiveFiltersCount(

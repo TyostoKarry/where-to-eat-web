@@ -26,6 +26,10 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
   const [selectedDietaryOptions, setSelectedDietaryOptions] = useState<
     string[]
   >([]);
+  const [availableCuisines, setAvailableCuisines] = useState<string[]>([]);
+  const [availableDietaryOptions, setAvailableDietaryOptions] = useState<
+    string[]
+  >([]);
 
   // Modals
   const [isUserLocationMapModalOpen, setIsUserLocationMapModalOpen] =
@@ -87,6 +91,27 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     setSelectedDietaryOptions([]);
   };
 
+  useEffect(() => {
+    const cuisineSet = new Set<string>();
+    const dietarySet = new Set<string>();
+
+    restaurantData.forEach((restaurant) => {
+      restaurant.cuisine?.forEach((cuisine) => cuisineSet.add(cuisine));
+      restaurant.dietaryOptions?.forEach((option) => dietarySet.add(option));
+    });
+
+    setAvailableCuisines(Array.from(cuisineSet).sort());
+    setAvailableDietaryOptions(Array.from(dietarySet).sort());
+  }, [restaurantData]);
+
+  useEffect(() => {
+    if (userLocation) {
+      setAvailableCuisines([]);
+      setAvailableDietaryOptions([]);
+      resetFilters();
+    }
+  }, [userLocation]);
+
   // Modal handlers
   const openUserLocationMapModal = () => setIsUserLocationMapModalOpen(true);
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
@@ -106,6 +131,8 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     toggleCuisineFilter,
     toggleDietaryFilter,
     resetFilters,
+    availableCuisines,
+    availableDietaryOptions,
     openUserLocationMapModal,
     closeUserLocationMapModal,
     isUserLocationMapModalOpen,

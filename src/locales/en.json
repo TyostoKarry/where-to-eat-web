@@ -15,7 +15,8 @@
   "filterModal": {
     "cuisine": "Cuisine",
     "dietaryOptions": "Dietary Options",
-    "filterRestaurants": "Filter Restaurants"
+    "filterRestaurants": "Filter Restaurants",
+    "noFilterOptions": "No filter options available. Try changing location."
   },
   "filteredRestaurantsEmpty": {
     "message": "No restaurants found with the selected filters. Try adjusting your filters",
@@ -26,10 +27,13 @@
   },
   "lastRestaurantPageInfo": {
     "currentLocation": "Current Location",
+    "filteredRestaurants": "Filtered Restaurants",
+    "of": "of",
     "searchRadius": "Search Radius",
     "searchRadiusKm": "10 km",
     "text": "You have seen all restaurants within 10 km radius. Select a new location or adjust filters to see more options.",
     "title": "End of Results",
+    "total": "total",
     "totalRestaurants": "Total Restaurants"
   },
   "openStreetMapError": {

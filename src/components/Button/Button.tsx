@@ -11,6 +11,7 @@ export interface ButtonProps {
   fontWeight?: string;
   padding?: string;
   onClick?: () => void;
+  tooltip?: string;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -23,16 +24,20 @@ export const Button: FC<ButtonProps> = ({
   fontWeight = "var(--font-weight-bold)",
   padding = "var(--padding-sm) var(--padding-m)",
   onClick,
+  tooltip,
 }) => {
   return (
-    <button
-      className={`button ${useLightTheme ? "button-light" : ""}`}
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      style={{ width, height, fontSize, fontWeight, padding }}
-    >
-      {typeof label === "string" ? <span>{label}</span> : label}
-    </button>
+    <div className="button-container">
+      <button
+        className={`button ${useLightTheme ? "button-light" : ""}`}
+        type="button"
+        disabled={disabled}
+        onClick={onClick}
+        style={{ width, height, fontSize, fontWeight, padding }}
+      >
+        {typeof label === "string" ? <span>{label}</span> : label}
+      </button>
+      {tooltip && <div className="button-tooltip">{tooltip}</div>}
+    </div>
   );
 };

@@ -22,6 +22,8 @@ interface RestaurantContextType {
   toggleCuisineFilter: (cuisine: string) => void;
   toggleDietaryFilter: (option: string) => void;
   resetFilters: () => void;
+  availableCuisines: string[];
+  availableDietaryOptions: string[];
 
   // Modals
   openUserLocationMapModal: () => void;

@@ -74,7 +74,7 @@ const App = () => {
       {isUserLocationMapModalOpen && (
         <UserLocationMapModal userLocation={userLocation} setToast={setToast} />
       )}
-      {isFilterModalOpen && <FilterModal restaurantData={restaurantData} />}
+      {isFilterModalOpen && <FilterModal />}
       {toast.visible && (
         <Toast
           message={toast.message}

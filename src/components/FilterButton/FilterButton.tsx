@@ -6,12 +6,20 @@ import { FC, useContext } from "react";
 import "./filterbutton.css";
 
 export const FilterButton: FC = () => {
-  const { openFilterModal, selectedCuisines, selectedDietaryOptions } =
-    useRestaurant();
+  const {
+    openFilterModal,
+    selectedCuisines,
+    selectedDietaryOptions,
+    availableCuisines,
+    availableDietaryOptions,
+  } = useRestaurant();
   const lang = useContext(LanguageContext);
 
   const activeFiltersCount =
     selectedCuisines.length + selectedDietaryOptions.length;
+  const possibleFiltersCount =
+    availableCuisines.length + availableDietaryOptions.length;
+  const isDisabled = possibleFiltersCount === 0;
 
   return (
     <div className="filter-button-wrapper">
@@ -24,6 +32,8 @@ export const FilterButton: FC = () => {
         }
         onClick={openFilterModal}
         width="auto"
+        disabled={isDisabled}
+        tooltip={isDisabled ? lang.filterModal.noFilterOptions : ""}
       />
       {activeFiltersCount > 0 && (
         <span className="filter-count-badge">{activeFiltersCount}</span>
