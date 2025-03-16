@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "license-check": "license-checker-rseidelsohn --production --excludePackages \"where-to-eat-web\" --onlyAllow \"MIT;ISC;BSD-2-Clause;BSD-3-Clause;Apache-2.0;0BSD;CC0-1.0;Hippocratic-2.1\" --summary"
+    "license-check": "license-checker-rseidelsohn --production --excludePackages \"where-to-eat-web\" --onlyAllow \"MIT;ISC;BSD-2-Clause;BSD-3-Clause;Apache-2.0;0BSD;CC0-1.0;Hippocratic-2.1\" --summary",
+    "generate-license-report": "license-checker-rseidelsohn --production --json > license-report.json"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
