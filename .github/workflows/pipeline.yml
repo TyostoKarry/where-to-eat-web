@@ -39,6 +39,7 @@ jobs:
 
   verification:
     name: Run ESLint
+    needs: license-check
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -58,8 +59,9 @@ jobs:
         run: npm run lint
 
   build:
-    runs-on: ubuntu-latest
+    name: Build Project
     needs: verification
+    runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
@@ -84,6 +86,7 @@ jobs:
           path: ./dist
 
   deploy:
+    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
