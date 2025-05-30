@@ -5,11 +5,17 @@
 .restaurantcard {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
+  background: linear-gradient(
+    145deg,
+    var(--color-main-gradient),
+    var(--color-main)
+  );
   color: var(--color-text);
   padding: var(--padding-sm);
-  border-radius: var(--border-radius-large);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-card);
+  box-shadow:
+    15px 15px 30px var(--color-card-shadow-bottom),
+    -15px -15px 30px var(--color-card-shadow-top);
   transition: transform 0.2s ease-in-out;
   width: 360px;
 }

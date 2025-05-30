@@ -8,11 +8,7 @@ body {
   min-width: 320px;
   min-height: 100dvh;
   font-family: "OpenSans", sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--color-background-gradient-1),
-    var(--color-background-gradient-2)
-  );
+  background: var(--color-main);
   background-attachment: fixed;
   background-size: cover;
 }

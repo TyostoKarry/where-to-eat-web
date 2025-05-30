@@ -16,8 +16,10 @@ p {
 /* 🎨 Root Variables */
 :root {
   /* Colors */
-  --color-background-gradient-1: #131313;
-  --color-background-gradient-2: #181818;
+  --color-main: #1e1e1e;
+  --color-main-gradient: #1b1b1b;
+  --color-card-shadow-top: #262320;
+  --color-card-shadow-bottom: #0a0908;
   --color-topbar: #1e1e1e;
   --color-surface: #2e2e2e;
   --color-surface-skeleton: #2e2e2eb6;
@@ -66,6 +68,7 @@ p {
   /* Border Radius */
   --border-radius-regular: 4px;
   --border-radius-large: 8px;
+  --border-radius-card: 50px;
 
   /* TopBar */
   --topbar-height: 56px;
