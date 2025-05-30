@@ -10,7 +10,7 @@ export interface ButtonProps {
   fontSize?: string;
   fontWeight?: string;
   padding?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   tooltip?: string;
 }
 
@@ -32,7 +32,7 @@ export const Button: FC<ButtonProps> = ({
         className={`button ${useLightTheme ? "button-light" : ""}`}
         type="button"
         disabled={disabled}
-        onClick={onClick}
+        onClick={(e) => onClick?.(e)}
         style={{ width, height, fontSize, fontWeight, padding }}
       >
         {typeof label === "string" ? <span>{label}</span> : label}

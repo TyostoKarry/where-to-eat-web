@@ -20,6 +20,7 @@ p {
   --color-main-gradient: #1b1b1b;
   --color-card-shadow-top: #262320;
   --color-card-shadow-bottom: #0a0908;
+  --color-divider: #2e2e2e;
   --color-topbar: #1e1e1e;
   --color-surface: #2e2e2e;
   --color-surface-skeleton: #2e2e2eb6;
@@ -68,7 +69,7 @@ p {
   /* Border Radius */
   --border-radius-regular: 4px;
   --border-radius-large: 8px;
-  --border-radius-card: 50px;
+  --border-radius-card: 40px;
 
   /* TopBar */
   --topbar-height: 56px;
