@@ -1,5 +1,5 @@
 /* =======================
-   🌍 Global Styles
+        Global Styles
    ======================= */
 
 h1,
@@ -13,7 +13,7 @@ p {
   padding: 0;
 }
 
-/* 🎨 Root Variables */
+/* Root Variables */
 :root {
   /* Colors */
   --color-main: #1e1e1e;
@@ -49,7 +49,8 @@ p {
   --padding-l: 16px;
   --padding-xl: 20px;
   --padding-xxl: 24px;
-  --padding-xxxl: 96px;
+  --padding-edges-large: 96px;
+  --padding-edges-medium: 70px;
 
   /* Font Sizes */
   --font-size-s: 10px;
@@ -78,6 +79,10 @@ p {
   /* Pagination Controls */
   --pagination-controls-icon-size: 20px;
   --pagination-controls-border-radius: 20px;
+
+  /* Cards */
+  --card-width-large: 360px;
+  --card-width-medium: 340px;
 }
 
 @font-face {
@@ -106,4 +111,17 @@ p {
   src: url("/Fonts/OpenSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
+}
+
+/* Adaptive overrides for design tokens based on viewport context */
+:root {
+  --card-width: var(--card-width-large);
+  --padding-edges: var(--padding-edges-large);
+}
+
+@media (max-width: 1920px) {
+  :root {
+    --card-width: var(--card-width-medium);
+    --padding-edges: var(--padding-edges-medium);
+  }
 }
