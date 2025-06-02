@@ -46,7 +46,13 @@ export const LastRestaurantPageInfo: FC = () => {
   const hasActiveFilters = filteredCount !== null;
 
   return (
-    <div className="lastrestaurantpageinfo">
+    <div
+      className={`lastrestaurantpageinfo ${
+        filteredCount === 1 || restaurantData.length === 1
+          ? "force-small-screen"
+          : ""
+      }`}
+    >
       <div className="lastrestaurantpageinfo__content">
         <h2 className="lastrestaurantpageinfo__title">
           {lang.lastRestaurantPageInfo.title}

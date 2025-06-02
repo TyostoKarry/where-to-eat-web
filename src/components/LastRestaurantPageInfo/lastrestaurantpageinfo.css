@@ -85,3 +85,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+.lastrestaurantpageinfo.force-small-screen {
+  flex-direction: column;
+  gap: var(--padding-l);
+}
+
+.lastrestaurantpageinfo.force-small-screen .lastrestaurantpageinfo__actions {
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.lastrestaurantpageinfo.force-small-screen .lastrestaurantpageinfo__stats {
+  grid-template-columns: 1fr;
+}
