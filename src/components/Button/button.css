@@ -58,7 +58,6 @@
 .button-container {
   position: relative;
   display: inline-flex;
-  width: max-content;
 }
 
 .button-tooltip {

@@ -98,13 +98,13 @@ export const LastRestaurantPageInfo: FC = () => {
           }
           onClick={openFilterModal}
           useLightTheme
-          width="auto"
+          width="100%"
         />
         <Button
           label={lang.button.changeLocation}
           onClick={openUserLocationMapModal}
           useLightTheme
-          width="auto"
+          width="100%"
         />
       </div>
     </div>
