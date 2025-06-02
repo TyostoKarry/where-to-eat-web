@@ -19,10 +19,13 @@ p {
   --color-main: #1e1e1e;
   --color-main-gradient-top-left: #272727;
   --color-main-gradient-bottom-right: #1b1b1b;
-  --color-card-shadow-top: #262320;
-  --color-card-shadow-bottom: #0a0908;
+  --color-shadow-top: #262320;
+  --color-card-shadow-bottom: #0f0e0c;
+  --color-button-shadow-bottom: #11110e;
+  --color-small-shadow-bottom: #1a1815;
   --color-divider: #2e2e2e;
   --color-topbar: #1e1e1e;
+  --color-topbar-shadow-bottom: #131313;
   --color-surface: #2e2e2e;
   --color-surface-skeleton: #2e2e2eb6;
   --color-muted: #333;
@@ -75,7 +78,6 @@ p {
 
   /* TopBar */
   --topbar-height: 56px;
-  --topbar-border-bottom: 2px solid var(--color-surface);
 
   /* Pagination Controls */
   --pagination-controls-icon-size: 20px;

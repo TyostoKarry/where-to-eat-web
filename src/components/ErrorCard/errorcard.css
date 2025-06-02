@@ -7,7 +7,9 @@
   padding: var(--padding-xl);
   border-radius: var(--border-radius-large);
   border: 2px solid var(--color-error);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    15px 15px 30px var(--color-card-shadow-bottom),
+    -15px -15px 30px var(--color-shadow-top);
   transition: transform 0.2s ease-in-out;
   gap: var(--padding-xl);
 }

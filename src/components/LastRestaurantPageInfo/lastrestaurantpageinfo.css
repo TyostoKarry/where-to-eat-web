@@ -11,7 +11,7 @@
   padding: var(--padding-xl);
   box-shadow:
     15px 15px 30px var(--color-card-shadow-bottom),
-    -15px -15px 30px var(--color-card-shadow-top);
+    -15px -15px 30px var(--color-shadow-top);
   gap: var(--padding-l);
 }
 
@@ -45,6 +45,9 @@
   padding: var(--padding-m);
   background-color: var(--color-muted);
   border-radius: var(--border-radius-regular);
+  box-shadow:
+    6px 6px 12px var(--color-small-shadow-bottom),
+    -6px -6px 12px var(--color-shadow-top);
 }
 
 .lastrestaurantpageinfo__stat-label {

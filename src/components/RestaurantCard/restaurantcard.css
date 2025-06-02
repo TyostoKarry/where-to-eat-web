@@ -15,7 +15,7 @@
   border-radius: var(--border-radius-card);
   box-shadow:
     15px 15px 30px var(--color-card-shadow-bottom),
-    -15px -15px 30px var(--color-card-shadow-top);
+    -15px -15px 30px var(--color-shadow-top);
   transition: transform 0.2s ease-in-out;
   width: var(--card-width);
   cursor: pointer;
