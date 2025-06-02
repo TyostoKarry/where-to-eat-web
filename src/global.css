@@ -75,7 +75,7 @@ p {
   /* Border Radius */
   --border-radius-regular: 4px;
   --border-radius-large: 8px;
-  --border-radius-card: 40px;
+  --border-radius-card: 30px;
 
   /* TopBar */
   --topbar-height: 56px;
