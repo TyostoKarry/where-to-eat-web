@@ -17,7 +17,8 @@ p {
 :root {
   /* Colors */
   --color-main: #1e1e1e;
-  --color-main-gradient: #1b1b1b;
+  --color-main-gradient-top-left: #292929;
+  --color-main-gradient-bottom-right: #1b1b1b;
   --color-card-shadow-top: #262320;
   --color-card-shadow-bottom: #0a0908;
   --color-divider: #2e2e2e;
