@@ -16,10 +16,10 @@ p {
 /* Root Variables */
 :root {
   /* Colors */
-  --color-main: #1e1e1e;
-  --color-main-gradient-top-left: #272727;
-  --color-main-gradient-bottom-right: #1b1b1b;
-  --color-shadow-top: #262320;
+  --color-main: #141414;
+  --color-main-gradient-top-left: #2e2e2e;
+  --color-main-gradient-bottom-right: #202020;
+  --color-shadow-top: #24211e;
   --color-card-shadow-bottom: #0f0e0c;
   --color-button-shadow-bottom: #11110e;
   --color-small-shadow-bottom: #1a1815;
@@ -42,7 +42,8 @@ p {
   --color-border: #333;
   --color-hover: #292929;
   --color-hover-secondary: #d0d0d0;
-  --color-modal-gradient-top-left: #181818;
+  --color-modal-gradient-top-left: #1b1b1b;
+  --color-modal-gradient-bottom-right: #1f1f1f;
   --color-modal-box-shadow: #242424;
 
   /* Padding */
