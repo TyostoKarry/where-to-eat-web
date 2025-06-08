@@ -41,12 +41,12 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
   const toggleMap = () => {
     const selection = window.getSelection()?.toString();
     // If text is selected, do not toggle the map
-    if (selection && selection.toString().length > 0) {
+    if (selection && selection.length > 0) {
       return;
     }
 
     setShowMap((prev) => !prev);
-    setTimeout(() => updateLayout(), 10);
+    requestAnimationFrame(() => updateLayout());
   };
 
   return (

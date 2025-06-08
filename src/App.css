@@ -16,7 +16,6 @@
   flex-direction: column;
   align-items: center;
   padding: var(--padding-xl) var(--padding-edges) 0 var(--padding-edges);
-  overflow-y: auto;
 }
 
 .error-page-container {
