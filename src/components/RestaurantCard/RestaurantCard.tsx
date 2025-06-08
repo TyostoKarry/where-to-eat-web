@@ -39,25 +39,25 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
   const mapRef = useRef<{ centerMap: () => void }>(null);
 
   const toggleMap = () => {
+    const selection = window.getSelection()?.toString();
+    // If text is selected, do not toggle the map
+    if (selection && selection.length > 0) {
+      return;
+    }
+
     setShowMap((prev) => !prev);
-    setTimeout(() => updateLayout(), 10);
+    requestAnimationFrame(() => updateLayout());
   };
 
   return (
     <div className="restaurantcard-masonry">
-      <div className="restaurantcard">
-        <Button
-          label={formatDistance(distance)}
-          useLightTheme
-          width="100px"
-          fontSize="var(--font-size-xl)"
-          onClick={() => toggleMap()}
-        />
-
+      <div className="restaurantcard" onClick={() => toggleMap()}>
         <div className="restaurantcard-content">
           <div className="title-container">
             <h2 className="title">{restaurantName}</h2>
+            <div className="distance-badge">{formatDistance(distance)}</div>
           </div>
+          <div className="title-break-line" />
 
           <div className="restaurantcard-info-container">
             {address && (
@@ -123,12 +123,13 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
                   : lang.restaurantCard.searchOnGoogle
               }
               useLightTheme
-              onClick={() =>
+              onClick={(e) => {
+                e.stopPropagation();
                 window.open(
                   website ||
                     `https://www.google.com/search?q=${encodeURIComponent(restaurantName)}`,
-                )
-              }
+                );
+              }}
               width="auto"
               fontSize="var(--font-size-xl)"
               padding="var(--padding-m) var(--padding-l)"
@@ -137,7 +138,7 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
         </div>
         {showMap && (
           <div className={`map-container`}>
-            <div className="map">
+            <div className="map" onClick={(e) => e.stopPropagation()}>
               <RestaurantMap
                 ref={mapRef}
                 latitude={latitude}
@@ -148,7 +149,10 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
               <Button
                 label={lang.button.center}
                 useLightTheme
-                onClick={() => mapRef.current?.centerMap()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  mapRef.current?.centerMap();
+                }}
                 width="auto"
                 fontSize="var(--font-size-m)"
                 padding="var(--padding-s) var(--padding-s)"
@@ -156,7 +160,10 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
               <Button
                 label={lang.button.close}
                 useLightTheme
-                onClick={() => toggleMap()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleMap();
+                }}
                 width="auto"
                 fontSize="var(--font-size-m)"
                 padding="var(--padding-s) var(--padding-s)"

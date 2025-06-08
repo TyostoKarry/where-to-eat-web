@@ -12,7 +12,9 @@
   transition: all 0.2s ease-in-out;
   background-color: var(--color-surface);
   color: var(--color-text);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    6px 6px 12px var(--color-button-shadow-bottom),
+    -6px -6px 12px var(--color-shadow-top);
   width: 100%;
   min-width: auto;
   height: auto;
@@ -21,7 +23,9 @@
 .button-light {
   background-color: var(--color-surface-secondary);
   color: var(--color-text-secondary);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    6px 6px 12px var(--color-button-shadow-bottom),
+    -6px -6px 12px var(--color-shadow-top);
 }
 
 .button:not(:disabled):hover {
@@ -58,7 +62,6 @@
 .button-container {
   position: relative;
   display: inline-flex;
-  width: max-content;
 }
 
 .button-tooltip {

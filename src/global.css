@@ -1,5 +1,5 @@
 /* =======================
-   🌍 Global Styles
+        Global Styles
    ======================= */
 
 h1,
@@ -13,12 +13,19 @@ p {
   padding: 0;
 }
 
-/* 🎨 Root Variables */
+/* Root Variables */
 :root {
   /* Colors */
-  --color-background-gradient-1: #131313;
-  --color-background-gradient-2: #181818;
+  --color-main: #141414;
+  --color-main-gradient-top-left: #2e2e2e;
+  --color-main-gradient-bottom-right: #202020;
+  --color-shadow-top: #24211e;
+  --color-card-shadow-bottom: #0f0e0c;
+  --color-button-shadow-bottom: #11110e;
+  --color-small-shadow-bottom: #1a1815;
+  --color-divider: #2e2e2e;
   --color-topbar: #1e1e1e;
+  --color-topbar-shadow-bottom: #131313;
   --color-surface: #2e2e2e;
   --color-surface-skeleton: #2e2e2eb6;
   --color-muted: #333;
@@ -35,7 +42,9 @@ p {
   --color-border: #333;
   --color-hover: #292929;
   --color-hover-secondary: #d0d0d0;
-  --color-modal-content-background: #181818;
+  --color-modal-gradient-top-left: #1b1b1b;
+  --color-modal-gradient-bottom-right: #1f1f1f;
+  --color-modal-box-shadow: #242424;
 
   /* Padding */
   --padding-xxs: 2px;
@@ -46,7 +55,8 @@ p {
   --padding-l: 16px;
   --padding-xl: 20px;
   --padding-xxl: 24px;
-  --padding-xxxl: 96px;
+  --padding-edges-large: 96px;
+  --padding-edges-medium: 70px;
 
   /* Font Sizes */
   --font-size-s: 10px;
@@ -66,14 +76,18 @@ p {
   /* Border Radius */
   --border-radius-regular: 4px;
   --border-radius-large: 8px;
+  --border-radius-card: 30px;
 
   /* TopBar */
   --topbar-height: 56px;
-  --topbar-border-bottom: 2px solid var(--color-surface);
 
   /* Pagination Controls */
   --pagination-controls-icon-size: 20px;
   --pagination-controls-border-radius: 20px;
+
+  /* Cards */
+  --card-width-large: 360px;
+  --card-width-medium: 340px;
 }
 
 @font-face {
@@ -102,4 +116,17 @@ p {
   src: url("/Fonts/OpenSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
+}
+
+/* Adaptive overrides for design tokens based on viewport context */
+:root {
+  --card-width: var(--card-width-large);
+  --padding-edges: var(--padding-edges-large);
+}
+
+@media (max-width: 1920px) {
+  :root {
+    --card-width: var(--card-width-medium);
+    --padding-edges: var(--padding-edges-medium);
+  }
 }

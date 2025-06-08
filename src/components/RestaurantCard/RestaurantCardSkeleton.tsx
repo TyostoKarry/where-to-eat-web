@@ -15,13 +15,15 @@ export const RestaurantCardSkeleton: FC<RestaurantCardSkeletonProps> = ({
   return (
     <div className="restaurantcard-skeleton-masonry">
       <div className="restaurantcard-skeleton">
-        <div className="restaurantcard-skeleton_distance-button" />
         <div className="restaurantcard-skeleton_data-container">
           <div className="restaurantcard-skeleton__name-wrapper">
-            <div
-              className="restaurantcard-skeleton__name"
-              style={{ width: getRandomWidth(180, 220) }}
-            />
+            <div className="restaurantcard-skeleton__name-row">
+              <div
+                className="restaurantcard-skeleton__name"
+                style={{ width: getRandomWidth(180, 230) }}
+              />
+              <div className="restaurantcard-skeleton_distance" />
+            </div>
             <div className="restaurantcard-skeleton__name-separator" />
           </div>
           {infoCount > 0 && (

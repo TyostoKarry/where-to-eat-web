@@ -46,7 +46,13 @@ export const LastRestaurantPageInfo: FC = () => {
   const hasActiveFilters = filteredCount !== null;
 
   return (
-    <div className="lastrestaurantpageinfo">
+    <div
+      className={`lastrestaurantpageinfo ${
+        filteredCount === 1 || restaurantData.length === 1
+          ? "force-small-screen"
+          : ""
+      }`}
+    >
       <div className="lastrestaurantpageinfo__content">
         <h2 className="lastrestaurantpageinfo__title">
           {lang.lastRestaurantPageInfo.title}
@@ -98,13 +104,13 @@ export const LastRestaurantPageInfo: FC = () => {
           }
           onClick={openFilterModal}
           useLightTheme
-          width="auto"
+          width="100%"
         />
         <Button
           label={lang.button.changeLocation}
           onClick={openUserLocationMapModal}
           useLightTheme
-          width="auto"
+          width="100%"
         />
       </div>
     </div>

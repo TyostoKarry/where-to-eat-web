@@ -18,7 +18,9 @@
   background: var(--color-surface-secondary);
   padding: var(--padding-sm) var(--padding-l);
   border-radius: var(--pagination-controls-border-radius);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    6px 6px 12px var(--color-button-shadow-bottom),
+    -6px -6px 12px var(--color-shadow-top);
 }
 
 .pagination-controls {
@@ -54,7 +56,9 @@
   background: white;
   border-radius: var(--pagination-controls-border-radius);
   border: 1px solid #eaeaea;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    6px 6px 12px var(--color-button-shadow-bottom),
+    -6px -6px 12px var(--color-shadow-top);
   padding: var(--padding-xs) var(--padding-m);
 }
 

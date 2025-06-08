@@ -5,13 +5,20 @@
 .restaurantcard {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
+  background: linear-gradient(
+    145deg,
+    var(--color-main-gradient-top-left),
+    var(--color-main-gradient-bottom-right)
+  );
   color: var(--color-text);
   padding: var(--padding-sm);
-  border-radius: var(--border-radius-large);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-card);
+  box-shadow:
+    15px 15px 30px var(--color-card-shadow-bottom),
+    -15px -15px 30px var(--color-shadow-top);
   transition: transform 0.2s ease-in-out;
-  width: 360px;
+  width: var(--card-width);
+  cursor: pointer;
 }
 
 .restaurantcard-content {
@@ -20,18 +27,27 @@
 
 .title-container {
   display: flex;
-  justify-content: center;
-  padding-bottom: var(--padding-l);
+  padding: var(--padding-s) 0;
+  align-items: center;
 }
 
 .title {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-bold);
-  padding: var(--padding-s) 0;
+  flex: 4;
+}
+
+.distance-badge {
+  flex: 1;
+  text-align: right;
+}
+
+.title-break-line {
   display: block;
-  text-align: center;
-  width: 80%;
-  border-bottom: 2px solid var(--color-text);
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-divider);
+  margin-bottom: var(--padding-l);
 }
 
 .restaurantcard-info-container {
@@ -99,7 +115,7 @@
 
 .map-buttons {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   gap: var(--padding-s);
   padding-top: var(--padding-s);
 }
