@@ -1,9 +1,6 @@
-name: CI
+name: Verify Pull Request
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -84,46 +81,3 @@ jobs:
         with:
           name: github-pages
           path: ./dist
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    timeout-minutes: 5
-
-    permissions:
-      deployments: write
-      pages: write
-      contents: write
-      id-token: write
-      actions: read
-
-    steps:
-      - name: Mark Deployment in GitHub (Start)
-        uses: bobheadxi/deployments@v1
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: github-pages
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-
-      - name: Mark Deployment Status
-        uses: bobheadxi/deployments@v1
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          env: ${{ steps.deployment.outputs.env }}
-          env_url: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
