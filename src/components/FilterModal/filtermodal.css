@@ -84,6 +84,10 @@
   margin-bottom: var(--padding-m);
 }
 
+.filter-chips.wrap-wide {
+  justify-content: space-between;
+}
+
 .filter-chip {
   background: var(--color-muted);
   border-radius: var(--border-radius-regular);

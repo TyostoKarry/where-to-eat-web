@@ -107,7 +107,9 @@ export const FilterModal: FC = () => {
           {availableCuisines.length > 0 && (
             <div className="filter-section">
               <h4>{lang.filterModal.cuisine}</h4>
-              <div className="filter-chips">
+              <div
+                className={`filter-chips ${availableCuisines.length >= 4 ? "wrap-wide" : ""}`}
+              >
                 {availableCuisines.map((cuisine) => (
                   <div
                     key={cuisine}
@@ -125,7 +127,9 @@ export const FilterModal: FC = () => {
           {availableDietaryOptions.length > 0 && (
             <div className="filter-section">
               <h4>{lang.filterModal.dietaryOptions}</h4>
-              <div className="filter-chips">
+              <div
+                className={`filter-chips ${availableDietaryOptions.length >= 4 ? "wrap-wide" : ""}`}
+              >
                 {availableDietaryOptions.map((option) => (
                   <div
                     key={option}
