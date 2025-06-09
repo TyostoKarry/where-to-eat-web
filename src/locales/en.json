@@ -13,6 +13,7 @@
     "useDeviceLocation": "Use device location"
   },
   "filterModal": {
+    "amenityUnavailable": "No places of this type nearby",
     "cuisine": "Cuisine",
     "dietaryOptions": "Dietary Options",
     "fast_food": "Fast Food",

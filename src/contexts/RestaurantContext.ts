@@ -24,6 +24,7 @@ interface RestaurantContextType {
   toggleCuisineFilter: (cuisine: string) => void;
   toggleDietaryFilter: (option: string) => void;
   resetFilters: () => void;
+  availableAmenity: ("restaurant" | "fast_food")[];
   availableCuisines: string[];
   availableDietaryOptions: string[];
 

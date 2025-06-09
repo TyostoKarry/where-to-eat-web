@@ -109,6 +109,12 @@
   font-weight: var(--font-weight-medium);
 }
 
+.filter-chip.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .filter-modal-footer {
   display: flex;
   justify-content: flex-end;
