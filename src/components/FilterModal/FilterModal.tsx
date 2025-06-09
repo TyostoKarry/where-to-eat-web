@@ -7,25 +7,33 @@ import "./filtermodal.css";
 
 export const FilterModal: FC = () => {
   const {
+    selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
+    toggleAmenityFilter,
     toggleCuisineFilter,
     toggleDietaryFilter,
     resetFilters,
+    availableAmenity,
     availableCuisines,
     availableDietaryOptions,
     closeFilterModal,
   } = useRestaurant();
   const lang = useContext(LanguageContext);
 
+  const hasAmenity = (amenity: "restaurant" | "fast_food") =>
+    availableAmenity.includes(amenity);
+
   const [activeFiltersCount, setActiveFiltersCount] = useState<number>(0);
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setActiveFiltersCount(
-      selectedCuisines.length + selectedDietaryOptions.length,
+      selectedAmenity.length +
+        selectedCuisines.length +
+        selectedDietaryOptions.length,
     );
-  }, [selectedCuisines, selectedDietaryOptions]);
+  }, [selectedAmenity, selectedCuisines, selectedDietaryOptions]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -58,10 +66,50 @@ export const FilterModal: FC = () => {
         </div>
 
         <div className="filter-modal-content">
+          <div className="filter-section">
+            <h4>{lang.filterModal.placeType}</h4>
+            <div className="filter-chips">
+              {["restaurant", "fast_food"].map((amenity) => {
+                const isDisabled = !hasAmenity(
+                  amenity as "restaurant" | "fast_food",
+                );
+                const isActive = selectedAmenity.includes(
+                  amenity as "restaurant" | "fast_food",
+                );
+                return (
+                  <div key={amenity} className="button-container">
+                    <div
+                      key={amenity}
+                      className={`filter-chip ${isActive ? "active" : ""} ${isDisabled ? "disabled" : ""}`}
+                      onClick={() =>
+                        isDisabled
+                          ? null
+                          : toggleAmenityFilter(
+                              amenity as "restaurant" | "fast_food",
+                            )
+                      }
+                      role="button"
+                      aria-disabled={isDisabled}
+                    >
+                      {lang.filterModal[amenity as "restaurant" | "fast_food"]}
+                    </div>
+                    {isDisabled && (
+                      <div className="button-tooltip">
+                        {lang.filterModal.amenityUnavailable}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           {availableCuisines.length > 0 && (
             <div className="filter-section">
               <h4>{lang.filterModal.cuisine}</h4>
-              <div className="filter-chips">
+              <div
+                className={`filter-chips ${availableCuisines.length >= 4 ? "wrap-wide" : ""}`}
+              >
                 {availableCuisines.map((cuisine) => (
                   <div
                     key={cuisine}
@@ -79,7 +127,9 @@ export const FilterModal: FC = () => {
           {availableDietaryOptions.length > 0 && (
             <div className="filter-section">
               <h4>{lang.filterModal.dietaryOptions}</h4>
-              <div className="filter-chips">
+              <div
+                className={`filter-chips ${availableDietaryOptions.length >= 4 ? "wrap-wide" : ""}`}
+              >
                 {availableDietaryOptions.map((option) => (
                   <div
                     key={option}

@@ -21,6 +21,10 @@ export const extractDietaryOptions = (tags: {
 
   return dietaryKeys
     .filter((key) => tags[key] === "yes")
-    .map((key) => key.replace("diet:", "").replace("_", " "))
-    .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
+    .map((key) =>
+      key
+        .replace("diet:", "")
+        .replace(/_/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+    );
 };

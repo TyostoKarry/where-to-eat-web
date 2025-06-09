@@ -8,18 +8,22 @@ import "./filterbutton.css";
 export const FilterButton: FC = () => {
   const {
     openFilterModal,
+    selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
+    availableAmenity,
     availableCuisines,
     availableDietaryOptions,
   } = useRestaurant();
   const lang = useContext(LanguageContext);
 
   const activeFiltersCount =
-    selectedCuisines.length + selectedDietaryOptions.length;
+    selectedAmenity.length +
+    selectedCuisines.length +
+    selectedDietaryOptions.length;
   const possibleFiltersCount =
     availableCuisines.length + availableDietaryOptions.length;
-  const isDisabled = possibleFiltersCount === 0;
+  const isDisabled = possibleFiltersCount === 0 && availableAmenity.length < 2;
 
   return (
     <div className="filter-button-wrapper">

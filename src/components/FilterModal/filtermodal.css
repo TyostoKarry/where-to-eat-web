@@ -84,6 +84,10 @@
   margin-bottom: var(--padding-m);
 }
 
+.filter-chips.wrap-wide {
+  justify-content: space-between;
+}
+
 .filter-chip {
   background: var(--color-muted);
   border-radius: var(--border-radius-regular);
@@ -107,6 +111,12 @@
   color: var(--color-text-secondary);
   border-color: var(--color-surface-secondary);
   font-weight: var(--font-weight-medium);
+}
+
+.filter-chip.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .filter-modal-footer {

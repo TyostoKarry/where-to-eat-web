@@ -17,11 +17,14 @@ interface RestaurantContextType {
   }) => void;
 
   // Filters
+  selectedAmenity: ("restaurant" | "fast_food")[];
   selectedCuisines: string[];
   selectedDietaryOptions: string[];
+  toggleAmenityFilter: (amenity: "restaurant" | "fast_food") => void;
   toggleCuisineFilter: (cuisine: string) => void;
   toggleDietaryFilter: (option: string) => void;
   resetFilters: () => void;
+  availableAmenity: ("restaurant" | "fast_food")[];
   availableCuisines: string[];
   availableDietaryOptions: string[];
 

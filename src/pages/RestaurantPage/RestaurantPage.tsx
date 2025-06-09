@@ -13,12 +13,17 @@ interface RestaurantPageProps {
 
 export const RestaurantPage: FC<RestaurantPageProps> = ({ restaurantData }) => {
   const ITEMS_PER_PAGE = 50;
-  const { selectedCuisines, selectedDietaryOptions } = useRestaurant();
+  const { selectedAmenity, selectedCuisines, selectedDietaryOptions } =
+    useRestaurant();
   const [currentPage, setCurrentPage] = useState(1);
   const [masonryWidth, setMasonryWidth] = useState(0);
 
   const filteredRestaurants = useMemo(() => {
     return restaurantData.filter((restaurant) => {
+      const amenityMatch =
+        selectedAmenity.length === 0 ||
+        selectedAmenity.includes(restaurant.amenity);
+
       const cuisineMatch =
         selectedCuisines.length === 0 ||
         (restaurant.cuisine &&
@@ -33,9 +38,14 @@ export const RestaurantPage: FC<RestaurantPageProps> = ({ restaurantData }) => {
             selectedDietaryOptions.includes(option),
           ));
 
-      return cuisineMatch && dietaryMatch;
+      return amenityMatch && cuisineMatch && dietaryMatch;
     });
-  }, [restaurantData, selectedCuisines, selectedDietaryOptions]);
+  }, [
+    restaurantData,
+    selectedAmenity,
+    selectedCuisines,
+    selectedDietaryOptions,
+  ]);
 
   const totalItems = filteredRestaurants.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -43,7 +53,7 @@ export const RestaurantPage: FC<RestaurantPageProps> = ({ restaurantData }) => {
   useMemo(() => {
     setCurrentPage(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCuisines, selectedDietaryOptions]);
+  }, [selectedAmenity, selectedCuisines, selectedDietaryOptions]);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);

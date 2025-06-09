@@ -22,9 +22,15 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     useState<boolean>(false);
 
   // Filter state
+  const [selectedAmenity, setSelectedAmenity] = useState<
+    ("restaurant" | "fast_food")[]
+  >([]);
   const [selectedCuisines, setSelectedCuisines] = useState<string[]>([]);
   const [selectedDietaryOptions, setSelectedDietaryOptions] = useState<
     string[]
+  >([]);
+  const [availableAmenity, setAvailableAmenity] = useState<
+    ("restaurant" | "fast_food")[]
   >([]);
   const [availableCuisines, setAvailableCuisines] = useState<string[]>([]);
   const [availableDietaryOptions, setAvailableDietaryOptions] = useState<
@@ -66,6 +72,16 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
   };
 
   // Filter handlers
+  const toggleAmenityFilter = (amenity: "restaurant" | "fast_food") => {
+    setSelectedAmenity((previousAmenity) =>
+      previousAmenity.includes(amenity)
+        ? previousAmenity.filter(
+            (existingAmenity) => existingAmenity !== amenity,
+          )
+        : [...previousAmenity, amenity],
+    );
+  };
+
   const toggleCuisineFilter = (cuisine: string) => {
     setSelectedCuisines((previousCuisines) =>
       previousCuisines.includes(cuisine)
@@ -87,19 +103,28 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
   };
 
   const resetFilters = () => {
+    setSelectedAmenity([]);
     setSelectedCuisines([]);
     setSelectedDietaryOptions([]);
   };
 
   useEffect(() => {
+    const amenitySet = new Set<"restaurant" | "fast_food">();
     const cuisineSet = new Set<string>();
     const dietarySet = new Set<string>();
 
     restaurantData.forEach((restaurant) => {
+      if (
+        restaurant.amenity === "restaurant" ||
+        restaurant.amenity === "fast_food"
+      ) {
+        amenitySet.add(restaurant.amenity);
+      }
       restaurant.cuisine?.forEach((cuisine) => cuisineSet.add(cuisine));
       restaurant.dietaryOptions?.forEach((option) => dietarySet.add(option));
     });
 
+    setAvailableAmenity(Array.from(amenitySet).sort());
     setAvailableCuisines(Array.from(cuisineSet).sort());
     setAvailableDietaryOptions(Array.from(dietarySet).sort());
   }, [restaurantData]);
@@ -126,11 +151,14 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     setUserLocation,
     isManualLocationSet,
     handleSetUserLocationManually,
+    selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
+    toggleAmenityFilter,
     toggleCuisineFilter,
     toggleDietaryFilter,
     resetFilters,
+    availableAmenity,
     availableCuisines,
     availableDietaryOptions,
     openUserLocationMapModal,
