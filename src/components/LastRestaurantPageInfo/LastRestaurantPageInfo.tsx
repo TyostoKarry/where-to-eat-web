@@ -10,6 +10,7 @@ export const LastRestaurantPageInfo: FC = () => {
     openUserLocationMapModal,
     userLocation,
     restaurantData,
+    selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
   } = useRestaurant();
@@ -20,11 +21,19 @@ export const LastRestaurantPageInfo: FC = () => {
     : "Unknown location";
 
   const filteredCount = useMemo(() => {
-    if (selectedCuisines.length === 0 && selectedDietaryOptions.length === 0) {
+    if (
+      selectedAmenity.length === 0 &&
+      selectedCuisines.length === 0 &&
+      selectedDietaryOptions.length === 0
+    ) {
       return null;
     }
 
     return restaurantData.filter((restaurant) => {
+      const amenityMatch =
+        selectedAmenity.length === 0 ||
+        selectedAmenity.includes(restaurant.amenity);
+
       const cuisineMatch =
         selectedCuisines.length === 0 ||
         (restaurant.cuisine &&
@@ -39,9 +48,14 @@ export const LastRestaurantPageInfo: FC = () => {
             selectedDietaryOptions.includes(option),
           ));
 
-      return cuisineMatch && dietaryMatch;
+      return amenityMatch && cuisineMatch && dietaryMatch;
     }).length;
-  }, [restaurantData, selectedCuisines, selectedDietaryOptions]);
+  }, [
+    restaurantData,
+    selectedAmenity,
+    selectedCuisines,
+    selectedDietaryOptions,
+  ]);
 
   const hasActiveFilters = filteredCount !== null;
 

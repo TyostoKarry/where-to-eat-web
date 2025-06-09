@@ -7,8 +7,10 @@ import "./filtermodal.css";
 
 export const FilterModal: FC = () => {
   const {
+    selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
+    toggleAmenityFilter,
     toggleCuisineFilter,
     toggleDietaryFilter,
     resetFilters,
@@ -23,9 +25,11 @@ export const FilterModal: FC = () => {
 
   useEffect(() => {
     setActiveFiltersCount(
-      selectedCuisines.length + selectedDietaryOptions.length,
+      selectedAmenity.length +
+        selectedCuisines.length +
+        selectedDietaryOptions.length,
     );
-  }, [selectedCuisines, selectedDietaryOptions]);
+  }, [selectedAmenity, selectedCuisines, selectedDietaryOptions]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -58,6 +62,24 @@ export const FilterModal: FC = () => {
         </div>
 
         <div className="filter-modal-content">
+          <div className="filter-section">
+            <h4>{lang.filterModal.placeType}</h4>
+            <div className="filter-chips">
+              {["restaurant", "fast_food"].map((amenity) => (
+                <div
+                  key={amenity}
+                  className={`filter-chip ${selectedAmenity.includes(amenity as "restaurant" | "fast_food") ? "active" : ""}`}
+                  onClick={() =>
+                    toggleAmenityFilter(amenity as "restaurant" | "fast_food")
+                  }
+                  role="button"
+                >
+                  {lang.filterModal[amenity as "restaurant" | "fast_food"]}
+                </div>
+              ))}
+            </div>
+          </div>
+
           {availableCuisines.length > 0 && (
             <div className="filter-section">
               <h4>{lang.filterModal.cuisine}</h4>

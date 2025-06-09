@@ -37,6 +37,7 @@ export interface Restaurant {
   name: string;
   latitude: number;
   longitude: number;
+  amenity: "restaurant" | "fast_food";
   distance: number;
   address?: string;
   postalCode?: string;
@@ -79,7 +80,13 @@ export const fetchOSMOverpassAPI = async (
     }
 
     return data.elements
-      .filter((node: OSMNode) => node.tags && node.tags.name)
+      .filter(
+        (node: OSMNode) =>
+          node.tags &&
+          node.tags.name &&
+          (node.tags.amenity === "restaurant" ||
+            node.tags.amenity === "fast_food"),
+      )
       .map((node: OSMNode) => {
         const distance = calculateDistance(
           userLat,
@@ -95,6 +102,7 @@ export const fetchOSMOverpassAPI = async (
           name: node.tags.name,
           latitude: node.lat,
           longitude: node.lon,
+          amenity: node.tags.amenity as "restaurant" | "fast_food",
           distance: distance,
           address: formatAddress(node.tags),
           postalCode: node.tags["addr:postcode"],

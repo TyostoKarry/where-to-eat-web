@@ -15,8 +15,11 @@
   "filterModal": {
     "cuisine": "Cuisine",
     "dietaryOptions": "Dietary Options",
+    "fast_food": "Fast Food",
     "filterRestaurants": "Filter Restaurants",
-    "noFilterOptions": "No filter options available. Try changing location."
+    "noFilterOptions": "No filter options available. Try changing location.",
+    "placeType": "Place Type",
+    "restaurant": "Restaurant"
   },
   "filteredRestaurantsEmpty": {
     "message": "No restaurants found with the selected filters. Try adjusting your filters",
