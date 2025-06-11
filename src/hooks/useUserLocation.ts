@@ -26,6 +26,12 @@ export const useUserLocation = (): UserLocation => {
       return;
     }
 
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0,
+    };
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
@@ -44,6 +50,7 @@ export const useUserLocation = (): UserLocation => {
           loading: false,
         }));
       },
+      options,
     );
   }, []);
 
