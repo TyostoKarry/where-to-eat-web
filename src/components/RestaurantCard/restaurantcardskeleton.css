@@ -53,7 +53,7 @@
 }
 
 .restaurantcard-skeleton_data-container {
-  padding: 0 var(--padding-m);
+  padding: 0 var(--padding-restaurantcard-content);
 }
 
 .restaurantcard-skeleton__name-wrapper {
@@ -64,7 +64,7 @@
   width: 100%;
   gap: var(--padding-sm);
   padding-top: var(--padding-sm);
-  padding-bottom: var(--padding-l);
+  padding-bottom: var(--padding-bottom-restaurantcardskeleton-name-wrapper);
 }
 
 .restaurantcard-skeleton__name-row {
@@ -77,14 +77,14 @@
 }
 
 .restaurantcard-skeleton__name {
-  height: 30px;
+  height: var(--height-restaurantcardskeleton-name);
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
 
 .restaurantcard-skeleton_distance {
-  height: 24px;
-  width: 60px;
+  height: var(--height-restaurantcardskeleton-distance);
+  width: var(--width-restaurantcardskeleton-distance);
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
@@ -105,13 +105,13 @@
 .restaurantcard-skeleton__info-container {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-sm);
+  gap: var(--padding-s);
   align-items: flex-start;
   justify-content: flex-start;
 }
 
 .restaurantcard-skeleton__title {
-  height: 15px;
+  height: var(--height-restaurantcardskeleton-label);
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
 }
@@ -122,10 +122,10 @@
 }
 
 .restaurantcard-skeleton__website-button {
-  height: 45px;
-  width: 165px;
+  height: var(--height-restaurantcardskeleton-website-button);
+  width: var(--width-restaurantcardskeleton-website-button);
   align-self: center;
   background-color: var(--color-surface-secondary-skeleton);
   border-radius: var(--border-radius-regular);
-  margin-bottom: var(--padding-m);
+  margin-bottom: var(--margin-bottom-restaurantcardskeleton-website-button);
 }

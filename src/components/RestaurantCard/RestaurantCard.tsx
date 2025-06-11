@@ -131,8 +131,8 @@ export const RestaurantCard: FC<RestaurantCardProps> = ({
                 );
               }}
               width="auto"
-              fontSize="var(--font-size-xl)"
-              padding="var(--padding-m) var(--padding-l)"
+              fontSize="var(--font-size-website-button)"
+              padding="var(--padding-website-button)"
             />
           </div>
         </div>

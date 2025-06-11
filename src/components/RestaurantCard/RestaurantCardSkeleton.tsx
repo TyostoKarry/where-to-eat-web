@@ -8,9 +8,34 @@ interface RestaurantCardSkeletonProps {
 export const RestaurantCardSkeleton: FC<RestaurantCardSkeletonProps> = ({
   infoCount = 0,
 }) => {
+  const isMobile = window.innerWidth <= 900;
+  // Helper function to get skeleton frame value ranges based on screen size
+  const getValueRange = (
+    mobileMin: number,
+    mobileMax: number,
+    computerMin: number,
+    computerMax: number,
+  ): { min: number; max: number } => {
+    return isMobile
+      ? { min: mobileMin, max: mobileMax }
+      : { min: computerMin, max: computerMax };
+  };
+
+  // Generated skeleton frame value ranges
+  const { min: titleMin, max: titleMax } = getValueRange(80, 110, 180, 230);
+  const { min: labelMin, max: labelMax } = getValueRange(40, 80, 70, 100);
+  const { min: infoMin, max: infoMax } = getValueRange(80, 140, 180, 240);
+
   const getRandomWidth = (min: number, max: number) =>
     `${Math.floor(Math.random() * (max - min + 1) + min)}px`;
-  const getRandomHeight = () => (Math.random() < 0.25 ? "50px" : "25px");
+  const getRandomHeight = () =>
+    Math.random() < 0.25
+      ? isMobile
+        ? "28px"
+        : "50px"
+      : isMobile
+        ? "14px"
+        : "25px";
 
   return (
     <div className="restaurantcard-skeleton-masonry">
@@ -20,7 +45,7 @@ export const RestaurantCardSkeleton: FC<RestaurantCardSkeletonProps> = ({
             <div className="restaurantcard-skeleton__name-row">
               <div
                 className="restaurantcard-skeleton__name"
-                style={{ width: getRandomWidth(180, 230) }}
+                style={{ width: getRandomWidth(titleMin, titleMax) }}
               />
               <div className="restaurantcard-skeleton_distance" />
             </div>
@@ -35,12 +60,12 @@ export const RestaurantCardSkeleton: FC<RestaurantCardSkeletonProps> = ({
                 >
                   <div
                     className="restaurantcard-skeleton__title"
-                    style={{ width: getRandomWidth(70, 100) }}
+                    style={{ width: getRandomWidth(labelMin, labelMax) }}
                   />
                   <div
                     className="restaurantcard-skeleton__info"
                     style={{
-                      width: getRandomWidth(180, 240),
+                      width: getRandomWidth(infoMin, infoMax),
                       height: getRandomHeight(),
                     }}
                   />

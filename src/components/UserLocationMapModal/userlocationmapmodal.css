@@ -72,7 +72,7 @@
 
 .user-location-map-modal-location-buttons {
   display: flex;
-  gap: var(--padding-m);
+  gap: var(--gap-userlocationmapmodal-buttons);
 }
 
 .center-icon {
@@ -82,5 +82,5 @@
 
 .user-location-map-modal-cancel-save-buttons {
   display: flex;
-  gap: var(--padding-m);
+  gap: var(--gap-userlocationmapmodal-buttons);
 }

@@ -12,7 +12,6 @@ export const TopBar: FC = () => {
   return (
     <header className="topbar">
       <div className="topbar-left">
-        <button className="drawer-button">☰</button>
         <span className="topbar-title">{lang.topBar.title}</span>
       </div>
       <div className="topbar-center">
@@ -21,7 +20,8 @@ export const TopBar: FC = () => {
             label={lang.button.selectLocation}
             useLightTheme
             width="auto"
-            fontSize="var(--font-size-l)"
+            fontSize="var(--font-size-topbar-button)"
+            padding="var(--padding-topbar-button)"
             onClick={openUserLocationMapModal}
           />
           <FilterButton />

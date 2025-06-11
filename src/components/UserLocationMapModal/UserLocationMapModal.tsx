@@ -76,18 +76,16 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
             <Button
               label={<CenterLocation className="center-icon" />}
               useLightTheme
-              fontSize="var(--font-size-l)"
-              padding="0 var(--padding-l)"
-              width="auto"
+              fontSize="var(--font-size-userlocationmapmodal-button)"
+              padding="var(--padding-userlocationmapmodal-button)"
               height="32px"
               onClick={() => userLocationMapRef.current?.centerMap()}
             />
             <Button
               label={lang.button.useDeviceLocation}
               useLightTheme
-              fontSize="var(--font-size-l)"
-              padding="0 var(--padding-l)"
-              width="auto"
+              fontSize="var(--font-size-userlocationmapmodal-button)"
+              padding="var(--padding-userlocationmapmodal-button)"
               height="32px"
               onClick={() => {
                 userLocationMapRef.current?.centerMapOnDeviceLocation();
@@ -99,6 +97,8 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
               label={lang.button.cancel}
               useLightTheme
               onClick={closeUserLocationMapModal}
+              fontSize="var(--font-size-userlocationmapmodal-button)"
+              padding="var(--padding-userlocationmapmodal-button)"
               height="32px"
             />
             <Button
@@ -114,6 +114,8 @@ export const UserLocationMapModal: FC<UserLocationMapModalProps> = ({
                 }
                 closeUserLocationMapModal();
               }}
+              fontSize="var(--font-size-userlocationmapmodal-button)"
+              padding="var(--padding-userlocationmapmodal-button)"
               height="32px"
             />
           </div>

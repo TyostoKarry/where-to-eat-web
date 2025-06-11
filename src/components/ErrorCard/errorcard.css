@@ -1,7 +1,7 @@
 .errorcard {
   display: flex;
   flex-direction: column;
-  width: min(var(--card-width), 90%);
+  width: min(var(--error-card-width), 90%);
   background: var(--color-surface);
   color: var(--color-text);
   padding: var(--padding-xl);

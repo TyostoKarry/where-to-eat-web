@@ -25,6 +25,11 @@ export const RestaurantList: FC<RestaurantListProps> = ({
     return restaurantData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   };
 
+  const getGutterSize = () => {
+    // Smaller separation between cards on smaller screens
+    return window.innerWidth <= 900 ? 12 : 24;
+  };
+
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -50,7 +55,7 @@ export const RestaurantList: FC<RestaurantListProps> = ({
       const newMasonry = new Masonry(containerRef.current, {
         itemSelector: ".restaurantcard-masonry",
         columnWidth: ".restaurantcard",
-        gutter: 24,
+        gutter: getGutterSize(),
         fitWidth: true,
       });
 

@@ -6,6 +6,11 @@ import "./restaurantlistskeleton.css";
 export const RestaurantListSkeleton: FC = () => {
   const [masonry, setMasonry] = useState<Masonry | null>(null);
 
+  const getGutterSize = () => {
+    // Smaller separation between cards on smaller screens
+    return window.innerWidth <= 900 ? 12 : 24;
+  };
+
   useEffect(() => {
     setTimeout(() => masonry?.layout(), 10);
   }, [masonry]);
@@ -16,7 +21,7 @@ export const RestaurantListSkeleton: FC = () => {
     const newMasonry = new Masonry(".restaurantlist-skeleton", {
       itemSelector: ".restaurantcard-skeleton-masonry",
       columnWidth: ".restaurantcard-skeleton",
-      gutter: 24,
+      gutter: getGutterSize(),
       fitWidth: true,
     });
 
