@@ -29,7 +29,7 @@ export const useUserLocation = (): UserLocation => {
     const options = {
       enableHighAccuracy: true,
       timeout: 10000,
-      maximumAge: 0,
+      maximumAge: 2 * 60000,
     };
 
     navigator.geolocation.getCurrentPosition(
