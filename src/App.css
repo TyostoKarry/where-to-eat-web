@@ -18,11 +18,32 @@
   padding: var(--padding-xl) var(--padding-edges) 0 var(--padding-edges);
 }
 
-.error-page-container {
+.centered-item-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   justify-items: center;
   height: calc(100dvh - var(--topbar-height) - var(--padding-xl));
+}
+
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(var(--error-card-width), 90%);
+  background: var(--color-surface);
+  padding: var(--padding-xxxl) var(--padding-xl);
+  border-radius: var(--border-radius-large);
+  border: 2px solid var(--color-text-muted);
+  box-shadow:
+    15px 15px 30px var(--color-card-shadow-bottom),
+    -15px -15px 30px var(--color-shadow-top);
+  transition: transform 0.2s ease-in-out;
+  gap: var(--padding-l);
+}
+
+.loading-text {
+  font-size: var(--font-size-loading-text);
+  color: var(--color-text);
 }

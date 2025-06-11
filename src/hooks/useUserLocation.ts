@@ -5,6 +5,7 @@ interface UserLocation {
   longitude: number | null;
   locationServiceDenied: boolean | null;
   error: string | null;
+  loading: boolean;
 }
 
 export const useUserLocation = (): UserLocation => {
@@ -13,6 +14,7 @@ export const useUserLocation = (): UserLocation => {
     longitude: null,
     locationServiceDenied: null,
     error: null,
+    loading: true,
   });
 
   useEffect(() => {
@@ -24,6 +26,12 @@ export const useUserLocation = (): UserLocation => {
       return;
     }
 
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 2 * 60000,
+    };
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
@@ -31,6 +39,7 @@ export const useUserLocation = (): UserLocation => {
           longitude: position.coords.longitude,
           locationServiceDenied: false,
           error: null,
+          loading: false,
         });
       },
       (error) => {
@@ -38,8 +47,10 @@ export const useUserLocation = (): UserLocation => {
           ...prev,
           locationServiceDenied: error.code === error.PERMISSION_DENIED,
           error: error.message,
+          loading: false,
         }));
       },
+      options,
     );
   }, []);
 

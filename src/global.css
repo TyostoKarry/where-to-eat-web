@@ -58,6 +58,7 @@ p {
   --padding-l: 16px;
   --padding-xl: 20px;
   --padding-xxl: 24px;
+  --padding-xxxl: 36px;
   --padding-edges-large: 96px;
   --padding-edges-medium: 70px;
   --padding-edges-small: 20px;
@@ -149,6 +150,11 @@ p {
   --font-size-userlocationmapmodal-button: var(--font-size-l);
   --padding-userlocationmapmodal-button: 0 var(--padding-l);
   --gap-userlocationmapmodal-buttons: var(--padding-m);
+  /* Loading */
+  --height-loadingspinner: 100px;
+  --width-loadingspinner: 100px;
+  --thickness-loadingspinner: 10px;
+  --font-size-loading-text: var(--font-size-xl);
 }
 
 /* Media Queries for Adaptive Design */
@@ -216,6 +222,11 @@ p {
     --font-size-userlocationmapmodal-button: var(--font-size-m);
     --padding-userlocationmapmodal-button: 0 var(--padding-s);
     --gap-userlocationmapmodal-buttons: var(--padding-sm);
+    /* Loading */
+    --height-loadingspinner: 60px;
+    --width-loadingspinner: 60px;
+    --thickness-loadingspinner: 6px;
+    --font-size-loading-text: var(--font-size-l);
   }
 }
 
