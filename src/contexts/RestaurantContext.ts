@@ -27,6 +27,7 @@ interface RestaurantContextType {
   availableAmenity: ("restaurant" | "fast_food")[];
   availableCuisines: string[];
   availableDietaryOptions: string[];
+  filteredRestaurants: Restaurant[];
 
   // Modals
   openUserLocationMapModal: () => void;

@@ -1,4 +1,3 @@
-import { Restaurant } from "@api/OSMOverpassAPI";
 import { FilteredRestaurantsEmpty } from "@components/ErrorStates";
 import { LastRestaurantPageInfo } from "@components/LastRestaurantPageInfo";
 import { PaginationControls } from "@components/PaginationControls";
@@ -7,45 +6,16 @@ import { useRestaurant } from "@contexts/RestaurantContext";
 import { FC, useState, useMemo } from "react";
 import "./restaurantpage.css";
 
-interface RestaurantPageProps {
-  restaurantData: Restaurant[];
-}
-
-export const RestaurantPage: FC<RestaurantPageProps> = ({ restaurantData }) => {
+export const RestaurantPage: FC = () => {
   const ITEMS_PER_PAGE = 50;
-  const { selectedAmenity, selectedCuisines, selectedDietaryOptions } =
-    useRestaurant();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [masonryWidth, setMasonryWidth] = useState(0);
-
-  const filteredRestaurants = useMemo(() => {
-    return restaurantData.filter((restaurant) => {
-      const amenityMatch =
-        selectedAmenity.length === 0 ||
-        selectedAmenity.includes(restaurant.amenity);
-
-      const cuisineMatch =
-        selectedCuisines.length === 0 ||
-        (restaurant.cuisine &&
-          restaurant.cuisine.some((cuisine) =>
-            selectedCuisines.includes(cuisine),
-          ));
-
-      const dietaryMatch =
-        selectedDietaryOptions.length === 0 ||
-        (restaurant.dietaryOptions &&
-          restaurant.dietaryOptions.some((option) =>
-            selectedDietaryOptions.includes(option),
-          ));
-
-      return amenityMatch && cuisineMatch && dietaryMatch;
-    });
-  }, [
-    restaurantData,
+  const {
     selectedAmenity,
     selectedCuisines,
     selectedDietaryOptions,
-  ]);
+    filteredRestaurants,
+  } = useRestaurant();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [masonryWidth, setMasonryWidth] = useState(0);
 
   const totalItems = filteredRestaurants.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
