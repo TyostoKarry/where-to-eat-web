@@ -5,6 +5,7 @@ interface UserLocation {
   longitude: number | null;
   locationServiceDenied: boolean | null;
   error: string | null;
+  loading: boolean;
 }
 
 export const useUserLocation = (): UserLocation => {
@@ -13,6 +14,7 @@ export const useUserLocation = (): UserLocation => {
     longitude: null,
     locationServiceDenied: null,
     error: null,
+    loading: true,
   });
 
   useEffect(() => {
@@ -31,6 +33,7 @@ export const useUserLocation = (): UserLocation => {
           longitude: position.coords.longitude,
           locationServiceDenied: false,
           error: null,
+          loading: false,
         });
       },
       (error) => {
@@ -38,6 +41,7 @@ export const useUserLocation = (): UserLocation => {
           ...prev,
           locationServiceDenied: error.code === error.PERMISSION_DENIED,
           error: error.message,
+          loading: false,
         }));
       },
     );

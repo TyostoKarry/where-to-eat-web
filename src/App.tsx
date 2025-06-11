@@ -1,4 +1,5 @@
 import { FilterModal } from "@components/FilterModal";
+import { LoadingSpinner } from "@components/LoadingSpinner";
 import { RestaurantListSkeleton } from "@components/RestaurantList";
 import { Toast } from "@components/Toast";
 import { TopBar } from "@components/TopBar";
@@ -16,6 +17,7 @@ const App = () => {
     longitude: initialLon,
     locationServiceDenied: userLocationServiceDenied,
     error: userLocationError,
+    loading: userLocationLoading,
   } = useUserLocation();
   const {
     restaurantData,
@@ -55,7 +57,7 @@ const App = () => {
     }
 
     return (
-      <div className="error-page-container">
+      <div className="centered-item-container">
         <ErrorPage
           userLocation={userLocation}
           userLocationError={userLocationError}
@@ -70,7 +72,16 @@ const App = () => {
   return (
     <div className="app-container">
       <TopBar />
-      <main className="main-content">{getMainContentByState()}</main>
+      {userLocationLoading ? (
+        <div className="centered-item-container">
+          <div className="loading-spinner-container">
+            <LoadingSpinner />
+            <h3 className="loading-text">Accessing device location</h3>
+          </div>
+        </div>
+      ) : (
+        <main className="main-content">{getMainContentByState()}</main>
+      )}
       {isUserLocationMapModalOpen && (
         <UserLocationMapModal userLocation={userLocation} setToast={setToast} />
       )}

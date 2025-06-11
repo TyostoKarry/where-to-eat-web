@@ -1,0 +1,17 @@
+.spinner {
+  width: var(--width-loadingspinner);
+  height: var(--height-loadingspinner);
+  border: var(--thickness-loadingspinner) solid rgba(192, 192, 192, 0.1);
+  border-top: var(--thickness-loadingspinner) solid #acacac;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
