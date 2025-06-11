@@ -119,12 +119,32 @@ export const LastRestaurantPageInfo: FC = () => {
           onClick={openFilterModal}
           useLightTheme
           width="100%"
+          fontSize={
+            filteredCount === 1 || restaurantData.length === 1
+              ? "var(--font-size-lastrestaurantpageinfo-button)"
+              : ""
+          }
+          padding={
+            filteredCount === 1 || restaurantData.length === 1
+              ? "var(--padding-lastrestaurantpageinfo-button)"
+              : ""
+          }
         />
         <Button
           label={lang.button.changeLocation}
           onClick={openUserLocationMapModal}
           useLightTheme
           width="100%"
+          fontSize={
+            filteredCount === 1 || restaurantData.length === 1
+              ? "var(--font-size-lastrestaurantpageinfo-button)"
+              : ""
+          }
+          padding={
+            filteredCount === 1 || restaurantData.length === 1
+              ? "var(--padding-lastrestaurantpageinfo-button)"
+              : ""
+          }
         />
       </div>
     </div>

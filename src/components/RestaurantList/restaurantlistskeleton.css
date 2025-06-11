@@ -6,5 +6,5 @@
 }
 
 .restaurantlist-skeleton .restaurantcard-skeleton {
-  margin-bottom: 24px;
+  margin-bottom: var(--margin-bottom-restaurantlist);
 }

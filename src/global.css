@@ -19,11 +19,14 @@ p {
   --color-main: #141414;
   --color-main-gradient-top-left: #2e2e2e;
   --color-main-gradient-bottom-right: #202020;
+  --color-main-active-gradient-top-left: #303030;
+  --color-main-active-gradient-bottom-right: #222222;
   --color-shadow-top: #24211e;
   --color-card-shadow-bottom: #0f0e0c;
+  --color-card-active-shadow-top: #221e1b;
   --color-button-shadow-bottom: #11110e;
   --color-small-shadow-bottom: #1a1815;
-  --color-divider: #2e2e2e;
+  --color-divider: #3f3f3f;
   --color-topbar: #1e1e1e;
   --color-topbar-shadow-bottom: #131313;
   --color-surface: #2e2e2e;
@@ -57,10 +60,14 @@ p {
   --padding-xxl: 24px;
   --padding-edges-large: 96px;
   --padding-edges-medium: 70px;
+  --padding-edges-small: 20px;
+  --padding-edges-tiny: 5px;
 
   /* Font Sizes */
+  --font-size-xs: 8px;
   --font-size-s: 10px;
   --font-size-sm: 12px;
+  --font-size-smx: 13px;
   --font-size-m: 14px;
   --font-size-l: 16px;
   --font-size-xl: 20px;
@@ -76,7 +83,8 @@ p {
   /* Border Radius */
   --border-radius-regular: 4px;
   --border-radius-large: 8px;
-  --border-radius-card: 30px;
+  --border-radius-card-medium: 30px;
+  --border-radius-card-small: 20px;
 
   /* TopBar */
   --topbar-height: 56px;
@@ -88,8 +96,138 @@ p {
   /* Cards */
   --card-width-large: 360px;
   --card-width-medium: 340px;
+  --card-width-small: 150px;
+  --error-card-width-small: 240px;
+
+  /* Adaptive overrides for design tokens based on viewport context */
+  /* TopBar */
+  --font-size-topbar-title: var(--font-size-xxl);
+  --flex-topbar-title: 1;
+  --font-size-topbar-button: var(--font-size-l);
+  --padding-topbar-button: var(--padding-sm) var(--padding-m);
+  /* RestaurantList and RestaurantListSkeleton*/
+  --margin-bottom-restaurantlist: var(--padding-xxl);
+  /* Main Container */
+  --padding-edges: var(--padding-edges-large);
+  /* ErrorCard */
+  --error-card-width: var(--card-width-large);
+  /* RestaurantCard (and sometimes RestaurantCardSkeleton)*/
+  --card-width: var(--card-width-large);
+  --border-radius-card: var(--border-radius-card-medium);
+  --padding-restaurantcard-content: var(--padding-m);
+  --font-size-card-title: var(--font-size-xxl);
+  --font-size-card-distance-badge: var(--font-size-l);
+  --font-size-card-label: var(--font-size-m);
+  --font-size-card-info: var(--font-size-xl);
+  --margin-bottom-title-break-line: var(--padding-l);
+  --gap-restaurantcard-info: var(--padding-sm);
+  --min-width-opneing-hours: 75px;
+  --padding-bottom-info-container: var(--padding-l);
+  --font-size-website-button: var(--font-size-xl);
+  --padding-website-button: var(--padding-m) var(--padding-l);
+  --padding-bottom-website-button: var(--padding-m);
+  --height-restaurant-map-container: 332px;
+  --height-restaurant-map: 300px;
+  --justify-content-restaurantcard-map-buttons: center;
+  /* RestaurantCardSkeleton */
+  --height-restaurantcardskeleton-name: 30px;
+  --height-restaurantcardskeleton-distance: 24px;
+  --width-restaurantcardskeleton-distance: 60px;
+  --padding-bottom-restaurantcardskeleton-name-wrapper: var(--padding-l);
+  --height-restaurantcardskeleton-label: 15px;
+  --height-restaurantcardskeleton-website-button: 45px;
+  --width-restaurantcardskeleton-website-button: 165px;
+  --margin-bottom-restaurantcardskeleton-website-button: var(--padding-m);
+  /* LastRestaurantPageInfo */
+  --font-size-lastrestaurantpageinfo-button: var(--font-size-l);
+  --padding-lastrestaurantpageinfo-button: var(--padding-sm) var(--padding-m);
+  /* FilterModal */
+  --gap-filtermodal-content: var(--padding-xxl);
+  /* UserLocationMap */
+  --height-userlocationmap: 500px;
+  /* UserLocationMapModal */
+  --font-size-userlocationmapmodal-button: var(--font-size-l);
+  --padding-userlocationmapmodal-button: 0 var(--padding-l);
+  --gap-userlocationmapmodal-buttons: var(--padding-m);
 }
 
+/* Media Queries for Adaptive Design */
+/* Full HD */
+@media (max-width: 1920px) {
+  :root {
+    /* Main Container */
+    --padding-edges: var(--padding-edges-medium);
+    /* ErrorCard */
+    --error-card-width: var(--card-width-medium);
+    /* RestaurantCard */
+    --card-width: var(--card-width-medium);
+  }
+}
+
+/* Tablet and smaller */
+@media (max-width: 900px) {
+  :root {
+    /* TopBar */
+    --font-size-topbar-title: var(--font-size-xl);
+    --flex-topbar-title: none;
+    --font-size-topbar-button: var(--font-size-m);
+    --padding-topbar-button: var(--padding-xs) var(--padding-s);
+    /* RestaurantList */
+    --margin-bottom-restaurantlist: var(--padding-l);
+    /* Main Container */
+    --padding-edges: var(--padding-edges-small);
+    /* ErrorCard */
+    --error-card-width: var(--error-card-width-small);
+    /* RestaurantCard (and sometimes RestaurantCardSkeleton)*/
+    --card-width: var(--card-width-small);
+    --border-radius-card: var(--border-radius-card-small);
+    --padding-restaurantcard-content: var(--padding-xs);
+    --font-size-card-title: var(--font-size-smx);
+    --font-size-card-distance-badge: var(--font-size-s);
+    --font-size-card-label: var(--font-size-s);
+    --font-size-card-info: var(--font-size-sm);
+    --margin-bottom-title-break-line: none;
+    --gap-restaurantcard-info: var(--padding-xxs);
+    --min-width-opneing-hours: 55px;
+    --padding-bottom-info-container: var(--padding-m);
+    --font-size-website-button: var(--font-size-sm);
+    --padding-website-button: var(--padding-sm);
+    --padding-bottom-website-button: var(--padding-s);
+    --height-restaurant-map-container: 232px;
+    --height-restaurant-map: 200px;
+    --justify-content-restaurantcard-map-buttons: space-between;
+    /* RestaurantCardSkeleton */
+    --height-restaurantcardskeleton-name: 14px;
+    --height-restaurantcardskeleton-distance: 12px;
+    --width-restaurantcardskeleton-distance: 30px;
+    --padding-bottom-restaurantcardskeleton-name-wrapper: var(--padding-sm);
+    --height-restaurantcardskeleton-label: 10px;
+    --height-restaurantcardskeleton-website-button: 28px;
+    --width-restaurantcardskeleton-website-button: 90px;
+    --margin-bottom-restaurantcardskeleton-website-button: var(--padding-s);
+    /* LastRestaurantPageInfo */
+    --font-size-lastrestaurantpageinfo-button: var(--font-size-sm);
+    --padding-lastrestaurantpageinfo-button: var(--padding-xs) var(--padding-s);
+    /* FilterModal */
+    --gap-filtermodal-content: var(--padding-xs);
+    /* UserLocationMap */
+    --height-userlocationmap: 370px;
+    /* UserLocationMapModal */
+    --font-size-userlocationmapmodal-button: var(--font-size-m);
+    --padding-userlocationmapmodal-button: 0 var(--padding-s);
+    --gap-userlocationmapmodal-buttons: var(--padding-sm);
+  }
+}
+
+/* Mobile and smaller */
+@media (max-width: 550px) {
+  :root {
+    /* Main Container */
+    --padding-edges: var(--padding-edges-tiny);
+  }
+}
+
+/* Fonts */
 @font-face {
   font-family: "OpenSans";
   src: url("/Fonts/OpenSans-Regular.woff2") format("woff2");
@@ -116,17 +254,4 @@ p {
   src: url("/Fonts/OpenSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
-}
-
-/* Adaptive overrides for design tokens based on viewport context */
-:root {
-  --card-width: var(--card-width-large);
-  --padding-edges: var(--padding-edges-large);
-}
-
-@media (max-width: 1920px) {
-  :root {
-    --card-width: var(--card-width-medium);
-    --padding-edges: var(--padding-edges-medium);
-  }
 }

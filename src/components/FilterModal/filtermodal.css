@@ -65,7 +65,7 @@
   padding: var(--padding-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xxl);
+  gap: var(--gap-filtermodal-content);
 }
 
 .filter-section h4 {

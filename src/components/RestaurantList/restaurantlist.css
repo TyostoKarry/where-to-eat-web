@@ -4,5 +4,5 @@
 }
 
 .restaurantlist .restaurantcard {
-  margin-bottom: var(--padding-xxl);
+  margin-bottom: var(--margin-bottom-restaurantlist);
 }
