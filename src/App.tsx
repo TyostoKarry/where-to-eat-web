@@ -53,7 +53,7 @@ const App = () => {
       (isManualLocationSet ||
         (!userLocationError && !userLocationServiceDenied))
     ) {
-      return <RestaurantPage restaurantData={restaurantData} />;
+      return <RestaurantPage />;
     }
 
     return (

@@ -1,5 +1,5 @@
 import { Restaurant, fetchOSMOverpassAPI } from "@api/OSMOverpassAPI";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 
 import { RestaurantContext } from "./RestaurantContext";
 
@@ -137,6 +137,35 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     }
   }, [userLocation]);
 
+  const filteredRestaurants = useMemo(() => {
+    return restaurantData.filter((restaurant) => {
+      const matchesAmenity =
+        selectedAmenity.length === 0 ||
+        selectedAmenity.includes(restaurant.amenity);
+
+      const matchesCuisines =
+        selectedCuisines.length === 0 ||
+        (restaurant.cuisine &&
+          restaurant.cuisine.some((cuisine) =>
+            selectedCuisines.includes(cuisine),
+          ));
+
+      const matchesDietaryOptions =
+        selectedDietaryOptions.length === 0 ||
+        (restaurant.dietaryOptions &&
+          restaurant.dietaryOptions.some((option) =>
+            selectedDietaryOptions.includes(option),
+          ));
+
+      return matchesAmenity && matchesCuisines && matchesDietaryOptions;
+    });
+  }, [
+    restaurantData,
+    selectedAmenity,
+    selectedCuisines,
+    selectedDietaryOptions,
+  ]);
+
   // Modal handlers
   const openUserLocationMapModal = () => setIsUserLocationMapModalOpen(true);
   const closeUserLocationMapModal = () => setIsUserLocationMapModalOpen(false);
@@ -161,6 +190,7 @@ export const RestaurantProvider = ({ children }: RestaurantProviderProps) => {
     availableAmenity,
     availableCuisines,
     availableDietaryOptions,
+    filteredRestaurants,
     openUserLocationMapModal,
     closeUserLocationMapModal,
     isUserLocationMapModalOpen,
