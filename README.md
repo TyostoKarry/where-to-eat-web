@@ -11,7 +11,7 @@
 </br>
 
 <div align="center">
-  <img src="/readme-images/full-application.gif" alt="Main application" />
+  <img src="./readme-images/full-application.gif" alt="Main application" />
 </div>
 
 ## Technologies
@@ -31,7 +31,7 @@
 - **Live Distance Calculation**: Shows how far each restaurant is from the user.
 
 <div align="center">
-  <img src="/readme-images/user-location-map-modal.png" alt="UserLocationMapModal" />
+  <img src="./readme-images/user-location-map-modal.png" alt="UserLocationMapModal" />
 </div>
 
 ### **Comprehensive Restaurant Information**
@@ -46,7 +46,7 @@
 - **Interactive Map**: Each restaurant card includes an interactive embedded map that can be revealed by clicking the card, displaying the restaurant's location.
 
 <div align="left">
-  <img src="/readme-images/restaurant-card.gif" alt="RestaurantCard" width="300" />
+  <img src="./readme-images/restaurant-card.gif" alt="RestaurantCard" width="300" />
 </div>
 
 ### **Filtering Options**
@@ -57,7 +57,7 @@
 - **Dynamic Filtering**: Filter options are dynamically generated based on the available data for nearby restaurants, ensuring relevant filters for each location. Selecting filters instantly updates the restaurant list to match your preferences.
 
 <div align="left">
-  <img src="/readme-images/filter-modal.png" alt="FilterModal" width="300" />
+  <img src="./readme-images/filter-modal.png" alt="FilterModal" width="300" />
 </div>
 
 ### **User Interface**
@@ -66,7 +66,7 @@
 - **Smooth UI Transitions**: Skeleton loading states ensure a smooth user experience.
 
 <div align="center">
-  <img src="/readme-images/skeleton-loader.gif" alt="Main application loading" />
+  <img src="./readme-images/skeleton-loader.gif" alt="Main application loading" />
 </div>
 
 ## Installation
