@@ -1,6 +1,6 @@
-# Where To Eat Web
+<h1 align="center"> Where To Eat Web </h1>
 
-A **React-based** web application that helps users find nearby restaurants using **OpenStreetMap (OSM)** data and **Leaflet** for interactive maps.
+<p align="center">A <strong>React-based</strong> web application that helps users find nearby restaurants using <strong>OpenStreetMap (OSM)</strong> data and <strong>Leaflet</strong> for interactive maps.</p>
 
 <div align="center">
   <a href="https://tyostokarry.github.io/where-to-eat-web/">
