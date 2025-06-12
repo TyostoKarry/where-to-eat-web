@@ -10,7 +10,9 @@ A **React-based** web application that helps users find nearby restaurants using
 
 </br>
 
-![Main application](https://imgur.com/HUgSEVL.jpeg)
+<div align="center">
+  <img src="https://i.imgur.com/Hl1GoxM.gif" alt="Main application" />
+</div>
 
 ## Technologies
 
@@ -21,37 +23,51 @@ A **React-based** web application that helps users find nearby restaurants using
 
 ## Features
 
-**Location & Restaurant Discovery**
+### **Location & Restaurant Discovery**
 
 - **Automatic Geolocation Detection**: Uses the browser’s Geolocation API to detect the user's location.
 - **Manual Location Selection**: Users can pick a location via an interactive map modal.
-- **Nearby Restaurants**: Fetches restaurants within a 2km radius from OpenStreetMap (OSM).
+- **Nearby Restaurants**: Fetches restaurants within a 10km radius from OpenStreetMap (OSM).
 - **Live Distance Calculation**: Shows how far each restaurant is from the user.
 
-  ![UserLocationMapModal](https://imgur.com/p60wyrN.jpeg)
+<div align="center">
+  <img src="https://imgur.com/bmsgiv6.png" alt="UserLocationMapModal" />
+</div>
 
-**Comprehensive Restaurant Information**
+### **Comprehensive Restaurant Information**
 
 - **Address**: Street name, house number, postal code.
-- **Cuisine Type**: Categories such as pizza, sushi, or vegan.
+- **Cuisine Type**: Categories such as pizza, sushi, or pasta.
 - **Dietary Options**: Information on vegetarian, vegan, or gluten-free availability.
 - **Opening Hours**: Human-readable format parsed from OSM's structured time data.
 - **Phone Number**: Contact details when available.
 - **Website**: Links to restaurant websites or a Google search if no website is provided.
 - **Distance**: Calculates the distance between the user and the restaurant.
+- **Interactive Map**: Each restaurant card includes an interactive embedded map that can be revealed by clicking the card, displaying the restaurant's location.
 
-  ![RestaurantCard](https://imgur.com/1dDa395.jpeg)
+<div align="left">
+  <img src="https://i.imgur.com/QdacTXB.gif" alt="RestaurantCard" width="300" />
+</div>
 
-**User Interface**
+### **Filtering Options**
+
+- **Place Type**: Filter restaurants by type, such as Restaurant or Fast Food.
+- **Cuisine Type**: Choose from a wide range of cuisines, including Italian, Indian, Mexican, and more.
+- **Dietary Options**: Narrow down results based on dietary preferences, such as Vegan, Gluten-Free, or Lactose-Free.
+- **Dynamic Filtering**: Filter options are dynamically generated based on the available data for nearby restaurants, ensuring relevant filters for each location. Selecting filters instantly updates the restaurant list to match your preferences.
+
+<div align="left">
+  <img src="https://imgur.com/EenYKHf.png" alt="FilterModal" width="300" />
+</div>
+
+### **User Interface**
 
 - **Masonry Grid Layout**: Dynamically adjusts to content size.
 - **Smooth UI Transitions**: Skeleton loading states ensure a smooth user experience.
 
-  ![Main application loading](https://imgur.com/GHg0kJW.jpeg)
-
-- **Expandable Restaurant Cards**: Click the distance button on a card to reveal an embedded map displaying restaurant location.
-
-  ![RestaurantCard map open](https://imgur.com/rdUcLSu.jpeg)
+<div align="center">
+  <img src="https://i.imgur.com/bzCZ54z.gif" alt="Main application loading" />
+</div>
 
 ## Installation
 
